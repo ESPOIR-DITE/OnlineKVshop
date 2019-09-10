@@ -4,10 +4,11 @@ import com.etoiledespoir.onlinekvshop.domain.Picture;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 public class PictureFactory {
-    public static Picture getPicture(int pictureId, String picDescription, String url, File imageIcon ){
+    public static Picture getPicture(int pictureId, String picDescription, String url, File imageIcon){
         return new Picture.Builder(pictureId).buildImageIcon(imageIcon).buildPicDescription(picDescription).buildUrl(url).getPicture();
     }
 }

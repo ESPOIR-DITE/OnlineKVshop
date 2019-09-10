@@ -45,23 +45,32 @@ public class Picture {
         this.url = url;
     }
 
-    public File getImageIcon() {return imageFile; }
+    public Image getImageIcon() {return image1; }
 
     public void setImageIcon(File imageIcon) {
-       this.imageFile = imageIcon;
+        BufferedImage resized=null;
         try {
-            image = ImageIO.read(imageIcon);
+            image1 = ImageIO.read(imageIcon);
+            resized = resize(image1, 500, 500);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.image = resized;
     }
 
     public Image getImage() {
-        return image1;
+        setImageIcon(imageFile);
+        return image;
     }
 
-    public void setImage(BufferedImage image) {
-        this.image1 = image;
+
+    private static BufferedImage resize(BufferedImage img, int height, int width) {
+        Image tmp = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = resized.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+        return resized;
     }
 
     public static class Builder{
@@ -92,9 +101,14 @@ public class Picture {
             this.image=image;
             return this;
         }
+        public Builder buildImage1(BufferedImage image1){
+            this.image1=image1;
+            return this;
+        }
         public Picture getPicture(){
             Picture picture=new Picture();
             picture.pictureId=this.pictureId;
+            picture.image1=this.image1;
             picture.image=this.image;
             picture.imageFile=this.imageIcon;
             picture.picDescription=this.picDescription;

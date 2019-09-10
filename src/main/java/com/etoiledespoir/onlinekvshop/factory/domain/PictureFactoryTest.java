@@ -3,6 +3,7 @@ package com.etoiledespoir.onlinekvshop.factory.domain;
 import com.etoiledespoir.onlinekvshop.domain.Picture;
 
 import javax.imageio.ImageIO;
+import java.awt.Graphics2D;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -10,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.*;
 import java.io.IOException;
@@ -42,7 +44,7 @@ public class PictureFactoryTest extends JFrame implements ActionListener {
             frame.setLayout(new GridLayout(3,1,10,10));
             frame.setVisible(true);
             frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            frame.setSize(600,500);
+            frame.setSize(960,1200);
 
             panelText.setLayout(new GridLayout(3,1,10,10));
             displayPanel.setLayout(new FlowLayout());
@@ -81,9 +83,15 @@ public class PictureFactoryTest extends JFrame implements ActionListener {
 
         }
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         File file = null;
+        BufferedImage tempPNG = null;
+        File outputfile=null;
+        BufferedImage bi=null;
+        BufferedImage resized=null;
         JFileChooser fc = new JFileChooser("/home");
         FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG, PNG & GIF Images", "jpg", "gif", "png");
 
@@ -101,13 +109,35 @@ public class PictureFactoryTest extends JFrame implements ActionListener {
 
                 //This is where a real application would open the file.;
                 System.out.println("Opening: " + file.getName() + "." );
+
+
+                //reading the file selected and save it as an image
+
+                try {
+                     bi = ImageIO.read(new File(file.getPath()));
+
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+                //ImageResizer.resize(inputImagePath, outputImagePath1, scaledWidth, scaledHeight);
+
+                //ublic static Picture getPicture(int pictureId, String picDescription, String url, File imageIcon)
                 panelImage=PictureFactory.getPicture(0001,file.getName(),file.getPath(),file);
                // displayPanel.add(drawing());
 
                // jLabel1.setIcon((Icon) panelImage.getImage() /**new javax.swing.ImageIcon("C:\\Users\\ESPOIR pc\\Desktop\\webAppDesing\\LOGO.png"**/);
 
-                jLabel1.setIcon(new javax.swing.ImageIcon(file.getPath()));
-                panelText.add(jLabel1);
+                outputfile = new File("C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\mypictures\\"+file.getName());
+                try {
+                    ImageIO.write((RenderedImage) panelImage.getImage(), "png", outputfile);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+               // jLabel1.setIcon(new javax.swing.ImageIcon(file.getPath()));
+
+                jLabel1.setIcon(new javax.swing.ImageIcon((outputfile.getPath())));
+                displayPanel.add(jLabel1);
                 frame.repaint();
 
 
