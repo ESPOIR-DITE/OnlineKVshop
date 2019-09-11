@@ -1,6 +1,7 @@
 package com.etoiledespoir.onlinekvshop.factory.domain;
 
 import com.etoiledespoir.onlinekvshop.domain.Picture;
+import com.etoiledespoir.onlinekvshop.repository.picture.pictureImpl.PictureRep;
 
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
@@ -123,17 +124,24 @@ public class PictureFactoryTest extends JFrame implements ActionListener {
                 //ImageResizer.resize(inputImagePath, outputImagePath1, scaledWidth, scaledHeight);
 
                 //ublic static Picture getPicture(int pictureId, String picDescription, String url, File imageIcon)
-                panelImage=PictureFactory.getPicture(0001,file.getName(),file.getPath(),file);
+                //NOW READING FROM THE DATABASE
+                PictureRep pictureRep=PictureRep.getPictureRep();
+                panelImage=PictureFactory.getPicture(0001,"YEAH",file.getPath(),file);
                // displayPanel.add(drawing());
 
                // jLabel1.setIcon((Icon) panelImage.getImage() /**new javax.swing.ImageIcon("C:\\Users\\ESPOIR pc\\Desktop\\webAppDesing\\LOGO.png"**/);
 
-                outputfile = new File("C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\mypictures\\"+file.getName());
+                outputfile = new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\pictures\\"+file.getName());
                 try {
-                    ImageIO.write((RenderedImage) panelImage.getImage(), "png", outputfile);
+                    Picture readpic=pictureRep.read("1001");
+                    ImageIO.write((RenderedImage) readpic.getImageFromDB(), "png", outputfile);
+                    //*ImageIO.write((RenderedImage) panelImage.getImage(), "png", outputfile);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+
+                Picture readpic=pictureRep.read("1001");
+               //* pictureRep.creat(panelImage);
                // jLabel1.setIcon(new javax.swing.ImageIcon(file.getPath()));
 
                 jLabel1.setIcon(new javax.swing.ImageIcon((outputfile.getPath())));

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Blob;
 
 public class Picture {
     private int pictureId;
@@ -58,10 +59,17 @@ public class Picture {
         this.image = resized;
     }
 
+
     public Image getImage() {
-        setImageIcon(imageFile);
+        if(imageFile!=null){
+        setImageIcon(imageFile);}
         return image;
     }
+    public Image getImageFromDB() {
+        //setImageIcon(imageFile);
+        return image;
+    }
+
 
 
     private static BufferedImage resize(BufferedImage img, int height, int width) {
@@ -103,6 +111,14 @@ public class Picture {
         }
         public Builder buildImage1(BufferedImage image1){
             this.image1=image1;
+            return this;
+        }
+        public Builder buildBlob(Blob blob){
+            try {
+                this.image=ImageIO.read((File) blob);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return this;
         }
         public Picture getPicture(){
