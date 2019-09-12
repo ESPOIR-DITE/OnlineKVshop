@@ -1,17 +1,20 @@
 package com.etoiledespoir.onlinekvshop.domain;
 
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 import javax.print.DocFlavor;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Blob;
 
 public class Picture {
+    private ImageIcon icon;
     private int pictureId;
     private String picDescription;
     private String url;
@@ -19,9 +22,18 @@ public class Picture {
     private Image image;
     private BufferedImage image1;
 
+
     private Picture() {
     }
 
+//    public File getImageConvertedToFile(){
+//
+//        File fi=new File(image);
+//        BufferedImage bi=ImageIO.read(image);
+//    }
+    public ImageIcon getIcon(){
+        return icon;
+    }
     public int getPictureId() {
         return pictureId;
     }
@@ -48,10 +60,13 @@ public class Picture {
 
     public Image getImageIcon() {return image1; }
 
-    public void setImageIcon(File imageIcon) {
+    /**
+     * this method converts files into image resized
+     * **/
+    public void convertFileToImgae(File file) {
         BufferedImage resized=null;
         try {
-            image1 = ImageIO.read(imageIcon);
+            image1 = ImageIO.read(file);
             resized = resize(image1, 500, 500);
         } catch (IOException e) {
             e.printStackTrace();
@@ -60,9 +75,13 @@ public class Picture {
     }
 
 
+
     public Image getImage() {
         if(imageFile!=null){
-        setImageIcon(imageFile);}
+       // setImageIcon(imageFile);
+        }
+
+
         return image;
     }
     public Image getImageFromDB() {
@@ -88,6 +107,7 @@ public class Picture {
         private File imageIcon;
         private Image image;
         private BufferedImage image1;
+        private ImageIcon icon;
 
 
         public Builder(int pictureId){
@@ -105,8 +125,9 @@ public class Picture {
             this.imageIcon=imageIcon;
             return this;
         }
-        public Builder buildImage(Image image){
-            this.image=image;
+        public Builder buildImage(ImageIcon image){
+
+            this.icon = image;
             return this;
         }
         public Builder buildImage1(BufferedImage image1){
@@ -123,6 +144,7 @@ public class Picture {
         }
         public Picture getPicture(){
             Picture picture=new Picture();
+            picture.icon=this.icon;
             picture.pictureId=this.pictureId;
             picture.image1=this.image1;
             picture.image=this.image;

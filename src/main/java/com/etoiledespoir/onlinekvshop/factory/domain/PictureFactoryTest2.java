@@ -1,7 +1,9 @@
 package com.etoiledespoir.onlinekvshop.factory.domain;
 
 import com.etoiledespoir.onlinekvshop.domain.Picture;
+import com.etoiledespoir.onlinekvshop.domain.Pictures2;
 import com.etoiledespoir.onlinekvshop.repository.picture.pictureImpl.PictureRep;
+import com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.pictureImpl.PictureRep2;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,11 +12,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
-public class PictureFactoryTest extends JFrame implements ActionListener {
+public class PictureFactoryTest2 extends JFrame implements ActionListener {
 
         Picture panelImage;
 
@@ -34,7 +37,7 @@ public class PictureFactoryTest extends JFrame implements ActionListener {
 
 
         /** Creates a new instance of ClientApp */
-        public PictureFactoryTest()
+        public PictureFactoryTest2()
         {
             //super("Main Interface");
             frame.setLayout(new GridLayout(3,1,10,10));
@@ -74,7 +77,7 @@ public class PictureFactoryTest extends JFrame implements ActionListener {
 
         public static void main(String[] args)
         {
-            PictureFactoryTest client = new PictureFactoryTest() ;
+            PictureFactoryTest2 client = new PictureFactoryTest2() ;
 
 
         }
@@ -111,9 +114,10 @@ public class PictureFactoryTest extends JFrame implements ActionListener {
 
                 try {
                      bi = ImageIO.read(new File(file.getPath()));
-                     /**
-                      we got the file from Jchoser and we are inserting it in the fileInputStream to enable us to save in the database
-                      * */
+                     // sending the file to the Factory
+                 Pictures2 pictures2= Picture2Factory.getPicture("","miriam","voila",file);
+                 PictureRep2 PicRep=PictureRep2.getPictureRep();
+                 PicRep.creat(pictures2);
                      FileInputStream fin=new FileInputStream(file);
 
                 } catch (IOException ex) {

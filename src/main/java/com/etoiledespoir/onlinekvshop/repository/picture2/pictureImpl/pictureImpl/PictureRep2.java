@@ -1,63 +1,65 @@
-package com.etoiledespoir.onlinekvshop.repository.picture.pictureImpl;
+package com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.pictureImpl;
 
-import com.etoiledespoir.onlinekvshop.domain.Admin;
 import com.etoiledespoir.onlinekvshop.domain.Picture;
-import com.etoiledespoir.onlinekvshop.factory.domain.AdminFactory;
+import com.etoiledespoir.onlinekvshop.domain.Pictures2;
+import com.etoiledespoir.onlinekvshop.factory.domain.Picture2Factory;
 import com.etoiledespoir.onlinekvshop.factory.domain.PictureFactory;
 import com.etoiledespoir.onlinekvshop.repository.picture.PictureRepoInt;
+import com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.PictureRepoInt2;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class PictureRep implements PictureRepoInt {
+public class PictureRep2 implements PictureRepoInt2 {
     private String url="jdbc:mysql://localhost:3306/okvs?autoReconnect=true&useSSL=false";
     private String user="root";
     private String password="";
     private Connection conne;
     Image Image=null;
 
-    private static PictureRep pictureRep=null;
-    private PictureRep(){
+    private static PictureRep2 pictureRep=null;
+    private PictureRep2(){
         try {
             this.conne = DriverManager.getConnection(url,user,password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public static PictureRep getPictureRep(){
+    public static PictureRep2 getPictureRep(){
         if(pictureRep==null){
-            pictureRep =new PictureRep();
+            pictureRep =new PictureRep2();
         }return pictureRep;
     }
     @Override
-    public Picture creat(Picture picture) {
+    public Pictures2 creat(Pictures2 picture) {
         String code=getPremier();
-        System.out.println(picture.getPictureId());
+
         try {
-            String sql="INSERT INTO PIC(PICTUR_ID ,PICTUR_DESCRIPTION ,PICTURE,IMAGE) VALUES ("+code+",'"+picture.getPicDescription()+"','"+picture.getImage()+"','"+picture.getImage()+"');";
+            String sql="INSERT INTO PICTURE( PICTURE_ID , PICTURE_NAME , PICTURE_URL , PICTURE_DESCRIPTION  ) VALUES ("+code+",'"+picture.getName()+"',' on computor','"+picture.getDesciption()+"');";
             PreparedStatement statement=conne.prepareStatement(sql);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        writePicture(picture.getImage(),picture.getId());
         return null;
     }
 
     @Override
-    public Picture delete(String id) {
+    public Pictures2 delete(String id) {
         return null;
     }
 
     @Override
-    public Picture Update(Picture picture) {
+    public Pictures2 Update(Pictures2 picture) {
         return null;
     }
 
@@ -65,31 +67,22 @@ public class PictureRep implements PictureRepoInt {
         return Image;
     }
     @Override
-    public Picture read(String id) {
-        Picture picture=null;
+    public Pictures2 read(String id) {
+        Pictures2 pictures2=null;
+        Pictures2 picture=null;
         BufferedImage bi=null;
         try{
-            String sql="SELECT * FROM PIC where PICTUR_ID="+id+";";
+            String sql="SELECT * FROM PICTURE where PICTURE_ID="+id+";";
             PreparedStatement statement=conne.prepareStatement(sql);
             ResultSet rs= statement.executeQuery();
             while (rs.next())
             {
-                byte[] img=rs.getBytes(3);
-                ImageIcon imageIcon=new ImageIcon(img);
-                Image im=imageIcon.getImage();
-                Image my=im.getScaledInstance(500,500,Image.SCALE_SMOOTH);
-                ImageIcon newImage=new ImageIcon(my);
-
-                if(im==null){
-                    System.out.println("it's null"+im.toString());}
-                System.out.println("it's not null"+im.toString());
-
-                picture= PictureFactory.getPicture2(rs.getInt(1),rs.getString(2),"", newImage);
-                 System.out.println(picture.getPictureId());
+               pictures2= Picture2Factory.getPictureForRep(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
             }
         } catch (SQLException e) {
             e.printStackTrace();}
 
+        picture=Picture2Factory.getPictureForRead(pictures2.getId(),pictures2.getName(),pictures2.getUrl(),pictures2.getDesciption(),readFile(pictures2.getId()));
         return picture;
     }
 
@@ -123,5 +116,23 @@ public class PictureRep implements PictureRepoInt {
         //System.out.println(highValeu);
 
         return highValeu;
+    }
+    public void writePicture(Image image,String id){
+       File outputfile = new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\pictures\\"+id);
+        try {
+            ImageIO.write((RenderedImage) image,"png",outputfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public Image readFile(String id){
+        BufferedImage bufferedImage=null;
+        File myfile=new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\pictures\\"+id);
+        try {
+            bufferedImage=ImageIO.read(myfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bufferedImage;
     }
 }
