@@ -2,6 +2,7 @@ package com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.pictureIm
 
 import com.etoiledespoir.onlinekvshop.domain.Picture;
 import com.etoiledespoir.onlinekvshop.domain.Pictures2;
+import com.etoiledespoir.onlinekvshop.factory.domain.PaymentFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.Picture2Factory;
 import com.etoiledespoir.onlinekvshop.factory.domain.PictureFactory;
 import com.etoiledespoir.onlinekvshop.repository.picture.PictureRepoInt;
@@ -49,13 +50,24 @@ public class PictureRep2 implements PictureRepoInt2 {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        writePicture(picture.getImage(),picture.getId());
+        writePicture(picture.getImage(),code);
         return null;
     }
 
     @Override
     public Pictures2 delete(String id) {
-        return null;
+        Pictures2 pictures2=null;
+       // pictures2=new Picture2Factory.getPictureForRead(read(id).getId(),read(id).getName(),read(id).getUrl(),read(id).getDesciption());
+        try{
+            String sql="DELETE FROM PICTURE where PICTURE_ID="+id+";";
+            PreparedStatement statement=conne.prepareStatement(sql);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        deleteFromFile(id);
+        return null ;
     }
 
     @Override
@@ -90,12 +102,33 @@ public class PictureRep2 implements PictureRepoInt2 {
     public ArrayList<String> readAll() {
         return null;
     }
+    public ArrayList<Pictures2> getAll(){
+        ArrayList<Pictures2>myList=new ArrayList<>();
+
+        Pictures2 picture=null;
+        try{
+            String sql="SELECT * FROM payment;";
+            PreparedStatement statement=conne.prepareStatement(sql);
+            ResultSet rs= statement.executeQuery();
+            while (rs.next())
+            {
+                String id=rs.getString(1);
+                picture=Picture2Factory.getPictureForRead(id,rs.getString(2),rs.getString(3),rs.getString(4),readFile(id));
+
+                myList.add(picture);
+                // System.out.println(admin.toString());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return myList;
+    }
 
     @Override
     public String getPremier() {
         String highValeu="";
         try {
-            String sql="select MAX(PICTUR_ID) from PIC ;";
+            String sql="select MAX(PICTURE_ID) from PICTURE ;";
             PreparedStatement statement=conne.prepareStatement(sql);
             ResultSet rs=statement.executeQuery();
             while(rs.next())
@@ -118,7 +151,9 @@ public class PictureRep2 implements PictureRepoInt2 {
         return highValeu;
     }
     public void writePicture(Image image,String id){
-       File outputfile = new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\pictures\\"+id);
+       // System.out.println(id+"  the id");
+
+       File outputfile = new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"+id+".png");
         try {
             ImageIO.write((RenderedImage) image,"png",outputfile);
         } catch (IOException e) {
@@ -127,12 +162,16 @@ public class PictureRep2 implements PictureRepoInt2 {
     }
     public Image readFile(String id){
         BufferedImage bufferedImage=null;
-        File myfile=new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\pictures\\"+id);
+        File myfile=new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"+id+".png");
         try {
             bufferedImage=ImageIO.read(myfile);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return bufferedImage;
+    }
+    public void deleteFromFile(String id){
+        File myfile=new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"+id+".png");
+        myfile.delete();
     }
 }

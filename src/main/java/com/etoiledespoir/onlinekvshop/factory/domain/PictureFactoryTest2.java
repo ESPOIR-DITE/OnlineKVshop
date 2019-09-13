@@ -19,52 +19,61 @@ import java.io.InputStream;
 
 public class PictureFactoryTest2 extends JFrame implements ActionListener {
 
+
+        BufferedImage bufferedImage;
+        Image image;
         Picture panelImage;
-
         JFrame frame = new JFrame("Main Interface");
-
-    JLabel jLabel1 = new JLabel();
+        JLabel jLabel1 = new JLabel();
 
         private JLabel inputClient = new JLabel("Client data");
         private JTextField textField = new JTextField(10);
 
         private JPanel panelText = new JPanel();
+        private JPanel album = new JPanel();
 
-        private JButton btn1 =new JButton("chosePicture");
+        private JButton btn1 =new JButton("send a pic");
+        private JButton btn2 =new JButton("Read");
+        private JButton btn3 =new JButton("Delete");
+
 
         private JPanel displayPanel = new JPanel();
-        private JTextArea textArea = new JTextArea(4,40);
+        private JPanel displayPanel1 = new JPanel();
+        private JTextArea textArea = new JTextArea(40,40);
 
 
+    PictureRep2 PicRep=PictureRep2.getPictureRep();
         /** Creates a new instance of ClientApp */
         public PictureFactoryTest2()
         {
             //super("Main Interface");
-            frame.setLayout(new GridLayout(3,1,10,10));
+            frame.setLayout(new BorderLayout());
             frame.setVisible(true);
             frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
             frame.setSize(960,1200);
 
-            panelText.setLayout(new GridLayout(3,1,10,10));
+            panelText.setLayout(new GridLayout(3,1));
             displayPanel.setLayout(new FlowLayout());
-
-
-
-
+            album.setLayout(new FlowLayout());
 
 
             btn1.addActionListener(this);
+            btn2.addActionListener(this);
+            btn3.addActionListener(this);
             panelText.add(inputClient);
             panelText.add(textField);
+            panelText.add(btn2);
             panelText.add(btn1);
+            panelText.add(btn3);
 
             JScrollPane scrollPane = new JScrollPane(textArea);
             scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
             displayPanel.add(scrollPane);
 
-            frame.add(panelText);
-            frame.add(displayPanel);
+            frame.add(panelText,BorderLayout.NORTH);
+            frame.add(displayPanel,BorderLayout.WEST);
+           // frame.add(displayPanel);
 
 
 
@@ -114,64 +123,106 @@ public class PictureFactoryTest2 extends JFrame implements ActionListener {
 
                 try {
                      bi = ImageIO.read(new File(file.getPath()));
+                     File file1=new File(file.getPath());
                      // sending the file to the Factory
-                 Pictures2 pictures2= Picture2Factory.getPicture("","miriam","voila",file);
-                 PictureRep2 PicRep=PictureRep2.getPictureRep();
-                 PicRep.creat(pictures2);
-                     FileInputStream fin=new FileInputStream(file);
+                 Pictures2 pictures2= Picture2Factory.getPicture("","miriam","voila",file1);
 
+                 PicRep.creat(pictures2);
+
+
+
+                    ImageIcon icon = new ImageIcon(buildFile(file1));
+                    jLabel1=new JLabel();
+                    jLabel1.setIcon(icon);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
 
-                //ImageResizer.resize(inputImagePath, outputImagePath1, scaledWidth, scaledHeight);
-                //ublic static Picture getPicture(int pictureId, String picDescription, String url, File imageIcon)
-                //NOW READING FROM THE DATABASE
 
-                PictureRep pictureRep=PictureRep.getPictureRep();
-                panelImage=PictureFactory.getPicture(0001,"YEAH",file.getPath(),file);
-
-               // displayPanel.add(drawing());
-               // jLabel1.setIcon((Icon) panelImage.getImage() /**new javax.swing.ImageIcon("C:\\Users\\ESPOIR pc\\Desktop\\webAppDesing\\LOGO.png"**/);
-
-                outputfile = new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\pictures\\"+file.getName());
-
-                    Picture readpic=pictureRep.read("1001");
-                   // Image myImage=readpic.getImage().getScaledInstance(500,500,Image.SCALE_SMOOTH);
-                System.out.println(readpic.getIcon());
-
-                InputStream is;
-
-                   // ImageIcon bufferedImage=  readpic.getIcon();
-                   //  my=bufferedImage;
-                   // jLabel1.ImageIcon(my.getImage());
-
-
-               // readpic.getImage();
-
-              // Image scaled=  readpic.getImage().getScaledInstance(500,500,readpic.getImage().SCALE_SMOOTH);
-               // ImageIcon imageIcon=new ImageIcon();
-                jLabel1=new JLabel(readpic.getIcon());
-
-
-
-                // Picture readpic=pictureRep.read("1001");
-               //* pictureRep.creat(panelImage);
-               // jLabel1.setIcon(new javax.swing.ImageIcon(file.getPath()));
-
-               //jLabel1.setIcon(new javax.swing.ImageIcon((outputfile.getPath())));
-                displayPanel.add(jLabel1);
+                displayPanel.removeAll();
+                album.removeAll();
+                //displayPanel.add(jLabel1);
+                displayPanel.repaint();
+                album.add(jLabel1);
+                frame.add(album,BorderLayout.CENTER);
                 frame.repaint();
 
 
             }
     }
+        if(e.getSource()==btn2){
+            System.out.println("in reading");
+            String id=textField.getText();
+            System.out.println(id+"  to read");
+            if(id!=null){
+                ImageIcon icon = new ImageIcon(PicRep.read(id).getImage());
+                jLabel1=new JLabel();
+                jLabel1.setIcon(icon);
+                displayPanel.removeAll();
+                //displayPanel.add(jLabel1);
+                album.removeAll();
+                displayPanel.repaint();
+                album.add(jLabel1);
+                frame.add(album,BorderLayout.CENTER);
+                frame.repaint();
+            }
+        }
+        if(e.getSource()==btn3){
+            String id=textField.getText();
+            System.out.println(id+"  to read");
+            if(id!=null){
+                ImageIcon icon = new ImageIcon(PicRep.delete(id).getImage());
+                jLabel1=new JLabel();
+                jLabel1.setIcon(icon);
+                displayPanel.removeAll();
+                //displayPanel.add(jLabel1);
+                album.removeAll();
+                displayPanel.repaint();
+                album.add(jLabel1);
+                frame.add(album,BorderLayout.CENTER);
+                frame.repaint();
+            }
+
+        }
 }
 
 public void drawing(Graphics d){
             d.drawImage(panelImage.getImage(),0,0, this);
 
 }
+
+
+    public Image buildFile(File file){
+        // System.out.println(file.getName()+"in buildFile");
+        if(file!=null){
+            try {
+                bufferedImage= ImageIO.read(file);
+
+                // System.out.println(bufferedImage+"  bufferedImage");
+
+                image=resize(bufferedImage,500,500);
+
+                // System.out.println(myimage+"  resized");
+
+                // System.out.println(image.toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }}
+
+
+        return image;
+    }
+
+    private static BufferedImage resize(BufferedImage img, int height, int width) {
+        // System.out.println(img+"   in resize");
+        Image tmp = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = resized.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+        return resized;
+    }
+
 }
 
 

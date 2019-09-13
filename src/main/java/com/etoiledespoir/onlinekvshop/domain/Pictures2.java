@@ -99,13 +99,21 @@ public class Pictures2 {
             return this;
         }
         public Builder buildFile(File file){
+           // System.out.println(file.getName()+"in buildFile");
+            if(file!=null){
             try {
                 bufferedImage= ImageIO.read(file);
+
+               // System.out.println(bufferedImage+"  bufferedImage");
+
                 Image myimage=resize(bufferedImage,500,500);
-                buildImage(myimage);
+
+               // System.out.println(myimage+"  resized");
+                this.image=myimage;
+               // System.out.println(image.toString());
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }}
 
             this.file=file;
             return this;
@@ -115,7 +123,8 @@ public class Pictures2 {
             return this;
         }
         private static BufferedImage resize(BufferedImage img, int height, int width) {
-            Image tmp = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+           // System.out.println(img+"   in resize");
+           Image tmp = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
             BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = resized.createGraphics();
             g2d.drawImage(tmp, 0, 0, null);
