@@ -7,6 +7,7 @@ import com.etoiledespoir.onlinekvshop.factory.domain.Picture2Factory;
 import com.etoiledespoir.onlinekvshop.factory.domain.PictureFactory;
 import com.etoiledespoir.onlinekvshop.repository.picture.PictureRepoInt;
 import com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.PictureRepoInt2;
+import org.springframework.boot.jdbc.DatabaseDriver;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -28,6 +29,7 @@ public class PictureRep2 implements PictureRepoInt2 {
 
     private static PictureRep2 pictureRep=null;
     private PictureRep2(){
+
         try {
             this.conne = DriverManager.getConnection(url,user,password);
         } catch (SQLException e) {
@@ -56,7 +58,7 @@ public class PictureRep2 implements PictureRepoInt2 {
 
     @Override
     public Pictures2 delete(String id) {
-        Pictures2 pictures2=null;
+        Pictures2 pictures2=read(id);
        // pictures2=new Picture2Factory.getPictureForRead(read(id).getId(),read(id).getName(),read(id).getUrl(),read(id).getDesciption());
         try{
             String sql="DELETE FROM PICTURE where PICTURE_ID="+id+";";
@@ -67,7 +69,7 @@ public class PictureRep2 implements PictureRepoInt2 {
             e.printStackTrace();
         }
         deleteFromFile(id);
-        return null ;
+        return pictures2 ;
     }
 
     @Override
@@ -95,6 +97,7 @@ public class PictureRep2 implements PictureRepoInt2 {
             e.printStackTrace();}
 
         picture=Picture2Factory.getPictureForRead(pictures2.getId(),pictures2.getName(),pictures2.getUrl(),pictures2.getDesciption(),readFile(pictures2.getId()));
+        System.out.println(picture.toString());
         return picture;
     }
 

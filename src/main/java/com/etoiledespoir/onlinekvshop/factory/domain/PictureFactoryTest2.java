@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class PictureFactoryTest2 extends JFrame implements ActionListener {
 
@@ -35,6 +36,7 @@ public class PictureFactoryTest2 extends JFrame implements ActionListener {
         private JButton btn1 =new JButton("send a pic");
         private JButton btn2 =new JButton("Read");
         private JButton btn3 =new JButton("Delete");
+        private JButton btn4 =new JButton("Read all");
 
 
         private JPanel displayPanel = new JPanel();
@@ -60,11 +62,14 @@ public class PictureFactoryTest2 extends JFrame implements ActionListener {
             btn1.addActionListener(this);
             btn2.addActionListener(this);
             btn3.addActionListener(this);
+            btn4.addActionListener(this);
             panelText.add(inputClient);
             panelText.add(textField);
             panelText.add(btn2);
             panelText.add(btn1);
             panelText.add(btn3);
+            panelText.add(btn4);
+
 
             JScrollPane scrollPane = new JScrollPane(textArea);
             scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -169,7 +174,7 @@ public class PictureFactoryTest2 extends JFrame implements ActionListener {
         }
         if(e.getSource()==btn3){
             String id=textField.getText();
-            System.out.println(id+"  to read");
+            System.out.println(id+"  to delete");
             if(id!=null){
                 ImageIcon icon = new ImageIcon(PicRep.delete(id).getImage());
                 jLabel1=new JLabel();
@@ -179,6 +184,31 @@ public class PictureFactoryTest2 extends JFrame implements ActionListener {
                 album.removeAll();
                 displayPanel.repaint();
                 album.add(jLabel1);
+                frame.add(album,BorderLayout.CENTER);
+                frame.repaint();
+            }
+
+        }
+        if(e.getSource()==btn4){
+           // String id=textField.getText();
+            System.out.println("  to read All");
+
+                ArrayList<Pictures2>myList=new ArrayList<>();
+                myList=PicRep.getAll();
+
+                jLabel1=new JLabel();
+
+                    displayPanel.removeAll();
+
+                for(Pictures2 s:myList){
+                    ImageIcon icon = new ImageIcon(s.getImage());
+                    jLabel1.setIcon(icon);
+
+                //displayPanel.add(jLabel1);
+                album.removeAll();
+                displayPanel.repaint();
+                album.add(jLabel1);
+                album.repaint();
                 frame.add(album,BorderLayout.CENTER);
                 frame.repaint();
             }
