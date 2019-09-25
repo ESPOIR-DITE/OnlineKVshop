@@ -1,8 +1,9 @@
-package com.etoiledespoir.onlinekvshop.service.paymentService;
+package com.etoiledespoir.onlinekvshop.service.paymentService.impl;
 
 import com.etoiledespoir.onlinekvshop.domain.Payment;
 import com.etoiledespoir.onlinekvshop.factory.repository.PaymentRepFactory;
 import com.etoiledespoir.onlinekvshop.repository.PaymentRepo.PaymentRepository;
+import com.etoiledespoir.onlinekvshop.service.paymentService.IpayService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

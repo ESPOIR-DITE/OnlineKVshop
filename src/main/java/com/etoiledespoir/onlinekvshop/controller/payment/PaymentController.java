@@ -2,7 +2,7 @@ package com.etoiledespoir.onlinekvshop.controller.payment;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.Payment;
-import com.etoiledespoir.onlinekvshop.service.paymentService.PayService;
+import com.etoiledespoir.onlinekvshop.service.paymentService.impl.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ public class PaymentController implements Icontroller<Payment,String> {
     @Autowired
     private PayService payment;
 
-    @PostMapping("/newpayment")
+    @PostMapping("/creat")
     @Override
     public Payment create(@RequestBody Payment payment) {
         return this.payment.creat(payment);

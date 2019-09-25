@@ -16,7 +16,7 @@ public class AdminController implements Icontroller<Admin,String> {
 
 
 
-    @PostMapping("/newadmin")
+    @PostMapping("/creat")
     @Override
     public Admin create(@RequestBody Admin admin) {
         return this.admin.creat(admin);

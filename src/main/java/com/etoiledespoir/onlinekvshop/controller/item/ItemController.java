@@ -15,7 +15,7 @@ public class ItemController implements Icontroller<Item,String> {
     @Autowired
     private ItemService item;
 
-    @PostMapping("/newitem")
+    @PostMapping("/creat")
     @Override
     public Item create(@RequestBody Item item) {
         return this.item.creat(item);

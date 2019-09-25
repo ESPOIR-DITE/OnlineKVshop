@@ -3,10 +3,9 @@ package com.etoiledespoir.onlinekvshop.service.paymentService;
 import com.etoiledespoir.onlinekvshop.domain.Payment;
 import com.etoiledespoir.onlinekvshop.factory.domain.PaymentFactory;
 import com.etoiledespoir.onlinekvshop.factory.service.PaymentServiceFac;
+import com.etoiledespoir.onlinekvshop.service.paymentService.impl.PayService;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class PayServiceTest {
     private PayService payService= PaymentServiceFac.getPayService();

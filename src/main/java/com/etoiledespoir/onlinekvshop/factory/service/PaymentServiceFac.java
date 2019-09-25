@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.service;
 
-import com.etoiledespoir.onlinekvshop.service.paymentService.PayService;
+import com.etoiledespoir.onlinekvshop.service.paymentService.impl.PayService;
 
 public class PaymentServiceFac {
     public static PayService getPayService(){

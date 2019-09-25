@@ -43,11 +43,16 @@ public class PictureService implements PictureInt {
 
     @Override
     public ArrayList<String> readAll() {
-        return pictureRep2.readAll();
+        return null;
     }
 
     @Override
     public String getPremier() {
         return null;
     }
+
+    public ArrayList<Pictures2> getAll(){
+        return pictureRep2.getAll();
+    }
+
 }

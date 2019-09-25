@@ -15,7 +15,7 @@ public class OrderController implements Icontroller<Order,String> {
     @Autowired
     private OrderService order;
 
-    @RequestMapping("/neworder")
+    @RequestMapping("/creat")
     public Order create(@RequestBody Order order){
         return this.order.creat(order);
     }

@@ -19,8 +19,6 @@
         <vaadin.version>13.0.11</vaadin.version>
     </properties>
 
-
-
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>

@@ -13,7 +13,7 @@ public class CustomerController implements Icontroller<Customer, String> {
     @Autowired
     private CustomerService customer;
 
-    @PostMapping("/new")
+    @PostMapping("/creat")
     @Override
     public Customer create(@RequestBody Customer customer) {
         return this.customer.creat(customer);
