@@ -25,7 +25,7 @@ public class Okvs_Security extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("admin")
                 .password(encoder().encode("admin"))
-                .roles(USER_ROLE, ADMIN_ROLE);
+                .roles(ADMIN_ROLE,USER_ROLE);
     }
 
     @Override
@@ -35,7 +35,8 @@ public class Okvs_Security extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/OKVS/**/creat").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.GET, "/OKVS/**/reads").hasRole(ADMIN_ROLE)
+               // .antMatchers(HttpMethod.GET, "/OKVS/**/reads").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/OKVS/**/reads").hasRole(USER_ROLE)
                 .and()
                 .csrf().disable()
                 .formLogin().disable();

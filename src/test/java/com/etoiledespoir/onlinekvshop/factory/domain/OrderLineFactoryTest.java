@@ -1,11 +1,9 @@
 package com.etoiledespoir.onlinekvshop.factory.domain;
 
-import com.etoiledespoir.onlinekvshop.domain.OrderLine;
+import com.etoiledespoir.onlinekvshop.domain.order.OrderLine;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class OrderLineFactoryTest {
     OrderLine line =OrderLineFactory.getLine("2333","234","234324","23424");

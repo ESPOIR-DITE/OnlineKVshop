@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.service.orderService;
 
 import com.etoiledespoir.onlinekvshop.domain.ItemSold;
-import com.etoiledespoir.onlinekvshop.domain.Order;
+import com.etoiledespoir.onlinekvshop.domain.order.Order;
 import com.etoiledespoir.onlinekvshop.factory.domain.ItemSoldFact;
 import com.etoiledespoir.onlinekvshop.factory.domain.OrderFactory;
 import com.etoiledespoir.onlinekvshop.factory.repository.OrderRepFactory;
@@ -13,8 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 public class OrderServiceTest {
     private OrderService orderServiceFacto=OrderServiceFacto.getOrderServis();

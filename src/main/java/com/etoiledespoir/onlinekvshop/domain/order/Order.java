@@ -1,7 +1,8 @@
-package com.etoiledespoir.onlinekvshop.domain;
+package com.etoiledespoir.onlinekvshop.domain.order;
+
+import com.etoiledespoir.onlinekvshop.domain.ItemSold;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Order  {
 private String orderNumber;

@@ -1,9 +1,7 @@
 package com.etoiledespoir.onlinekvshop.repository.OrderRepo;
 
-import com.etoiledespoir.onlinekvshop.domain.Item;
 import com.etoiledespoir.onlinekvshop.domain.ItemSold;
-import com.etoiledespoir.onlinekvshop.domain.Order;
-import com.etoiledespoir.onlinekvshop.factory.domain.ItemFactory;
+import com.etoiledespoir.onlinekvshop.domain.order.Order;
 import com.etoiledespoir.onlinekvshop.factory.domain.ItemSoldFact;
 import com.etoiledespoir.onlinekvshop.factory.domain.OrderFactory;
 import com.etoiledespoir.onlinekvshop.factory.repository.OrderRepFactory;
@@ -13,9 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Date;
-
-import static org.junit.Assert.*;
 
 public class OrderRepositoryTest {
 

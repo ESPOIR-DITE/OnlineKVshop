@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain;
 
-import com.etoiledespoir.onlinekvshop.domain.OrderLine;
+import com.etoiledespoir.onlinekvshop.domain.order.OrderLine;
 
 public class OrderLineFactory {
     public static OrderLine getLine(String linecode,String itemNumber,String OrderNumber,String date){
