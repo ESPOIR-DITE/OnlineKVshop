@@ -2,8 +2,8 @@ package com.etoiledespoir.onlinekvshop.repository.picture3.impl;
 
 import com.etoiledespoir.onlinekvshop.domain.Pictures2;
 import com.etoiledespoir.onlinekvshop.factory.domain.Picture2Factory;
-import com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.pictureImpl.PictureRep2;
 import com.etoiledespoir.onlinekvshop.repository.picture3.PictureForWebInt;
+import org.apache.commons.io.FileUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +16,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+
+
+
 @Component
 public class PictureForWeb implements PictureForWebInt {
     private String url="jdbc:mysql://localhost:3306/okvs?autoReconnect=true&useSSL=false";
@@ -42,7 +45,6 @@ public class PictureForWeb implements PictureForWebInt {
     @Override
     public Pictures2 creat(Pictures2 picture) {
         String code=getPremier();
-
         try {
             String sql="INSERT INTO PICTURE( PICTURE_ID , PICTURE_NAME , PICTURE_URL , PICTURE_DESCRIPTION  ) VALUES ("+code+",'"+picture.getName()+"',' on computor','"+picture.getDesciption()+"');";
             PreparedStatement statement=conne.prepareStatement(sql);
@@ -167,10 +169,12 @@ public class PictureForWeb implements PictureForWebInt {
         File myfile=new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"+id+".png");
         try {
             //bufferedImage= ImageIO.read(myfile);
-            FileInputStream imageInFile = new FileInputStream(myfile);
+            byte[] fileContent= FileUtils.readFileToByteArray(myfile);
+
+           /** FileInputStream imageInFile = new FileInputStream(myfile);
             byte imageData[] = new byte[(int) myfile.length()];
-            imageInFile.read(imageData);
-            imageDataString = encodeImage(imageData);
+            imageInFile.read(imageData);*/
+            imageDataString = encodeImage(fileContent);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -181,7 +185,8 @@ public class PictureForWeb implements PictureForWebInt {
         myfile.delete();
     }
     public static String encodeImage(byte[] imageByteArray) {
-        return Base64.encodeBase64URLSafeString(imageByteArray);
+        String string= java.util.Base64.getEncoder().encodeToString(imageByteArray);
+        return string;
     }
 
 }

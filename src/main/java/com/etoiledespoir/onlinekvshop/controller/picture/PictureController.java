@@ -18,10 +18,11 @@ public class PictureController implements Icontroller<Pictures2,String> {
     @Autowired
     PictureServiceForWeb pictureServiceForWeb;
 
-
     @PostMapping("/creat")
     @Override
     public Pictures2 create(@RequestBody Pictures2 pictures2) {
+        
+
         return pictureService.creat(pictures2);
     }
 
