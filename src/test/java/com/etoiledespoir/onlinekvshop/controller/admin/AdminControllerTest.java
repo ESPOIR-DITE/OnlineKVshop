@@ -41,7 +41,7 @@ private TestRestTemplate restTemplate;
     public void read() {
         Admin admin= AdminFactory.buildAdmin("espoir",234,"dite","admin");
         ResponseEntity responseEntity=restTemplate.withBasicAuth("user","password")
-                .postForEntity(Base_url +"/creat",admin,  Admin.class);
+                .getForEntity(Base_url +"/reads", Admin.class);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         System.out.println(responseEntity.getBody());
     }

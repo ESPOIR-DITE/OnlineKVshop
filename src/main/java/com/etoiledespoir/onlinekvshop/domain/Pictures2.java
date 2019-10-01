@@ -13,8 +13,17 @@ public class Pictures2 {
     private String desciption;
     private File file;
     private Image image;
+    private String webImage;
 
     private Pictures2() {
+    }
+
+    public String getWebImage() {
+        return webImage;
+    }
+
+    public void setWebImage(String webImage) {
+        this.webImage = webImage;
     }
 
     public String getId() {
@@ -82,9 +91,16 @@ public class Pictures2 {
         private File file;
         private Image image;
         private BufferedImage bufferedImage;
+        private String webImage;
+
 
         public Builder(String id){
             this.id=id;
+        }
+
+        public Builder buildImageString(String webImage){
+            this.webImage=webImage;
+            return this;
         }
         public Builder buildName(String name){
             this.name=name;
@@ -139,6 +155,7 @@ public class Pictures2 {
             pictures2.image=this.image;
             pictures2.name=this.name;
             pictures2.url=this.url;
+            pictures2.webImage=this.webImage;
             return pictures2;
         }
 

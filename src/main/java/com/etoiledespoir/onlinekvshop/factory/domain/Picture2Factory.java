@@ -30,4 +30,14 @@ public class Picture2Factory {
                 .buildUrl(url)
                 .getPicture2();
     }
+    public static Pictures2 getPictureForWeb( String id ,String name,String url,String desciption,String image){
+        return new Pictures2.Builder(id)
+                .buildDescription(desciption)
+                //.buildFile(file)
+                //.buildImage(image)
+                .buildImageString(image)
+                .buildName(name)
+                .buildUrl(url)
+                .getPicture2();
+    }
 }
