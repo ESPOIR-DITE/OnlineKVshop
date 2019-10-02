@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.factory;
 
 import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
-import com.etoiledespoir.onlinekvshop.domain.Payment;
+import com.etoiledespoir.onlinekvshop.domain.payment.Payment;
 import com.etoiledespoir.onlinekvshop.factory.domain.CustomerFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.PaymentFactory;
 import org.junit.Before;

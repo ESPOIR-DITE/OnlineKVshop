@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.payment;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.Payment;
+import com.etoiledespoir.onlinekvshop.domain.payment.Payment;
 import com.etoiledespoir.onlinekvshop.service.paymentService.impl.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

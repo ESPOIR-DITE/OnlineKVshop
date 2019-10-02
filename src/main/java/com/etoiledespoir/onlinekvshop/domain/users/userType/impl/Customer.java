@@ -9,8 +9,6 @@ public class Customer{
     private String name;
     private int id;
     private String email;
-    private String password;
-    private String address;
     private String status;
     /**
      * builder start here
@@ -19,8 +17,6 @@ public class Customer{
         private String name;
         private int id;
         private String email;
-        private String password;
-        private String address;
         private String status;
 
         public Builder(int id){
@@ -34,14 +30,7 @@ public class Customer{
             this.email=email;
             return this;
         }
-        public Builder buildPassword(String password){
-            this.password=password;
-            return this;
-        }
-        public Builder buildAddress(String address){
-            this.address=address;
-            return this;
-        }
+
         public Builder buildStatus(String status){
             this.status=status;
             return this;
@@ -50,18 +39,14 @@ public class Customer{
             Customer customer=new Customer();
             customer.id=this.id;
             customer.name=this.name;
-            customer.address=this.address;
             customer.email=this.email;
-            customer.password=this.password;
             customer.status=this.status;
             return customer;
         }
         public Builder copy(Customer customer){
-            this.address=customer.address;
             this.name=customer.name;
             this.id=customer.id;
             this.status=customer.status;
-            this.password=customer.password;
             this.email=customer.email;
             return this;
         }
@@ -96,22 +81,6 @@ public class Customer{
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -126,8 +95,6 @@ public class Customer{
                 "name='" + name + '\'' +
                 ", id=" + id +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", address='" + address + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }

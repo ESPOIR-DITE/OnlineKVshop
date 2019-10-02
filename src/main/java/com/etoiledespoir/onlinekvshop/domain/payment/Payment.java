@@ -1,11 +1,18 @@
-package com.etoiledespoir.onlinekvshop.domain;
+package com.etoiledespoir.onlinekvshop.domain.payment;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Payment  {
-    private Payment(){}
+    @Id
     private String paymentNUmber;
     private String PaymentType;
     private double amount;
     private int customer;
+    private Payment(){}
+
+
 
     public String getPaymentNUmber() {
         return paymentNUmber;

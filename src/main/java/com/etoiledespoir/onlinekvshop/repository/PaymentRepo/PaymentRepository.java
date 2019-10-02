@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.repository.PaymentRepo;
 
-import com.etoiledespoir.onlinekvshop.domain.Payment;
+import com.etoiledespoir.onlinekvshop.domain.payment.Payment;
 import com.etoiledespoir.onlinekvshop.factory.domain.PaymentFactory;
 
 import java.sql.*;

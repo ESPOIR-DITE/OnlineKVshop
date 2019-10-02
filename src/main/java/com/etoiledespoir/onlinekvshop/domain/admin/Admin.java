@@ -1,4 +1,4 @@
-package com.etoiledespoir.onlinekvshop.domain;
+package com.etoiledespoir.onlinekvshop.domain.admin;
 
 public class Admin  {
 

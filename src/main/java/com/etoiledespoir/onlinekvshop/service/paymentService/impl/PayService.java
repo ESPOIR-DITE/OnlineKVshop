@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.paymentService.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.Payment;
+import com.etoiledespoir.onlinekvshop.domain.payment.Payment;
 import com.etoiledespoir.onlinekvshop.factory.repository.PaymentRepFactory;
 import com.etoiledespoir.onlinekvshop.repository.PaymentRepo.PaymentRepository;
 import com.etoiledespoir.onlinekvshop.service.paymentService.IpayService;

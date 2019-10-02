@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.repository.PaymentRepo;
 
-import com.etoiledespoir.onlinekvshop.domain.Payment;
+import com.etoiledespoir.onlinekvshop.domain.payment.Payment;
 import com.etoiledespoir.onlinekvshop.factory.domain.PaymentFactory;
 import com.etoiledespoir.onlinekvshop.factory.repository.PaymentRepFactory;
 import org.junit.Assert;
@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 public class PaymentRepositoryTest {
 
