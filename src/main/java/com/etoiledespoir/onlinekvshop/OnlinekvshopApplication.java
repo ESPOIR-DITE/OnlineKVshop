@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
 public class OnlinekvshopApplication {
-
-
+    
     public static void main(String[] args) {
         SpringApplication.run(OnlinekvshopApplication.class, args);
     }

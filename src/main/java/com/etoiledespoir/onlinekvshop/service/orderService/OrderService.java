@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.orderService;
 
-import com.etoiledespoir.onlinekvshop.domain.Order;
+import com.etoiledespoir.onlinekvshop.domain.order.Order;
 import com.etoiledespoir.onlinekvshop.factory.repository.OrderRepFactory;
 import com.etoiledespoir.onlinekvshop.repository.OrderRepo.Iorder;
 import com.etoiledespoir.onlinekvshop.repository.OrderRepo.OrderRepository;

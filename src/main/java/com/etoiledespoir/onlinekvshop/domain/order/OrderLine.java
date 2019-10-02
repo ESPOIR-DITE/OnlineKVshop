@@ -1,4 +1,4 @@
-package com.etoiledespoir.onlinekvshop.domain;
+package com.etoiledespoir.onlinekvshop.domain.order;
 
 public class OrderLine {
     private String linecode;

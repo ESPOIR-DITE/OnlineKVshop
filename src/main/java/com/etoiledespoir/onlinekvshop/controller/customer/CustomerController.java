@@ -12,6 +12,11 @@ public class CustomerController implements Icontroller<Customer, String> {
 
     @Autowired
     private CustomerService customer;
+    @GetMapping("/home")
+    public String getHome(){
+        return "home";
+
+    }
 
     @PostMapping("/creat")
     @Override

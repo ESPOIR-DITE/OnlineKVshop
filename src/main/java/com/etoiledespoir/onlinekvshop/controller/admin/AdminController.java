@@ -13,9 +13,11 @@ import java.util.ArrayList;
 public class AdminController implements Icontroller<Admin,String> {
     @Autowired
     private AdminServices admin;
-
-
-
+@GetMapping("/home")
+public String getHome()
+{
+    return "home";
+}
     @PostMapping("/creat")
     @Override
     public Admin create(@RequestBody Admin admin) {

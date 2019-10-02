@@ -1,27 +1,28 @@
 package com.etoiledespoir.onlinekvshop.controller.picture;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.Payment;
 import com.etoiledespoir.onlinekvshop.domain.Pictures2;
 import com.etoiledespoir.onlinekvshop.service.picture.impl.PictureService;
-import org.atmosphere.config.service.Get;
+import com.etoiledespoir.onlinekvshop.service.picture3.impl.PictureServiceForWeb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+
 
 @RestController
 @RequestMapping(value = "OKVS/picture")
 public class PictureController implements Icontroller<Pictures2,String> {
     @Autowired
     PictureService pictureService;
-
+    @Autowired
+    PictureServiceForWeb pictureServiceForWeb;
 
     @PostMapping("/creat")
     @Override
     public Pictures2 create(@RequestBody Pictures2 pictures2) {
+        
+
         return pictureService.creat(pictures2);
     }
 
@@ -53,7 +54,22 @@ public class PictureController implements Icontroller<Pictures2,String> {
         return pictureService.getAll();
     }
     @GetMapping("/readpic")
-    public Image readIcon(@RequestParam(value = "id") String id){
-        return pictureService.read(id).getImage();
+    public String readIcon(@RequestParam(value = "id") String id){
+        Pictures2 pictures2= pictureServiceForWeb.read(id);
+        System.out.println("the object is: "+pictures2.toString());
+        return pictures2.getWebImage();
     }
+
+    /**public @ResponseBody Map<String, String> getImage(@PathVariable String id) throws IOException {
+
+       // File file = new ClassPathResource(imagesPath + imageName).getFile();
+
+        String encodeImage = Base64.getEncoder().withoutPadding().encodeToString(Files.readAllBytes(file.toPath()));
+
+        Map<String, String> jsonMap = new HashMap<>();
+
+        jsonMap.put("content", encodeImage);
+
+        return jsonMap;
+    }*/
 }
