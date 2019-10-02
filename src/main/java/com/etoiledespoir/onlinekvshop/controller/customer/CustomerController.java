@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.customer;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.Customer;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
 import com.etoiledespoir.onlinekvshop.service.customerService.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

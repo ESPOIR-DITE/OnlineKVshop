@@ -1,19 +1,12 @@
 package com.etoiledespoir.onlinekvshop.repository.picture.pictureImpl;
 
-import com.etoiledespoir.onlinekvshop.domain.Admin;
 import com.etoiledespoir.onlinekvshop.domain.Picture;
-import com.etoiledespoir.onlinekvshop.factory.domain.AdminFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.PictureFactory;
 import com.etoiledespoir.onlinekvshop.repository.picture.PictureRepoInt;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 

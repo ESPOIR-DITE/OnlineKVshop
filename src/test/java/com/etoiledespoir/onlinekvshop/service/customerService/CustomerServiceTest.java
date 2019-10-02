@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.customerService;
 
-import com.etoiledespoir.onlinekvshop.domain.Customer;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
 import com.etoiledespoir.onlinekvshop.factory.domain.CustomerFactory;
 import com.etoiledespoir.onlinekvshop.factory.repository.CustomerRepoFactory;
 import com.etoiledespoir.onlinekvshop.factory.service.CustomerServFacto;
@@ -9,8 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 public class CustomerServiceTest {
     CustomerRepository customerRepository= CustomerRepoFactory.getCustomerRep();

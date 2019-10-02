@@ -1,8 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.admin;
 
-import com.etoiledespoir.onlinekvshop.domain.Admin;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Admin;
 import com.etoiledespoir.onlinekvshop.factory.domain.AdminFactory;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +11,6 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 

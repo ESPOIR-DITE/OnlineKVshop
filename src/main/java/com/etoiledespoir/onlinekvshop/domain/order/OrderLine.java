@@ -1,10 +1,16 @@
 package com.etoiledespoir.onlinekvshop.domain.order;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class OrderLine {
+    @Id
     private String linecode;
     private String itemNumber;
     private String OrderNumber;
     private String date;
+
 
     private OrderLine() {
     }

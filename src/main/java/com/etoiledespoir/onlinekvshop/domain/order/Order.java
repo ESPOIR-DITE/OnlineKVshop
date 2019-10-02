@@ -2,9 +2,12 @@ package com.etoiledespoir.onlinekvshop.domain.order;
 
 import com.etoiledespoir.onlinekvshop.domain.ItemSold;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.ArrayList;
-
+@Entity
 public class Order{
+    @Id
 private String orderNumber;
 private int customer_id;
 private ArrayList<ItemSold>items;

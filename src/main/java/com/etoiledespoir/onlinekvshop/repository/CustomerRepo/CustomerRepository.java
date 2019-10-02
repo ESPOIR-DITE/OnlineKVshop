@@ -1,8 +1,6 @@
 package com.etoiledespoir.onlinekvshop.repository.CustomerRepo;
 
-import com.etoiledespoir.onlinekvshop.domain.Admin;
-import com.etoiledespoir.onlinekvshop.domain.Customer;
-import com.etoiledespoir.onlinekvshop.factory.domain.AdminFactory;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
 import com.etoiledespoir.onlinekvshop.factory.domain.CustomerFactory;
 
 import java.sql.*;

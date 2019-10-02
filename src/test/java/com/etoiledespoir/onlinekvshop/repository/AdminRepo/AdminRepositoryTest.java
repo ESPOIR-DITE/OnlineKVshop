@@ -1,13 +1,10 @@
 package com.etoiledespoir.onlinekvshop.repository.AdminRepo;
 
-import com.etoiledespoir.onlinekvshop.domain.Admin;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Admin;
 import com.etoiledespoir.onlinekvshop.factory.domain.AdminFactory;
-import com.etoiledespoir.onlinekvshop.factory.repository.AdminRepoFactory;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AdminRepositoryTest {

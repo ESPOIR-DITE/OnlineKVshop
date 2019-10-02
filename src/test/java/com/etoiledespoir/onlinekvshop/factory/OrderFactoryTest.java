@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory;
 
-import com.etoiledespoir.onlinekvshop.domain.Customer;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
 import com.etoiledespoir.onlinekvshop.domain.ItemSold;
 import com.etoiledespoir.onlinekvshop.domain.order.Order;
 import com.etoiledespoir.onlinekvshop.factory.domain.CustomerFactory;

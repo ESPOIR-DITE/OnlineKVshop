@@ -1,11 +1,9 @@
 package com.etoiledespoir.onlinekvshop.service.AdminService;
 
-import com.etoiledespoir.onlinekvshop.domain.Admin;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Admin;
 import com.etoiledespoir.onlinekvshop.factory.repository.AdminRepoFactory;
 import com.etoiledespoir.onlinekvshop.repository.AdminRepo.AdminRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 

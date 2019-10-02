@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain;
 
-import com.etoiledespoir.onlinekvshop.domain.Customer;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
 
 public class CustomerFactory {
     public static Customer buildCustomer(String name,int id,String email,String password,String address,String status)

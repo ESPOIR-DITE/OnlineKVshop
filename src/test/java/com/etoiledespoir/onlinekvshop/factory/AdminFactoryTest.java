@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory;
 
-import com.etoiledespoir.onlinekvshop.domain.Admin;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Admin;
 import com.etoiledespoir.onlinekvshop.factory.domain.AdminFactory;
 import org.junit.Before;
 import org.junit.Test;

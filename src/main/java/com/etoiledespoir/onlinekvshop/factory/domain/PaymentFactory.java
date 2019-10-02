@@ -1,6 +1,5 @@
 package com.etoiledespoir.onlinekvshop.factory.domain;
 
-import com.etoiledespoir.onlinekvshop.domain.Customer;
 import com.etoiledespoir.onlinekvshop.domain.Payment;
 
 public class PaymentFactory {

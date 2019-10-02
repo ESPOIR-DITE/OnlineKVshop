@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.customerService;
 
-import com.etoiledespoir.onlinekvshop.domain.Customer;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
 import com.etoiledespoir.onlinekvshop.factory.repository.CustomerRepoFactory;
 import com.etoiledespoir.onlinekvshop.repository.CustomerRepo.CustomerRepository;
 import org.springframework.stereotype.Service;

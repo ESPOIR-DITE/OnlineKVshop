@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.repository.AdminRepo;
 
-import com.etoiledespoir.onlinekvshop.domain.Admin;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Admin;
 import com.etoiledespoir.onlinekvshop.factory.domain.AdminFactory;
 
 import java.sql.*;
@@ -16,8 +16,6 @@ public class AdminRepository implements Iadmin {
     private static AdminRepository adm=null;
 
     private AdminRepository() {
-
-
         try {
             this.conne = DriverManager.getConnection(url,user,password);
         } catch (SQLException e) {

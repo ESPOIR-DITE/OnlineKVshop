@@ -3,10 +3,23 @@ package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
 import com.etoiledespoir.onlinekvshop.domain.itemBuilder.ItemInt;
 import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.awt.*;
-
+@Entity
 public class Hair implements ItemInt {
     private Items items;
+
+    @Id
+    private String ItemNumber;
+    private String name;
+    private String type;
+    private String size;
+    private String gender;
+    private String decription;
+    private Image image;
+    private double price;
+    private int quantity;
 
     public Hair() {
         items=new Items();

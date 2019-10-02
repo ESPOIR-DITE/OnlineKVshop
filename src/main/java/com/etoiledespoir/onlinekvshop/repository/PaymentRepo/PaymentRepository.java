@@ -1,10 +1,7 @@
 package com.etoiledespoir.onlinekvshop.repository.PaymentRepo;
 
-import com.etoiledespoir.onlinekvshop.domain.Admin;
 import com.etoiledespoir.onlinekvshop.domain.Payment;
-import com.etoiledespoir.onlinekvshop.factory.domain.AdminFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.PaymentFactory;
-import com.etoiledespoir.onlinekvshop.repository.OrderRepo.OrderRepository;
 
 import java.sql.*;
 import java.util.ArrayList;

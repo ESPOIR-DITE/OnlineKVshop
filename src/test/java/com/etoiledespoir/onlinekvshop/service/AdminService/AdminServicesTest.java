@@ -1,13 +1,10 @@
 package com.etoiledespoir.onlinekvshop.service.AdminService;
 
-import com.etoiledespoir.onlinekvshop.domain.Admin;
+import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Admin;
 import com.etoiledespoir.onlinekvshop.factory.domain.AdminFactory;
 import com.etoiledespoir.onlinekvshop.factory.service.AdminServiceFact;
-import com.etoiledespoir.onlinekvshop.repository.AdminRepo.AdminRepository;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class AdminServicesTest {
     private AdminServices adminRepository= AdminServiceFact.getAdminService();
