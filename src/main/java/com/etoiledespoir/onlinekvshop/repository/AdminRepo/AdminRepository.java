@@ -7,7 +7,8 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class AdminRepository implements Iadmin {
-    private String url="jdbc:mysql://localhost:3306/okvs?autoReconnect=true&useSSL=false";
+    //http://localhost/phpmyadmin/db_sql.php?db=okvs
+    private String url="jdbc:mysql://localhost:3306/okvs2?autoReconnect=true&useSSL=false";
     private String user="root";
     private String password="";
     private Connection conne;

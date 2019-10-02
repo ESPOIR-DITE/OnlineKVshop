@@ -15,6 +15,8 @@ public class AdminRepositoryTest {
     AdminRepository adminRep=AdminRepository.getAdm();
 
 
+
+
     @Before
     public void setUp() throws Exception {
     }
@@ -58,5 +60,6 @@ public class AdminRepositoryTest {
 
     @Test
     public void getPremier() {
+
     }
 }

@@ -3,7 +3,7 @@ package com.etoiledespoir.onlinekvshop.domain;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Order  {
+public class Order{
 private String orderNumber;
 private int customer_id;
 private ArrayList<ItemSold>items;
