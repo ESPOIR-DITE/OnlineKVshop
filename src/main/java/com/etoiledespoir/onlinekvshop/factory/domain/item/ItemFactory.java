@@ -1,15 +1,8 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.item;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.ItemInt;
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.BeautyMakeup;
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.Cloths;
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.Hair;
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.Shoes;
-
 public class ItemFactory {
     public static ItemInt getItem(String item){
-        switch (item){
+        /**switch (item){
             case "shoes":
                 return new Shoes();
 
@@ -22,7 +15,7 @@ public class ItemFactory {
             case "beaute":
                 return new BeautyMakeup();
 
-        } return null;
+        }*/ return null;
     }
 
 }

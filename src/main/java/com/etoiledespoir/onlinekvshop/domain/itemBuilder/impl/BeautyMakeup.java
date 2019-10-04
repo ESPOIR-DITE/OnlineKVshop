@@ -1,75 +1,134 @@
 package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.ItemInt;
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.awt.*;
 
 @Entity
-public class BeautyMakeup implements ItemInt {
-    private Items items;
-
+public class BeautyMakeup  {
     @Id
     private String ItemNumber;
-    private String name;
-    private String type;
+    private String ItemName;
+    private String marque;
     private String size;
-    private String gender;
     private String decription;
-    private Image image;
     private double price;
     private int quantity;
 
-    public BeautyMakeup() {
-        items=new Items();
+    public String getItemNumber() {
+        return ItemNumber;
     }
 
+    public void setItemNumber(String itemNumber) {
+        ItemNumber = itemNumber;
+    }
 
-    @Override
-    public void buildItemNumber(String itemNumber) {
-        items.setItemNumber(itemNumber);
+    public String getName() {
+        return ItemName;
+    }
+
+    public void setName(String name) {
+        this.ItemName = name;
+    }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getDecription() {
+        return decription;
+    }
+
+    public void setDecription(String decription) {
+        this.decription = decription;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
-    public void buildName(String itemName) {
-        items.setName(itemName);
+    public String toString() {
+        return "BeautyMakeup{" +
+                "ItemNumber='" + ItemNumber + '\'' +
+                ", name='" + ItemName + '\'' +
+                ", marque='" + marque + '\'' +
+                ", size='" + size + '\'' +
+                ", decription='" + decription + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
+    public static class Builder{
+        private String ItemNumber;
+        private String ItemName;
+        private String marque;
+        private String size;
+        private String decription;
+        private double price;
+        private int quantity;
 
-    @Override
-    public void buildtype(String itemType) {
-        items.setType(itemType);
-    }
+        public Builder(String itemNumber){
+        this.ItemNumber=itemNumber;
+        }
+        public Builder buildName(String name){
+            this.ItemName=name;
+            return this;
+        }
+        public Builder buildMarque(String marque){
+            this.marque=marque;
+            return this;
+        }
+        public Builder buildSize(String size){
+            this.size=size;
+            return this;
+        }
+        public Builder buildDescription(String decription){
+            this.decription=decription;
+            return this;
+        }
+        public Builder buildPrice(double price){
+            this.price=price;
+            return this;
+        }
+        public Builder buildQuantity(int quantity){
+            this.quantity=quantity;
+            return this;
+        }
+        public BeautyMakeup build(){
+            BeautyMakeup b=new BeautyMakeup();
+            b.decription=this.decription;
+            b.ItemName=this.ItemName;
+            b.ItemNumber=this.ItemNumber;
+            b.marque=this.marque;
+            b.price=this.price;
+            b.quantity=this.quantity;
+            b.size=this.size;
+            return b;
+        }
 
-    @Override
-    public void buildSize(String size) {
-        items.setSize(size);
-    }
-
-    @Override
-    public void buildgender(String itemGender) {
-        items.setGender(itemGender);
-    }
-
-    @Override
-    public void buildDecription(String description) {
-        items.setDecription(description);
-    }
-
-
-    @Override
-    public void buildPrice(double price) {
-        items.setPrice(price);
-    }
-
-    @Override
-    public void buildQuantity(int quantity) {
-        items.setQuantity(quantity);
-    }
-
-    @Override
-    public Items getItem() {
-        return items;
     }
 }

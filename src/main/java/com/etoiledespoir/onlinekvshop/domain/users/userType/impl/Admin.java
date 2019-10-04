@@ -1,11 +1,15 @@
 package com.etoiledespoir.onlinekvshop.domain.users.userType.impl;
 
-public class Admin  {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Admin  {
+@Id
     private int id;
     private String name;
-    private String userName;
-    private String password;
+    private String surName;
+    private String email;
 
     private Admin() { }
 
@@ -25,20 +29,19 @@ public class Admin  {
         this.name = name;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String password) {
+        this.email = password;
     }
 
     @Override
@@ -46,8 +49,8 @@ public class Admin  {
         return "Admin{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
+                ", userName='" + surName + '\'' +
+                ", password='" + email + '\'' +
                 '}';
     }
 
@@ -58,8 +61,8 @@ public class Admin  {
     {
         private int id;
         private String name;
-        private String userName;
-        private String password;
+        private String surName;
+        private String email;
 
         public Builder(String name) {
             this.name = name;
@@ -68,19 +71,19 @@ public class Admin  {
             this.id=id;
             return this;
         }
-        public Builder buildUserName(String userName){
-            this.userName=userName;
+        public Builder buildsurName(String userName){
+            this.surName=userName;
             return this;
         }
-        public Builder builderPassword(String password){
-            this.password=password;
+        public Builder builderEmail(String email){
+            this.email=email;
             return this;
         }
         public Admin builAdmin(){
             Admin admin= new Admin();
-            admin.userName=this.userName;
+            admin.surName=this.surName;
             admin.name=this.name;
-            admin.password=this.password;
+            admin.email=this.email;
             admin.id=this.id;
             return admin;
 

@@ -1,73 +1,119 @@
 package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.ItemInt;
 import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.awt.*;
+
 @Entity
-public class Shoes implements ItemInt {
+public class Shoes  {
     private Items items;
 
     @Id
     private String ItemNumber;
-    private String name;
-    private String type;
+    private String marque;
     private String size;
     private String gender;
     private String decription;
-    private Image image;
+    /**private Image image;
     private double price;
-    private int quantity;
+    private int quantity;*/
 
-    public Shoes() {
-        items=new Items();
+    private Shoes() {
     }
 
-
-    @Override
-    public void buildItemNumber(String itemNumber) {
-        items.setItemNumber(itemNumber);
-    }
-
-    @Override
-    public void buildName(String itemName) {
-        items.setName(itemName);
-    }
-
-    @Override
-    public void buildtype(String itemType) {
-        items.setType(itemType);
-    }
-
-    @Override
-    public void buildSize(String size) {
-        items.setSize(size);
-    }
-
-    @Override
-    public void buildgender(String itemGender) {
-        items.setGender(itemGender);
-    }
-
-    @Override
-    public void buildDecription(String description) {
-        items.setDecription(description);
-    }
-
-    @Override
-    public void buildPrice(double price) {
-        items.setPrice(price);
-    }
-
-    @Override
-    public void buildQuantity(int quantity) {
-        items.setQuantity(quantity);
-    }
-
-    @Override
-    public Items getItem() {
+    public Items getItems() {
         return items;
+    }
+
+    public void setItems(Items items) {
+        this.items = items;
+    }
+
+    public String getItemNumber() {
+        return ItemNumber;
+    }
+
+    public void setItemNumber(String itemNumber) {
+        ItemNumber = itemNumber;
+    }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDecription() {
+        return decription;
+    }
+
+    public void setDecription(String decription) {
+        this.decription = decription;
+    }
+
+    @Override
+    public String toString() {
+        return "Shoes{" +
+                "items=" + items +
+                ", ItemNumber='" + ItemNumber + '\'' +
+                ", marque='" + marque + '\'' +
+                ", size='" + size + '\'' +
+                ", gender='" + gender + '\'' +
+                ", decription='" + decription + '\'' +
+                '}';
+    }
+    public static class Builder{
+        private String ItemNumber;
+        private String marque;
+        private String size;
+        private String gender;
+        private String decription;
+        public Builder(String itemNumber){
+            this.ItemNumber=itemNumber;
+        }
+        public Builder buildMarque(String marque){
+            this.marque=marque;
+            return this;
+        }
+        public Builder buildSize(String size){
+            this.size=size;
+            return this;
+        }
+        public Builder buildGender(String gender){
+            this.gender=gender;
+            return this;
+        }
+        public Builder buildDescription(String decription){
+            this.decription=decription;
+            return this;
+        }
+        public Shoes build(){
+            Shoes s=new Shoes();
+            s.decription=this.decription;
+            s.gender=this.gender;
+            s.ItemNumber=this.ItemNumber;
+            s.size=this.size;
+            s.marque=this.marque;
+            return s;
+        }
     }
 }
