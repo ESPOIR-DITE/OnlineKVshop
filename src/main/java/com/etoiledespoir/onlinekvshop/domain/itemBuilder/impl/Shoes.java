@@ -2,33 +2,41 @@ package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
 
 import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Shoes  {
-    private Items items;
-
     @Id
     private String ItemNumber;
     private String marque;
+    private String itemType;
     private String size;
     private String gender;
+    //@Column(name = "shoes_description" )
     private String decription;
-    /**private Image image;
-    private double price;
-    private int quantity;*/
+    private String color;
 
     private Shoes() {
     }
 
-    public Items getItems() {
-        return items;
+    public String getColor() {
+        return color;
     }
 
-    public void setItems(Items items) {
-        this.items = items;
+    public String getItemType() {
+        return itemType;
     }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
 
     public String getItemNumber() {
         return ItemNumber;
@@ -73,25 +81,37 @@ public class Shoes  {
     @Override
     public String toString() {
         return "Shoes{" +
-                "items=" + items +
                 ", ItemNumber='" + ItemNumber + '\'' +
                 ", marque='" + marque + '\'' +
+                ", itemType='" + itemType + '\'' +
                 ", size='" + size + '\'' +
                 ", gender='" + gender + '\'' +
                 ", decription='" + decription + '\'' +
+                ", color='" + color + '\'' +
                 '}';
     }
+
     public static class Builder{
         private String ItemNumber;
         private String marque;
         private String size;
         private String gender;
         private String decription;
+        private String itemType;
+        private String color;
         public Builder(String itemNumber){
             this.ItemNumber=itemNumber;
         }
         public Builder buildMarque(String marque){
             this.marque=marque;
+            return this;
+        }
+        public Builder buildColor(String color){
+            this.color=color;
+            return this;
+        }
+        public Builder buildItemType(String itemType){
+            this.itemType=itemType;
             return this;
         }
         public Builder buildSize(String size){
@@ -113,6 +133,8 @@ public class Shoes  {
             s.ItemNumber=this.ItemNumber;
             s.size=this.size;
             s.marque=this.marque;
+            s.color=this.color;
+            s.itemType=this.itemType;
             return s;
         }
     }

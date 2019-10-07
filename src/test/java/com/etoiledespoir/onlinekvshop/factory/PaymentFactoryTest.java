@@ -15,8 +15,6 @@ public class PaymentFactoryTest {
 
     @Test
     public void getPayment() {
-        Customer customer= CustomerFactory.buildCustomer("espoir",48484,"espeior@gnsmdf","paeweor","Av lubo","sjddhfh");
-        Payment payment= PaymentFactory.getPayment("93939393","cash",3949,232432);
-        System.out.println(payment.toString());
+
     }
 }

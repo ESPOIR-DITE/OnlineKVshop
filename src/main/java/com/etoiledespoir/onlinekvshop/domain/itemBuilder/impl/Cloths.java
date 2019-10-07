@@ -2,11 +2,11 @@ package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
 
 import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
 public class Cloths {
-    private Items items;
 
     @Id
     private String itemNumber;
@@ -29,13 +29,6 @@ public class Cloths {
         this.marque = marque;
     }
 
-    public Items getItems() {
-        return items;
-    }
-
-    public void setItems(Items items) {
-        this.items = items;
-    }
 
     public String getItemNumber() {
         return itemNumber;
@@ -96,7 +89,6 @@ public class Cloths {
     @Override
     public String toString() {
         return "Cloths{" +
-                "items=" + items +
                 ", itemNumber='" + itemNumber + '\'' +
                 ", itemName='" + itemName + '\'' +
                 ", itemType='" + itemType + '\'' +

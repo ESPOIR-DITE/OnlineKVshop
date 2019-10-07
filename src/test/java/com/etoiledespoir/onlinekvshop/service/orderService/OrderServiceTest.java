@@ -1,20 +1,7 @@
 package com.etoiledespoir.onlinekvshop.service.orderService;
 
-import com.etoiledespoir.onlinekvshop.domain.ItemSold;
-import com.etoiledespoir.onlinekvshop.domain.order.Order;
-import com.etoiledespoir.onlinekvshop.factory.domain.ItemSoldFact;
-import com.etoiledespoir.onlinekvshop.factory.domain.OrderFactory;
-import com.etoiledespoir.onlinekvshop.factory.repository.OrderRepFactory;
-import com.etoiledespoir.onlinekvshop.factory.service.OrderServiceFacto;
-import com.etoiledespoir.onlinekvshop.repository.OrderRepo.OrderRepository;
-import com.etoiledespoir.onlinekvshop.util.CurrentDate;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.ArrayList;
-
-public class OrderServiceTest {
+public class OrderServiceTest{}/** {
     private OrderService orderServiceFacto=OrderServiceFacto.getOrderServis();
     private OrderRepository Or= OrderRepFactory.getOrder();
     private ItemSold item,item2,item3;
@@ -74,4 +61,4 @@ public class OrderServiceTest {
     @Test
     public void getPremier() {
     }
-}
+}*/

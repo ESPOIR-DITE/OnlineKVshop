@@ -1,8 +1,14 @@
 package com.etoiledespoir.onlinekvshop.domain.admin;
 
-public class Admin  {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Admin  {
+@Id
     private int id;
+    @Column(name = "Admin_name" )
     private String name;
     private String userName;
     private String password;

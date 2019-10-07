@@ -1,18 +1,39 @@
 package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class BeautyMakeup  {
+public class BeautyMakeup {
     @Id
     private String ItemNumber;
     private String ItemName;
     private String marque;
+    private String itemType;
     private String size;
+    @Column(name = "beaty_description" )
     private String decription;
-    private double price;
-    private int quantity;
+    private String color;
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    private BeautyMakeup() {
+    }
+
+    public String getItemName() {
+        return ItemName;
+    }
+
+    public void setItemName(String itemName) {
+        ItemName = itemName;
+    }
 
     public String getItemNumber() {
         return ItemNumber;
@@ -22,13 +43,6 @@ public class BeautyMakeup  {
         ItemNumber = itemNumber;
     }
 
-    public String getName() {
-        return ItemName;
-    }
-
-    public void setName(String name) {
-        this.ItemName = name;
-    }
 
     public String getMarque() {
         return marque;
@@ -54,79 +68,70 @@ public class BeautyMakeup  {
         this.decription = decription;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     @Override
     public String toString() {
         return "BeautyMakeup{" +
                 "ItemNumber='" + ItemNumber + '\'' +
-                ", name='" + ItemName + '\'' +
+                ", ItemName='" + ItemName + '\'' +
                 ", marque='" + marque + '\'' +
+                ", itemType='" + itemType + '\'' +
                 ", size='" + size + '\'' +
                 ", decription='" + decription + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
+                ", color='" + color + '\'' +
                 '}';
     }
-    public static class Builder{
+
+    public static class Builder {
         private String ItemNumber;
         private String ItemName;
         private String marque;
         private String size;
+        private String itemType;
         private String decription;
-        private double price;
-        private int quantity;
+        private String color;
 
-        public Builder(String itemNumber){
-        this.ItemNumber=itemNumber;
+        public Builder(String itemNumber) {
+            this.ItemNumber = itemNumber;
         }
-        public Builder buildName(String name){
-            this.ItemName=name;
+
+        public Builder buildName(String name) {
+            this.ItemName = name;
             return this;
         }
-        public Builder buildMarque(String marque){
-            this.marque=marque;
+        public Builder buildItemType(String itemType){
+            this.itemType=itemType;
             return this;
         }
-        public Builder buildSize(String size){
-            this.size=size;
+
+        public Builder buildColor(String color) {
+            this.color = color;
             return this;
         }
-        public Builder buildDescription(String decription){
-            this.decription=decription;
+
+        public Builder buildMarque(String marque) {
+            this.marque = marque;
             return this;
         }
-        public Builder buildPrice(double price){
-            this.price=price;
+
+        public Builder buildSize(String size) {
+            this.size = size;
             return this;
         }
-        public Builder buildQuantity(int quantity){
-            this.quantity=quantity;
+
+        public Builder buildDescription(String decription) {
+            this.decription = decription;
             return this;
         }
-        public BeautyMakeup build(){
-            BeautyMakeup b=new BeautyMakeup();
-            b.decription=this.decription;
-            b.ItemName=this.ItemName;
-            b.ItemNumber=this.ItemNumber;
-            b.marque=this.marque;
-            b.price=this.price;
-            b.quantity=this.quantity;
-            b.size=this.size;
+
+        public BeautyMakeup build() {
+            BeautyMakeup b = new BeautyMakeup();
+            b.decription = this.decription;
+            b.ItemName = this.ItemName;
+            b.ItemNumber = this.ItemNumber;
+            b.marque = this.marque;
+            b.color = this.color;
+            b.size = this.size;
+            b.itemType=this.itemType;
             return b;
         }
 

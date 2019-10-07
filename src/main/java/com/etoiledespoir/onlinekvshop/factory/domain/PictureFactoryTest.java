@@ -14,7 +14,7 @@ import java.awt.image.RenderedImage;
 import java.io.*;
 import java.io.IOException;
 
-public class PictureFactoryTest extends JFrame implements ActionListener {
+public class PictureFactoryTest{}/** extends JFrame implements ActionListener {
 
         Picture panelImage;
 
@@ -33,7 +33,7 @@ public class PictureFactoryTest extends JFrame implements ActionListener {
         private JTextArea textArea = new JTextArea(4,40);
 
 
-        /** Creates a new instance of ClientApp */
+        //Creates a new instance of ClientApp
         public PictureFactoryTest()
         {
             //super("Main Interface");
@@ -111,9 +111,9 @@ public class PictureFactoryTest extends JFrame implements ActionListener {
 
                 try {
                      bi = ImageIO.read(new File(file.getPath()));
-                     /**
-                      we got the file from Jchoser and we are inserting it in the fileInputStream to enable us to save in the database
-                      * */
+
+                      //we got the file from Jchoser and we are inserting it in the fileInputStream to enable us to save in the database
+
                      FileInputStream fin=new FileInputStream(file);
 
                 } catch (IOException ex) {
@@ -128,7 +128,7 @@ public class PictureFactoryTest extends JFrame implements ActionListener {
                 panelImage=PictureFactory.getPicture(0001,"YEAH",file.getPath(),file);
 
                // displayPanel.add(drawing());
-               // jLabel1.setIcon((Icon) panelImage.getImage() /**new javax.swing.ImageIcon("C:\\Users\\ESPOIR pc\\Desktop\\webAppDesing\\LOGO.png"**/);
+               // jLabel1.setIcon((Icon) panelImage.getImage() new javax.swing.ImageIcon("C:\\Users\\ESPOIR pc\\Desktop\\webAppDesing\\LOGO.png");
 
                 outputfile = new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\pictures\\"+file.getName());
 
@@ -172,4 +172,4 @@ public void drawing(Graphics d){
 
 
 
-
+*/

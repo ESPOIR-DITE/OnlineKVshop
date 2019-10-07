@@ -1,21 +1,15 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.item;
 
+import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
+
 public class ItemFactory {
-    public static ItemInt getItem(String item){
-        /**switch (item){
-            case "shoes":
-                return new Shoes();
+    public static Items getItems(String ItemNumber,double price,int quantity,String description){
+        return new Items.Builder(ItemNumber)
+                .buildPrice(price)
+                .buildQuantity(quantity)
+                .Description(description)
+                .build();
 
-            case"hair":
-                return new Hair();
-
-            case "cloths":
-                return new Cloths();
-
-            case "beaute":
-                return new BeautyMakeup();
-
-        }*/ return null;
     }
 
 }

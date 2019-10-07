@@ -6,20 +6,22 @@ import javax.persistence.Id;
 @Entity
 public class Customer{
     @Id
-    private String name;
-    private int id;
     private String email;
+    private String name;
+    private String surName;
+    private String  id;
     private String status;
     /**
      * builder start here
      */
     public  static class Builder {
         private String name;
-        private int id;
+        private String  id;
         private String email;
         private String status;
+        private String surName;
 
-        public Builder(int id){
+        public Builder(String id){
             this.id=id;
         }
         public Builder builName(String name){
@@ -30,7 +32,10 @@ public class Customer{
             this.email=email;
             return this;
         }
-
+        public Builder buildSurname(String surName){
+            this.surName=surName;
+            return this;
+        }
         public Builder buildStatus(String status){
             this.status=status;
             return this;
@@ -65,16 +70,24 @@ public class Customer{
         this.name = name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
     public void setEmail(String email) {
@@ -92,9 +105,10 @@ public class Customer{
     @Override
     public String toString() {
         return "Customer{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", email='" + email + '\'' +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                ", id='" + id + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }

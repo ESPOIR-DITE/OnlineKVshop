@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class PictureFactoryTest2 extends JFrame implements ActionListener {
+public class PictureFactoryTest2{}/** extends JFrame implements ActionListener {
 
 
         BufferedImage bufferedImage;
@@ -45,7 +45,7 @@ public class PictureFactoryTest2 extends JFrame implements ActionListener {
 
 
     PictureRep2 PicRep=PictureRep2.getPictureRep();
-        /** Creates a new instance of ClientApp */
+        // Creates a new instance of ClientApp
         public PictureFactoryTest2()
         {
             //super("Main Interface");
@@ -256,5 +256,5 @@ public void drawing(Graphics d){
 }
 
 
-
+*/
 

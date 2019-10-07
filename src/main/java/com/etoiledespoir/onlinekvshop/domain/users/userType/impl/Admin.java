@@ -6,18 +6,18 @@ import javax.persistence.Id;
 @Entity
 public class Admin  {
 @Id
-    private int id;
+    private String id;
     private String name;
     private String surName;
     private String email;
 
     private Admin() { }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,7 +59,7 @@ public class Admin  {
      */
     public static class Builder
     {
-        private int id;
+        private String id;
         private String name;
         private String surName;
         private String email;
@@ -67,7 +67,7 @@ public class Admin  {
         public Builder(String name) {
             this.name = name;
         }
-        public Builder buildId(int id){
+        public Builder buildId(String id){
             this.id=id;
             return this;
         }
@@ -79,7 +79,7 @@ public class Admin  {
             this.email=email;
             return this;
         }
-        public Admin builAdmin(){
+        public Admin buil(){
             Admin admin= new Admin();
             admin.surName=this.surName;
             admin.name=this.name;

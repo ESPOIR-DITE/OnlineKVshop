@@ -12,7 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MypicRep implements MypicInt {
+public class MypicRep{}/** implements MypicInt {
     private static MypicRep mypicRep=null;
 
     private MypicRep() {
@@ -76,3 +76,4 @@ public class MypicRep implements MypicInt {
     }
 
 }
+*/

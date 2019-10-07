@@ -1,14 +1,7 @@
 package com.etoiledespoir.onlinekvshop.repository.ItemRepo;
 
-import com.etoiledespoir.onlinekvshop.domain.Item;
-import com.etoiledespoir.onlinekvshop.factory.domain.CustomerFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.ItemFactory;
-import com.etoiledespoir.onlinekvshop.factory.repository.ItemRepoFactory;
 
-import java.sql.*;
-import java.util.ArrayList;
-
-public class ItemRepositiry implements ItemRepo {
+public class ItemRepositiry{}/** implements ItemRepo {
     private String highValeu=null;
     private static ItemRepositiry itemR=null;
     private String url="jdbc:mysql://localhost:3306/okvs?autoReconnect=true&useSSL=false";
@@ -158,3 +151,4 @@ public class ItemRepositiry implements ItemRepo {
 
     }
 }
+*/

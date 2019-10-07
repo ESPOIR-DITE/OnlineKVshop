@@ -1,4 +1,5 @@
 package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
@@ -9,6 +10,7 @@ public class Hair {
     private String type;
     private String size;
     private String gender;
+    @Column(name = "hair_description" )
     private String decription;
     private String color;
 

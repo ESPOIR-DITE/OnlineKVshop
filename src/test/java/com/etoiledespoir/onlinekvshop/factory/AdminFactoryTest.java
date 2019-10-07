@@ -13,7 +13,7 @@ public class AdminFactoryTest {
 
     @Test
     public void buildAdmin() {
-        Admin admin= AdminFactory.buildAdmin("espoir",1232,"ditekemena","jsdfhjshue");
+        Admin admin= AdminFactory.buildAdmin("espoir","ditekemena","jsdfhjshue");
         System.out.println(admin.toString());
     }
 }

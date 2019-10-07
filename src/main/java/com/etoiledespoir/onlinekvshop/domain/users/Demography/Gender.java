@@ -1,5 +1,6 @@
 package com.etoiledespoir.onlinekvshop.domain.users.Demography;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -8,6 +9,7 @@ public class Gender {
     @Id
     private String id;
     private String gender;
+    @Column(name = "Item_description" )
     private String description;
 
     private Gender() {

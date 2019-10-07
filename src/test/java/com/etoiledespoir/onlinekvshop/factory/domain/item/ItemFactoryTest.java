@@ -3,7 +3,7 @@ package com.etoiledespoir.onlinekvshop.factory.domain.item;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ItemFactoryTest {
+public class ItemFactoryTest{}/** {
     ItemInt itemInt= ItemFactory.getItem("hair");
 
     @Before
@@ -22,4 +22,4 @@ public class ItemFactoryTest {
         System.out.println(itemInt.getItem().toString());
 
     }
-}
+}*/

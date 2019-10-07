@@ -1,20 +1,27 @@
 package com.etoiledespoir.onlinekvshop.domain.itemBuilder;
 
-import java.awt.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Items {
+    @Id
     private String ItemNumber;
-    private String name;
-    private String type;
-    private String size;
-    private String gender;
-    private String decription;
-    private Image image;
     private double price;
     private int quantity;
+    @Column(name = "item_description" )
+    private String description;
+
+    private Items() {
+    }
 
     public String getItemNumber() {
         return ItemNumber;
+    }
+
+    public void setItemNumber(String itemNumber) {
+        ItemNumber = itemNumber;
     }
 
     public double getPrice() {
@@ -33,70 +40,52 @@ public class Items {
         this.quantity = quantity;
     }
 
-    public void setItemNumber(String itemNumber) {
-        ItemNumber = itemNumber;
+    public String getDescription() {
+        return description;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getDecription() {
-        return decription;
-    }
-
-    public void setDecription(String decription) {
-        this.decription = decription;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
         return "Items{" +
                 "ItemNumber='" + ItemNumber + '\'' +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", size='" + size + '\'' +
-                ", gender='" + gender + '\'' +
-                ", decription='" + decription + '\'' +
-                ", image=" + image +
                 ", price=" + price +
                 ", quantity=" + quantity +
+                ", description='" + description + '\'' +
                 '}';
+    }
+    public static class Builder{
+        private String ItemNumber;
+        private double price;
+        private int quantity;
+        private String description;
+
+        public Builder(String itemNumber){
+            this.ItemNumber=itemNumber;
+        }
+        public Builder buildPrice(double price){
+            this.price=price;
+            return this;
+        }
+        public Builder buildQuantity(int quantity){
+            this.quantity=quantity;
+            return this;
+        }
+        public Builder Description(String description){
+            this.description=description;
+            return this;
+        }
+        public Items build(){
+            Items i=new Items();
+            i.description=this.description;
+            i.ItemNumber=this.ItemNumber;
+            i.price=this.price;
+            i.quantity=this.quantity;
+            return i;
+        }
+
     }
 }

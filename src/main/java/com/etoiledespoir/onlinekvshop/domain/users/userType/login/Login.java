@@ -1,8 +1,11 @@
 package com.etoiledespoir.onlinekvshop.domain.users.userType.login;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
-
+@Entity
 public class Login {
+    @Id
     private String email;
     private String password;
     private String userTupe;

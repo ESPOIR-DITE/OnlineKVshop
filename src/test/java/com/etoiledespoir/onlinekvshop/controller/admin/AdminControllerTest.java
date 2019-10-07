@@ -27,7 +27,7 @@ private TestRestTemplate restTemplate;
 
     @Test
     public void create() {
-        Admin admin= AdminFactory.buildAdmin("espoir",234,"dite","admin");
+        Admin admin= AdminFactory.buildAdmin("espoir","dite","admin");
         ResponseEntity responseEntity=restTemplate.withBasicAuth("admin","admin")
                 .postForEntity(Base_url +"/creat",admin, Admin.class);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
@@ -36,7 +36,7 @@ private TestRestTemplate restTemplate;
 
     @Test
     public void read() {
-        Admin admin= AdminFactory.buildAdmin("espoir",234,"dite","admin");
+        Admin admin= AdminFactory.buildAdmin("espoir","dite","admin");
         ResponseEntity responseEntity=restTemplate.withBasicAuth("user","password")
                 .getForEntity(Base_url +"/reads", Admin.class);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());

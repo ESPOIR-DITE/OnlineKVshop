@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class ItemServiceTest {
+public class ItemServiceTest{}/** {
     private ItemService itemService= ItemServiceFactory.getItem();
     private Item item= ItemFactory.builItem("100012","trico","cloth");
 
@@ -56,4 +56,4 @@ public class ItemServiceTest {
     @Test
     public void getPremier() {
     }
-}
+}*/
