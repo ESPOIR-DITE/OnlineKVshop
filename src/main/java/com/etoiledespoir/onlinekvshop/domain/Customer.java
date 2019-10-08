@@ -1,7 +1,5 @@
 package com.etoiledespoir.onlinekvshop.domain;
 
-import lombok.Data;
-
 public class Customer  {
     private String name;
     private int id;

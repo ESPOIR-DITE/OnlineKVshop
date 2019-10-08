@@ -42,17 +42,20 @@ public class Customer{
         }
         public Customer build(){
             Customer customer=new Customer();
+            customer.email=this.email;
             customer.id=this.id;
             customer.name=this.name;
-            customer.email=this.email;
             customer.status=this.status;
+            customer.surName=this.surName;
             return customer;
         }
         public Builder copy(Customer customer){
+            this.email=customer.email;
             this.name=customer.name;
             this.id=customer.id;
             this.status=customer.status;
-            this.email=customer.email;
+
+            this.surName=customer.surName;
             return this;
         }
 

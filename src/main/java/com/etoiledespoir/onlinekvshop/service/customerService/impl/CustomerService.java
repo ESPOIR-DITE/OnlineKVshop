@@ -1,7 +1,9 @@
 package com.etoiledespoir.onlinekvshop.service.customerService.impl;
 
 import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
+import com.etoiledespoir.onlinekvshop.factory.domain.CustomerFactory;
 import com.etoiledespoir.onlinekvshop.repository.CustomerRepo.Icustomer;
+import com.etoiledespoir.onlinekvshop.repository.CustomerRepo.impl.CustomerRepository;
 import com.etoiledespoir.onlinekvshop.service.customerService.IcustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,21 +15,30 @@ import java.util.Optional;
 @Service
 public class CustomerService implements IcustomerService {
     private static CustomerService custServ=null;
-    //private CustomerRepository custRep= CustomerRepoFactory.getCustomerRep();
+    String name="espoir";
+
+    Customer customerx= CustomerFactory.getCustomer("@espoir.com","espoir","activ","ditemejek");
 @Autowired
     Icustomer custRep;
     private  CustomerService() {
     }
-    public static CustomerService getCustServ()
-    {
+    public static CustomerService getCustServ(){
         if(custServ==null){
             custServ=new CustomerService();
         }return custServ;
     }
-
+public String getName()
+{
+    return name;
+}
     @Override
     public Customer creat(Customer customer) {
-        return custRep.save(customer);
+        System.out.println(customer.toString());
+        custRep.save(customer);
+        Customer result=custRep.findByEmail(customer.getEmail());
+        System.out.println(result.toString()+" in customer");
+        //return custRep.save(customerx);
+        return null;
     }
 
     @Override
@@ -49,10 +60,11 @@ public class CustomerService implements IcustomerService {
     }
 
     @Override
-    public Customer read(String id) {
-        Optional<Customer> mycustomer=custRep.findById(id);
+    public Customer read(String email) {
+        System.out.println(email);
+        Optional<Customer> mycustomer=custRep.findById(email);
         if(mycustomer!=null){
-            custRep.findById(id);
+            custRep.findById(email);
         }
         return mycustomer.orElse(null);
     }
