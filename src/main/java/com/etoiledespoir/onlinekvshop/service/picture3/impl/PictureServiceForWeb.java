@@ -1,7 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.picture3.impl;
 
 import com.etoiledespoir.onlinekvshop.domain.Pictures2;
-import com.etoiledespoir.onlinekvshop.factory.repository.PictureServForWebFactory;
 import com.etoiledespoir.onlinekvshop.repository.picture3.impl.PictureForWeb;
 import com.etoiledespoir.onlinekvshop.service.picture3.PictureServForWebInt;
 import org.springframework.stereotype.Component;
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.awt.*;
 import java.util.ArrayList;
 @Component
-public class PictureServiceForWeb implements PictureServForWebInt {
+public class PictureServiceForWeb{}/** implements PictureServForWebInt {
 
     Image Image=null;
     private PictureForWeb pictureForWeb= PictureServForWebFactory.getPictureForWeb();
@@ -62,3 +61,4 @@ public class PictureServiceForWeb implements PictureServForWebInt {
 
 }
 
+*/

@@ -1,13 +1,9 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.item;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.ItemInt;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class ItemFactoryTest {
+public class ItemFactoryTest{}/** {
     ItemInt itemInt= ItemFactory.getItem("hair");
 
     @Before
@@ -26,4 +22,4 @@ public class ItemFactoryTest {
         System.out.println(itemInt.getItem().toString());
 
     }
-}
+}*/

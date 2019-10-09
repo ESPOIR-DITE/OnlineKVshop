@@ -7,7 +7,7 @@ import com.etoiledespoir.onlinekvshop.service.paymentService.impl.PayService;
 import org.junit.Before;
 import org.junit.Test;
 
-public class PayServiceTest {
+public class PayServiceTest{}/** {
     private PayService payService= PaymentServiceFac.getPayService();
     Payment payment= PaymentFactory.getPayment("93939393","espoir",3949,232432);
 
@@ -44,4 +44,4 @@ public class PayServiceTest {
     @Test
     public void getPremier() {
     }
-}
+}*/

@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class PictureRep implements PictureRepoInt {
+public class PictureRep{}/** implements PictureRepoInt {
     private String url="jdbc:mysql://localhost:3306/okvs?autoReconnect=true&useSSL=false";
     private String user="root";
     private String password="";
@@ -118,3 +118,4 @@ public class PictureRep implements PictureRepoInt {
         return highValeu;
     }
 }
+*/

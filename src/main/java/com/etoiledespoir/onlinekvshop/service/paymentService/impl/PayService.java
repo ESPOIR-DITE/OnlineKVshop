@@ -1,17 +1,19 @@
 package com.etoiledespoir.onlinekvshop.service.paymentService.impl;
 
 import com.etoiledespoir.onlinekvshop.domain.payment.Payment;
-import com.etoiledespoir.onlinekvshop.factory.repository.PaymentRepFactory;
-import com.etoiledespoir.onlinekvshop.repository.PaymentRepo.PaymentRepository;
-import com.etoiledespoir.onlinekvshop.service.paymentService.IpayService;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import com.etoiledespoir.onlinekvshop.repository.PaymentRepo.IpaymentInt;
+import com.etoiledespoir.onlinekvshop.service.paymentService.IpayService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PayService implements IpayService {
     private static PayService payService=null;
-    private PaymentRepository pay=PaymentRepFactory.getPayRep();
+   @Autowired
+   private IpaymentInt ipayment;
 
     private PayService() {
     }
@@ -23,31 +25,31 @@ public class PayService implements IpayService {
     }
     @Override
     public Payment creat(Payment payment) {
-        return pay.creat(payment);
+        return ipayment.save(payment);
     }
 
     @Override
     public Payment delete(String id) {
-        return pay.delete(id);
+        Optional<Payment> mypayment=ipayment.findById(id);
+        if(mypayment==null){
+            ipayment.deleteById(id);
+        }
+        return mypayment.orElse(null);
     }
 
     @Override
     public Payment Update(Payment payment) {
-        return pay.Update(payment);
+        return ipayment.save(payment);
     }
 
     @Override
     public Payment read(String id) {
-        return pay.read(id);
+        Optional<Payment> mypayment=ipayment.findById(id);
+        return mypayment.orElse(null);
     }
 
     @Override
-    public ArrayList<String> readAll() {
-        return pay.readAll();
-    }
-
-    @Override
-    public String getPremier() {
-        return null;
+    public List<Payment> readAll() {
+        return ipayment.findAll();
     }
 }

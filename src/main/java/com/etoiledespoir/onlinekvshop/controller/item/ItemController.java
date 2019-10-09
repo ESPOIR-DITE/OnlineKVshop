@@ -2,42 +2,45 @@ package com.etoiledespoir.onlinekvshop.controller.item;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.Item;
+import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
 import com.etoiledespoir.onlinekvshop.service.itemService.ItemService;
+import com.etoiledespoir.onlinekvshop.service.itemService.item.items.impl.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/OKVS/item")
-public class ItemController implements Icontroller<Item,String> {
+public class ItemController implements Icontroller<Items,String> {
     @Autowired
-    private ItemService item;
+    private ItemsService item;
 
     @PostMapping("/creat")
     @Override
-    public Item create(@RequestBody Item item) {
+    public Items create(@RequestBody Items item) {
         return this.item.creat(item);
     }
     @GetMapping("/read")
     @Override
-    public Item read(@RequestParam(value = "id")  String id) {
+    public Items read(@RequestParam(value = "id")  String id) {
         return item.read(id);
     }
     @PostMapping("/update")
     @Override
-    public Item update(@RequestBody Item item) {
+    public Items update(@RequestBody Items item) {
         return this.item.Update(item);
     }
     @GetMapping("/delete")
     @Override
-    public Item delete(@RequestParam(value = "id") String id) {
+    public Items delete(@RequestParam(value = "id") String id) {
         return item.delete(id);
     }
     @GetMapping("/reads")
     @Override
-    public ArrayList<String> readAll() {
+    public List<Items> readAll() {
         return item.readAll();
     }
 }

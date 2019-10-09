@@ -1,15 +1,11 @@
 package com.etoiledespoir.onlinekvshop.factory.domain;
 
-import com.etoiledespoir.onlinekvshop.domain.ItemSold;
-import com.etoiledespoir.onlinekvshop.domain.order.Order;
-
-import java.util.ArrayList;
+import com.etoiledespoir.onlinekvshop.domain.order.Orders;
 
 public class OrderFactory {
-    public static Order buildOrder(String orderNumber, int customer, ArrayList<ItemSold>items, String date){
-        return new Order.Builder(orderNumber)
-                .buildCustomer(customer)
-                .buildItem(items)
+    public static Orders buildOrder(String orderNumber, String customer_id, String date){
+        return new Orders.Builder(orderNumber)
+                .buildCustomer(customer_id)
                 .buildDate(date)
                 .build();
 

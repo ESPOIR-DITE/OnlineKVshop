@@ -6,6 +6,6 @@ import com.etoiledespoir.onlinekvshop.service.itemService.ItemService;
 public class ItemServiceFactory {
     public static ItemService getItem()
     {
-        return ItemService.getItemService();
+        return null;
     }
 }

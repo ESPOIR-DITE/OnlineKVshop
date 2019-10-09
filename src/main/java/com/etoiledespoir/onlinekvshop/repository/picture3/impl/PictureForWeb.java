@@ -19,8 +19,8 @@ import java.util.ArrayList;
 
 
 
-@Component
-public class PictureForWeb implements PictureForWebInt {
+
+public class PictureForWeb{}/** implements PictureForWebInt {
     private String url="jdbc:mysql://localhost:3306/okvs?autoReconnect=true&useSSL=false";
     private String user="root";
     private String password="";
@@ -171,9 +171,7 @@ public class PictureForWeb implements PictureForWebInt {
             //bufferedImage= ImageIO.read(myfile);
             byte[] fileContent= FileUtils.readFileToByteArray(myfile);
 
-           /** FileInputStream imageInFile = new FileInputStream(myfile);
-            byte imageData[] = new byte[(int) myfile.length()];
-            imageInFile.read(imageData);*/
+
             imageDataString = encodeImage(fileContent);
         } catch (IOException e) {
             e.printStackTrace();
@@ -189,5 +187,5 @@ public class PictureForWeb implements PictureForWebInt {
         return string;
     }
 
-}
+}*/
 

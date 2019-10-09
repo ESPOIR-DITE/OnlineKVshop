@@ -1,14 +1,13 @@
 package com.etoiledespoir.onlinekvshop.service.itemService;
 
 import com.etoiledespoir.onlinekvshop.domain.Item;
-import com.etoiledespoir.onlinekvshop.factory.repository.ItemRepoFactory;
 import com.etoiledespoir.onlinekvshop.repository.ItemRepo.ItemRepositiry;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service
-public class ItemService implements IitemService {
+public class ItemService{}/** implements IitemService {
     private static ItemService itemService;
     private ItemRepositiry item= ItemRepoFactory.getItem();
 
@@ -52,3 +51,4 @@ public class ItemService implements IitemService {
         return null;
     }
 }
+*/

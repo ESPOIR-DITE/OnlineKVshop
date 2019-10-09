@@ -13,7 +13,7 @@ public class CustomerFactoryTest {
 
     @Test
     public void buildCustomer() {
-        Customer customer= CustomerFactory.buildCustomer("espoir",3902,"espoire@djfddm","skjdfdfsd","parow","ready");
+        Customer customer= CustomerFactory.getCustomer("espoir","espoire@djfddm","skjdfdfsd","parow");
         System.out.println(customer.toString());
     }
 }

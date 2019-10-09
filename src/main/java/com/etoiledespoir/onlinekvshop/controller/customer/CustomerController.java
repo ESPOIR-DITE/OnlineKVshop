@@ -2,10 +2,12 @@ package com.etoiledespoir.onlinekvshop.controller.customer;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
-import com.etoiledespoir.onlinekvshop.service.customerService.CustomerService;
+import com.etoiledespoir.onlinekvshop.service.customerService.impl.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/OKVS/customer")
 public class CustomerController implements Icontroller<Customer, String> {
@@ -43,7 +45,7 @@ public class CustomerController implements Icontroller<Customer, String> {
 
     @GetMapping("/reads")
     @Override
-    public ArrayList<String> readAll() {
+    public List<Customer> readAll() {
         return this.customer.readAll();
     }
     /** @Autowired

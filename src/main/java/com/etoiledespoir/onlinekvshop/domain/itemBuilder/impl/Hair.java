@@ -1,73 +1,123 @@
 package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
-
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.ItemInt;
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.awt.*;
 @Entity
-public class Hair implements ItemInt {
-    private Items items;
-
+public class Hair {
     @Id
     private String ItemNumber;
-    private String name;
+    private String Itemname;
     private String type;
     private String size;
     private String gender;
+    @Column(name = "hair_description" )
     private String decription;
-    private Image image;
-    private double price;
-    private int quantity;
+    private String color;
 
-    public Hair() {
-        items=new Items();
+    private Hair() {
     }
 
-
-    @Override
-    public void buildItemNumber(String itemNumber) {
-        items.setItemNumber(itemNumber);
+    public String getItemNumber() {
+        return ItemNumber;
     }
 
-    @Override
-    public void buildName(String itemName) {
-        items.setName(itemName);
+    public void setItemNumber(String itemNumber) {
+        ItemNumber = itemNumber;
     }
 
-    @Override
-    public void buildtype(String itemType) {
-        items.setType(itemType);
+    public String getItemname() {
+        return Itemname;
     }
 
-    @Override
-    public void buildSize(String size) {
-        items.setSize(size);
+    public void setItemname(String itemname) {
+        Itemname = itemname;
     }
 
-    @Override
-    public void buildgender(String itemGender) {
-        items.setGender(itemGender);
+    public String getType() {
+        return type;
     }
 
-    @Override
-    public void buildDecription(String description) {
-        items.setDecription(description);
+    public void setType(String type) {
+        this.type = type;
     }
 
-    @Override
-    public void buildPrice(double price) {
-        items.setPrice(price);
+    public String getSize() {
+        return size;
     }
 
-    @Override
-    public void buildQuantity(int quantity) {
-        items.setQuantity(quantity);
+    public void setSize(String size) {
+        this.size = size;
     }
 
-    @Override
-    public Items getItem() {
-        return items;
+    public String getGender() {
+        return gender;
     }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDecription() {
+        return decription;
+    }
+
+    public void setDecription(String decription) {
+        this.decription = decription;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+    public static class Builder{
+        private String ItemNumber;
+        private String Itemname;
+        private String type;
+        private String size;
+        private String gender;
+        private String decription;
+        private String color;
+
+        public Builder(String itemNumber){
+            this.ItemNumber=itemNumber;
+        }
+        public Builder buildName(String name){
+            this.Itemname=name;
+            return this;
+        }
+        public Builder buildType(String type){
+            this.type=type;
+            return this;
+        }
+        public Builder buildSize(String size){
+            this.size=size;
+            return this;
+        }
+        public Builder buildColor(String color){
+            this.color=color;
+            return this;
+        }
+        public Builder buildGender(String gender){
+            this.gender=gender;
+            return this;
+        }
+        public Builder buildDescription(String decription){
+            this.decription=decription;
+            return this;
+        }
+
+    public Hair build(){
+        Hair h=new Hair();
+        h.color=this.color;
+        h.decription=this.decription;
+        h.gender=this.gender;
+        h.Itemname=this.Itemname;
+        h.ItemNumber=this.ItemNumber;
+        h.size=this.size;
+        h.type=this.type;
+        return h;
+    }}
 }

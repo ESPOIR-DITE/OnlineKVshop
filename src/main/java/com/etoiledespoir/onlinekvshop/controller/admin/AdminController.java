@@ -2,11 +2,13 @@ package com.etoiledespoir.onlinekvshop.controller.admin;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Admin;
-import com.etoiledespoir.onlinekvshop.service.AdminService.AdminServices;
+import com.etoiledespoir.onlinekvshop.service.AdminService.impl.AdminServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "OKVS/admin")
 public class AdminController implements Icontroller<Admin,String> {
@@ -41,7 +43,7 @@ public String getHome()
     }
     @GetMapping("/reads")
     @Override
-    public ArrayList<String> readAll() {
+    public List<Admin> readAll() {
         return this.admin.readAll();
     }
 }

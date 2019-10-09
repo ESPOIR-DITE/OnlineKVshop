@@ -9,10 +9,9 @@ public class Payment  {
     private String paymentNUmber;
     private String PaymentType;
     private double amount;
-    private int customer;
+    private int orderNumber;
+
     private Payment(){}
-
-
 
     public String getPaymentNUmber() {
         return paymentNUmber;
@@ -39,11 +38,11 @@ public class Payment  {
     }
 
     public int getCustomer() {
-        return customer;
+        return orderNumber;
     }
 
-    public void setCustomer(int customer) {
-        this.customer = customer;
+    public void setCustomer(int orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
     @Override
@@ -52,7 +51,7 @@ public class Payment  {
                 "paymentNUmber='" + paymentNUmber + '\'' +
                 ", PaymentType='" + PaymentType + '\'' +
                 ", amount=" + amount +
-                ", customer=" + customer +
+                ", customer=" + orderNumber +
                 '}';
     }
 
@@ -64,7 +63,7 @@ public class Payment  {
         private String paymentNUmber;
         private String paymentType;
         private double amount;
-        private int customer;
+        private int orderNumber;
         public Builder(String paymentNUmber){
            this.paymentNUmber=paymentNUmber;
         }
@@ -76,18 +75,18 @@ public class Payment  {
             this.amount=amount;
             return this;
         }
-        public Builder builderCustomer(int customer)
+        public Builder builderOrderNumber(int orderNumber)
         {
-            this.customer=customer;
+            this.orderNumber=orderNumber;
             return this;
         }
         public Payment build()
         {
             Payment payment=new Payment();
-            payment.amount=amount;
-            payment.customer=customer;
-            payment.paymentNUmber=paymentNUmber;
-            payment.PaymentType=paymentType;
+            payment.amount=this.amount;
+            payment.orderNumber=this.orderNumber;
+            payment.paymentNUmber=this.paymentNUmber;
+            payment.PaymentType=this.paymentType;
             return payment;
         }
 

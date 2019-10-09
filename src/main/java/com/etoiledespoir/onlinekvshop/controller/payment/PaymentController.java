@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @Component
 @RequestMapping(value = "/OKVS/payment")
@@ -38,7 +40,7 @@ public class PaymentController implements Icontroller<Payment,String> {
     }
     @GetMapping("/reads")
     @Override
-    public ArrayList<String> readAll() {
+    public List<Payment> readAll() {
         return payment.readAll();
     }
 }

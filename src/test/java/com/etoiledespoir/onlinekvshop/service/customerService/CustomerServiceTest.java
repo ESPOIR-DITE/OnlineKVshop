@@ -1,16 +1,8 @@
 package com.etoiledespoir.onlinekvshop.service.customerService;
 
-import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
-import com.etoiledespoir.onlinekvshop.factory.domain.CustomerFactory;
-import com.etoiledespoir.onlinekvshop.factory.repository.CustomerRepoFactory;
-import com.etoiledespoir.onlinekvshop.factory.service.CustomerServFacto;
-import com.etoiledespoir.onlinekvshop.repository.CustomerRepo.CustomerRepository;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.ArrayList;
 
-public class CustomerServiceTest {
+public class CustomerServiceTest{}/** {
     CustomerRepository customerRepository= CustomerRepoFactory.getCustomerRep();
     CustomerService customerService= CustomerServFacto.getCustser();
     Customer customer= CustomerFactory.buildCustomer("espoir",1004,"@","skjdfdfsd","parow","ready");
@@ -51,4 +43,4 @@ public class CustomerServiceTest {
     @Test
     public void getPremier() {
     }
-}
+}*/

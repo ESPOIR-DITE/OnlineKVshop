@@ -1,73 +1,141 @@
 package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.ItemInt;
 import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.awt.*;
-@Entity
-public class Shoes implements ItemInt {
-    private Items items;
 
+@Entity
+public class Shoes  {
     @Id
     private String ItemNumber;
-    private String name;
-    private String type;
+    private String marque;
+    private String itemType;
     private String size;
     private String gender;
+    //@Column(name = "shoes_description" )
     private String decription;
-    private Image image;
-    private double price;
-    private int quantity;
+    private String color;
 
-    public Shoes() {
-        items=new Items();
+    private Shoes() {
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
 
-    @Override
-    public void buildItemNumber(String itemNumber) {
-        items.setItemNumber(itemNumber);
+    public String getItemNumber() {
+        return ItemNumber;
+    }
+
+    public void setItemNumber(String itemNumber) {
+        ItemNumber = itemNumber;
+    }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDecription() {
+        return decription;
+    }
+
+    public void setDecription(String decription) {
+        this.decription = decription;
     }
 
     @Override
-    public void buildName(String itemName) {
-        items.setName(itemName);
+    public String toString() {
+        return "Shoes{" +
+                ", ItemNumber='" + ItemNumber + '\'' +
+                ", marque='" + marque + '\'' +
+                ", itemType='" + itemType + '\'' +
+                ", size='" + size + '\'' +
+                ", gender='" + gender + '\'' +
+                ", decription='" + decription + '\'' +
+                ", color='" + color + '\'' +
+                '}';
     }
 
-    @Override
-    public void buildtype(String itemType) {
-        items.setType(itemType);
-    }
-
-    @Override
-    public void buildSize(String size) {
-        items.setSize(size);
-    }
-
-    @Override
-    public void buildgender(String itemGender) {
-        items.setGender(itemGender);
-    }
-
-    @Override
-    public void buildDecription(String description) {
-        items.setDecription(description);
-    }
-
-    @Override
-    public void buildPrice(double price) {
-        items.setPrice(price);
-    }
-
-    @Override
-    public void buildQuantity(int quantity) {
-        items.setQuantity(quantity);
-    }
-
-    @Override
-    public Items getItem() {
-        return items;
+    public static class Builder{
+        private String ItemNumber;
+        private String marque;
+        private String size;
+        private String gender;
+        private String decription;
+        private String itemType;
+        private String color;
+        public Builder(String itemNumber){
+            this.ItemNumber=itemNumber;
+        }
+        public Builder buildMarque(String marque){
+            this.marque=marque;
+            return this;
+        }
+        public Builder buildColor(String color){
+            this.color=color;
+            return this;
+        }
+        public Builder buildItemType(String itemType){
+            this.itemType=itemType;
+            return this;
+        }
+        public Builder buildSize(String size){
+            this.size=size;
+            return this;
+        }
+        public Builder buildGender(String gender){
+            this.gender=gender;
+            return this;
+        }
+        public Builder buildDescription(String decription){
+            this.decription=decription;
+            return this;
+        }
+        public Shoes build(){
+            Shoes s=new Shoes();
+            s.decription=this.decription;
+            s.gender=this.gender;
+            s.ItemNumber=this.ItemNumber;
+            s.size=this.size;
+            s.marque=this.marque;
+            s.color=this.color;
+            s.itemType=this.itemType;
+            return s;
+        }
     }
 }

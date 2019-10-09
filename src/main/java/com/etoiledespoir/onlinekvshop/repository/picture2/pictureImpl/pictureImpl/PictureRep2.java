@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class PictureRep2 implements PictureRepoInt2 {
+public class PictureRep2{}/** implements PictureRepoInt2 {
     private String url="jdbc:mysql://localhost:3306/okvs?autoReconnect=true&useSSL=false";
     private String user="root";
     private String password="";
@@ -178,4 +178,4 @@ public class PictureRep2 implements PictureRepoInt2 {
         myfile.delete();
     }
 
-}
+}*/

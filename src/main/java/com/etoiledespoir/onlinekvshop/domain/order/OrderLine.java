@@ -9,7 +9,6 @@ public class OrderLine {
     private String linecode;
     private String itemNumber;
     private String OrderNumber;
-    private String date;
 
 
     private OrderLine() {
@@ -39,13 +38,6 @@ public class OrderLine {
         OrderNumber = orderNumber;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public static  class Builder{
         private String linecode;
@@ -70,7 +62,6 @@ public class OrderLine {
         }
         public OrderLine getOrderLine(){
             OrderLine line=new OrderLine();
-            line.date=this.date;
             line.itemNumber=this.itemNumber;
             line.linecode=this.linecode;
             line.OrderNumber=this.OrderNumber;
