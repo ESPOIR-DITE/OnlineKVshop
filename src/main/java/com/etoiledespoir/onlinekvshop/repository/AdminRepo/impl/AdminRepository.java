@@ -1,18 +1,6 @@
 package com.etoiledespoir.onlinekvshop.repository.AdminRepo.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Admin;
 import com.etoiledespoir.onlinekvshop.repository.AdminRepo.AdminInt;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Repository;
-
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 
 public abstract class AdminRepository implements AdminInt {}

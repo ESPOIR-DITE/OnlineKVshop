@@ -9,10 +9,19 @@ public class Gender {
     @Id
     private String id;
     private String gender;
+    private String age;
     @Column(name = "Item_description" )
     private String description;
 
     private Gender() {
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public String getId() {
@@ -44,11 +53,14 @@ public class Gender {
         return "Gender{" +
                 "id='" + id + '\'' +
                 ", gender='" + gender + '\'' +
+                ", age='" + age + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
+
     public static class Builder{
         private String id;
+        private String age;
         private String gender;
         private String description;
         public Builder(String id){
@@ -56,6 +68,10 @@ public class Gender {
         }
         public Builder buildGender(String gender){
             this.gender=gender;
+            return this;
+        }
+        public Builder buildAge(String age){
+            this.age=age;
             return this;
         }
         public Builder buildDescription(String description){
@@ -67,6 +83,7 @@ public class Gender {
             gender.description=this.description;
             gender.gender=this.gender;
             gender.description=this.description;
+            gender.age=this.age;
             return gender;
         }
     }

@@ -13,7 +13,7 @@ public class CustomerServiceTest {
     @Autowired
     CustomerService customerService;
 
-private Customer customer= CustomerFactory.getCustomer("@espoir.com","espoir","activ","ditemejek");
+private Customer customer= CustomerFactory.getCustomer("@esir.com","espoir","activ","ditemejek");
     @Test
     public void creat() {
        // Customer customer1=customerService.creat(customer);

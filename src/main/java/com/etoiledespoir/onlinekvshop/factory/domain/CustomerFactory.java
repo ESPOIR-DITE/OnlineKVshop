@@ -5,20 +5,10 @@ import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class CustomerFactory {
     public static Customer getCustomer(String email,String name,String status,String surname){
-        return new Customer.Builder(Igenerator.getSuffixFromClassName(CustomerFactory.class))
+        return new Customer.Builder(email)
                 .builName(name)
-                .buildEmail(email)
                 .buildStatus(status)
                 .buildSurname(surname)
                 .build();
     }
-    public static Customer updateCustomer(String email,String name,String id,String status,String surname){
-        return new Customer.Builder(id)
-                .builName(name)
-                .buildEmail(email)
-                .buildStatus(status)
-                .buildSurname(surname)
-                .build();
-    }
-
 }

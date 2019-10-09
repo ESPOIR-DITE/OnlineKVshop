@@ -4,21 +4,22 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Admin  {
-@Id
-    private String id;
+public class Admin {
+    @Id
+    private String email;
     private String name;
     private String surName;
-    private String email;
 
-    private Admin() { }
 
-    public String getId() {
-        return id;
+    private Admin() {
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
@@ -37,54 +38,43 @@ public class Admin  {
         this.surName = surName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String password) {
-        this.email = password;
-    }
 
     @Override
     public String toString() {
         return "Admin{" +
-                "id=" + id +
+                "id=" + email +
                 ", name='" + name + '\'' +
-                ", userName='" + surName + '\'' +
-                ", password='" + email + '\'' +
-                '}';
+                ", userName='" + surName;
     }
 
     /**
      * builder start here
      */
-    public static class Builder
-    {
-        private String id;
+    public static class Builder {
+        private String email;
         private String name;
         private String surName;
-        private String email;
+
 
         public Builder(String name) {
             this.name = name;
         }
-        public Builder buildId(String id){
-            this.id=id;
+
+        public Builder buildEmail(String email) {
+            this.email = email;
             return this;
         }
-        public Builder buildsurName(String userName){
-            this.surName=userName;
+
+        public Builder buildSurName(String surName) {
+            this.surName = surName;
             return this;
         }
-        public Builder builderEmail(String email){
-            this.email=email;
-            return this;
-        }
-        public Admin buil(){
-            Admin admin= new Admin();
-            admin.surName=this.surName;
-            admin.name=this.name;
-            admin.email=this.email;
-            admin.id=this.id;
+
+        public Admin buil() {
+            Admin admin = new Admin();
+            admin.surName = this.surName;
+            admin.name = this.name;
+            admin.email = this.email;
             return admin;
 
         }

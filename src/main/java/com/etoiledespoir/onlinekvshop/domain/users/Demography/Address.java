@@ -3,6 +3,9 @@ package com.etoiledespoir.onlinekvshop.domain.users.Demography;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * 
+ */
 @Entity
 public class Address {
     @Id

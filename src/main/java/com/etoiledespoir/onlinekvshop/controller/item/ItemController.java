@@ -1,15 +1,11 @@
 package com.etoiledespoir.onlinekvshop.controller.item;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.Item;
 import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
-import com.etoiledespoir.onlinekvshop.service.itemService.ItemService;
-import com.etoiledespoir.onlinekvshop.service.itemService.item.items.impl.ItemsService;
+import com.etoiledespoir.onlinekvshop.service.itemService.items.impl.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
