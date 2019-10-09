@@ -1,6 +1,7 @@
 package com.etoiledespoir.onlinekvshop.service.AdminService.impl;
 
 import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Admin;
+import com.etoiledespoir.onlinekvshop.factory.domain.AdminFactory;
 import com.etoiledespoir.onlinekvshop.repository.AdminRepo.AdminInt;
 import com.etoiledespoir.onlinekvshop.service.AdminService.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,8 @@ public class AdminServices implements IAdminService {
 
     @Override
     public Admin creat(Admin admin) {
-      return this.adminInt.save(admin);
+        Admin result= AdminFactory.buildAdmin(admin.getName(),admin.getSurName(),admin.getEmail());
+      return this.adminInt.save(result);
     }
 
     @Override

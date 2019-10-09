@@ -33,12 +33,7 @@ public String getName()
 }
     @Override
     public Customer creat(Customer customer) {
-        System.out.println(customer.toString());
-        custRep.save(customer);
-        Customer result=custRep.findByEmail(customer.getEmail());
-        System.out.println(result.toString()+" in customer");
-        //return custRep.save(customerx);
-        return null;
+        return custRep.save(customer);
     }
 
     @Override
