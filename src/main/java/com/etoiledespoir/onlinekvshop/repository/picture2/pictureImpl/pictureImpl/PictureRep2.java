@@ -1,25 +1,5 @@
 package com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.pictureImpl;
 
-import com.etoiledespoir.onlinekvshop.domain.Picture;
-import com.etoiledespoir.onlinekvshop.domain.Pictures2;
-import com.etoiledespoir.onlinekvshop.factory.domain.PaymentFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.Picture2Factory;
-import com.etoiledespoir.onlinekvshop.factory.domain.PictureFactory;
-import com.etoiledespoir.onlinekvshop.repository.picture.PictureRepoInt;
-import com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.PictureRepoInt2;
-import org.springframework.boot.jdbc.DatabaseDriver;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.sql.*;
-import java.util.ArrayList;
-
 public class PictureRep2{}/** implements PictureRepoInt2 {
     private String url="jdbc:mysql://localhost:3306/okvs?autoReconnect=true&useSSL=false";
     private String user="root";

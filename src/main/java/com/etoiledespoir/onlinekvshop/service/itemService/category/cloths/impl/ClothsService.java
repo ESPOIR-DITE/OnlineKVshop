@@ -4,10 +4,11 @@ import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.Cloths;
 import com.etoiledespoir.onlinekvshop.repository.item.category.cloths.ClothsRepInt;
 import com.etoiledespoir.onlinekvshop.service.itemService.category.cloths.ClothsServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ClothsService implements ClothsServiceInt {
     private static ClothsService clothsService=null;
     @Autowired

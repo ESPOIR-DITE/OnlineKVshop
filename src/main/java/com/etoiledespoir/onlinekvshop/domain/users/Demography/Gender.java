@@ -9,18 +9,18 @@ public class Gender {
     @Id
     private String id;
     private String gender;
-    private String age;
+    private int age;
     @Column(name = "Item_description" )
     private String description;
 
     private Gender() {
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -60,7 +60,7 @@ public class Gender {
 
     public static class Builder{
         private String id;
-        private String age;
+        private int age;
         private String gender;
         private String description;
         public Builder(String id){
@@ -70,7 +70,7 @@ public class Gender {
             this.gender=gender;
             return this;
         }
-        public Builder buildAge(String age){
+        public Builder buildAge(int age){
             this.age=age;
             return this;
         }
@@ -81,6 +81,7 @@ public class Gender {
         public Gender build(){
             Gender gender= new Gender();
             gender.description=this.description;
+            gender.id=this.id;
             gender.gender=this.gender;
             gender.description=this.description;
             gender.age=this.age;
