@@ -20,8 +20,6 @@ public class Mypic {
     @Id
     private String id;
     private String itemId;
-    private byte[] image;
-    @Column(name = "pic_description" )
     private String description;
 
     private Mypic() {
@@ -51,21 +49,13 @@ public class Mypic {
         this.id = id;
     }
 
-    public String getImage() {
-        return encodeImage(this.image);
 
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
 
     @Override
     public String toString() {
         return "Mypic{" +
                 "id='" + id + '\'' +
                 ", itemId='" + itemId + '\'' +
-                ", image='" + image + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
@@ -73,7 +63,6 @@ public class Mypic {
     public static class Builder {
         private String id;
         private String itemId;
-        private byte[] image;
         private String description;
 
 
@@ -87,40 +76,25 @@ public class Mypic {
         }*/
 
         public Builder buildItemId(String itemId) {
+            System.out.println(itemId+" in builder");
             this.itemId = itemId;
             return this;
         }
-
         public Builder buildDesc(String description){
             this.description=description;
             return this;
         }
-        public Builder buildImage(File file) {
-            BufferedImage bufferedImage = null;
-            String myImage = null;
-            if (file != null) {
-                try {
-                    this.image = FileUtils.readFileToByteArray(file);
 
-                   // this.image = encodeImage(fileContent);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return this;
-        }
 
         public Mypic build() {
             Mypic mypic = new Mypic();
             mypic.id = this.id;
-            mypic.image = this.image;
             mypic.itemId = this.itemId;
             mypic.description=this.description;
             return mypic;
         }
     }
-
+/**
     private static BufferedImage resize(BufferedImage img, int height, int width) {
         // System.out.println(img+"   in resize");
         Image tmp = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
@@ -131,8 +105,15 @@ public class Mypic {
         return resized;
     }
 
-    public static String encodeImage(byte[] imageByteArray) {
-        String string = java.util.Base64.getEncoder().encodeToString(imageByteArray);
-        return string;
-    }
+    public static byte[] encodeImage(File inputString) {
+        byte[] fileContent = new byte[0];
+        try {
+            fileContent = FileUtils.readFileToByteArray(inputString);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return fileContent;
+    }*/
 }

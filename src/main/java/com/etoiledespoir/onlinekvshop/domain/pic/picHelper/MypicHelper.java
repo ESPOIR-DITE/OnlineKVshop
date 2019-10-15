@@ -44,4 +44,32 @@ public class MypicHelper {
                 ", description='" + description + '\'' +
                 '}';
     }
+
+    public static class Builder {
+        private String itemId;
+        private File image;
+        private String description;
+
+        public Builder(String itemId) {
+            this.itemId = itemId;
+        }
+
+        public Builder buildImage(File image) {
+            this.image = image;
+            return this;
+        }
+
+        public Builder buildDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public MypicHelper build(){
+            MypicHelper mh = new MypicHelper();
+            mh.description = this.description;
+            mh.image = this.image;
+            mh.itemId = this.itemId;
+            return mh;
+        }
+    }
 }

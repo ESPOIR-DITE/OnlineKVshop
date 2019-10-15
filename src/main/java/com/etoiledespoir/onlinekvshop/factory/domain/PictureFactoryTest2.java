@@ -3,7 +3,10 @@ package com.etoiledespoir.onlinekvshop.factory.domain;
 import com.etoiledespoir.onlinekvshop.domain.Picture;
 import com.etoiledespoir.onlinekvshop.domain.Pictures2;
 import com.etoiledespoir.onlinekvshop.domain.pic.Mypic;
+import com.etoiledespoir.onlinekvshop.domain.pic.picHelper.MypicHelper;
 import com.etoiledespoir.onlinekvshop.factory.domain.pic.MypicFactory;
+import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.MyPicHelperFactory;
+import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.MypicHelpReadFactory;
 import com.etoiledespoir.onlinekvshop.factory.service.MypicServiceFactory;
 import com.etoiledespoir.onlinekvshop.repository.picture.pictureImpl.PictureRep;
 import com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.pictureImpl.PictureRep2;
@@ -138,9 +141,12 @@ public class PictureFactoryTest2 extends JFrame implements ActionListener {
                      File file1=new File(file.getPath());
                      // sending the file to the Factory
                 // Pictures2 pictures2= Picture2Factory.getPicture("","miriam","voila",file1);
-                    mypic = MypicFactory.getMypic("ewrewrre",file1,"werter");
+                    mypic = MypicFactory.getMypic("ewrewrre","werter");
+                    MypicHelper mypicHelper= MyPicHelperFactory.getMypicHelper("12323",file1,"voila");
                     // System.out.println(mypic.toString());
-                    picRep.creat(mypic);
+
+                   Mypic result= picRep.creat(mypic);
+                   String valeu=picRep.creatImage(mypicHelper.getImage(),"1000");
 
 
 
@@ -168,9 +174,10 @@ public class PictureFactoryTest2 extends JFrame implements ActionListener {
             String id=textField.getText();
             System.out.println(id+"  to read");
             if(id!=null){
-                ImageIcon icon = new ImageIcon(picRep.read(id).getImage());
+               // ImageIcon icon = new ImageIcon(picRep.readFile(id));
+                System.out.println("reading the image Base64 "+picRep.readFile(id));
                 jLabel1=new JLabel();
-                jLabel1.setIcon(icon);
+                //jLabel1.setIcon(icon);
                 displayPanel.removeAll();
                 //displayPanel.add(jLabel1);
                 album.removeAll();
@@ -184,9 +191,9 @@ public class PictureFactoryTest2 extends JFrame implements ActionListener {
             String id=textField.getText();
             System.out.println(id+"  to delete");
             if(id!=null){
-                ImageIcon icon = new ImageIcon(picRep.delete(id).getImage());
+                //ImageIcon icon = new ImageIcon(picRep.delete(id).getImage());
                 jLabel1=new JLabel();
-                jLabel1.setIcon(icon);
+                //.setIcon(icon);
                 displayPanel.removeAll();
                 //displayPanel.add(jLabel1);
                 album.removeAll();

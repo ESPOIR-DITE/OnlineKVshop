@@ -9,9 +9,12 @@ import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.Mypic
 import com.etoiledespoir.onlinekvshop.service.mypic.impl.PictureService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
@@ -21,17 +24,43 @@ import java.util.List;
 public class PicController implements Icontroller<Mypic,String> {
     @Autowired
     PictureService pictureService;
-    @PostMapping("/create")
+
+
+    FileInputStream fileInputStream = null;
+    @PostMapping(value = "/create")
     public Mypic create(@RequestBody MypicHelper mypicHelper) {
         System.out.println(mypicHelper.toString());
         //byte[] fileContent=null;
-        Mypic mypic=MypicFactory.getMypic(mypicHelper.getItemId(),mypicHelper.getImage(),mypicHelper.getDescription());
-        return pictureService.creat(mypic);
+        Mypic mypic=MypicFactory.getMypic(mypicHelper.getItemId(),mypicHelper.getDescription());
+       /**String stringBase64= pictureService.creatImage(mypicHelper.getImage(),mypicHelper.getItemId());
+        System.out.println(stringBase64+" reading Base64 in controller");
+        if(!stringBase64.equals(null)) {
+            return pictureService.creat(mypic);
+            //System.out.println();
+        }*/
+        return  pictureService.creat(mypic);
     }
 
     @Override
     public Mypic create(Mypic mypic) {
         return null;
+    }
+    @PostMapping("/upload")
+    public Mypic create(@RequestParam("file")MultipartFile file,@RequestParam("id")String id,@RequestParam("desc")String description) throws IOException {
+
+        System.out.println(file.getName());
+        System.out.println(id+" my id");
+        Mypic mypic=MypicFactory.getMypic(id,description);
+
+        byte[] bytes=file.getBytes();
+
+        String encodedString = Base64.getEncoder().encodeToString(bytes);
+        FileUtils.writeByteArrayToFile(encodedString);
+
+        File convFile = new File(file.);
+        pictureService.creatImage(convFile,mypic.getItemId());
+
+        return mypic;
     }
 
     @GetMapping("/read")
