@@ -2,8 +2,12 @@ package com.etoiledespoir.onlinekvshop.factory.domain;
 
 import com.etoiledespoir.onlinekvshop.domain.Picture;
 import com.etoiledespoir.onlinekvshop.domain.Pictures2;
+import com.etoiledespoir.onlinekvshop.domain.pic.Mypic;
+import com.etoiledespoir.onlinekvshop.factory.domain.pic.MypicFactory;
+import com.etoiledespoir.onlinekvshop.factory.service.MypicServiceFactory;
 import com.etoiledespoir.onlinekvshop.repository.picture.pictureImpl.PictureRep;
 import com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.pictureImpl.PictureRep2;
+import com.etoiledespoir.onlinekvshop.service.mypic.impl.PictureService;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -18,7 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class PictureFactoryTest2{}/** extends JFrame implements ActionListener {
+public class PictureFactoryTest2 extends JFrame implements ActionListener {
 
 
         BufferedImage bufferedImage;
@@ -26,6 +30,8 @@ public class PictureFactoryTest2{}/** extends JFrame implements ActionListener {
         Picture panelImage;
         JFrame frame = new JFrame("Main Interface");
         JLabel jLabel1 = new JLabel();
+
+    Mypic  mypic;
 
         private JLabel inputClient = new JLabel("Client data");
         private JTextField textField = new JTextField(10);
@@ -44,7 +50,8 @@ public class PictureFactoryTest2{}/** extends JFrame implements ActionListener {
         private JTextArea textArea = new JTextArea(40,40);
 
 
-    PictureRep2 PicRep=PictureRep2.getPictureRep();
+        //PictureRep2 PicRep=PictureRep2.getPictureRep();
+        PictureService picRep= MypicServiceFactory.getMypic();
         // Creates a new instance of ClientApp
         public PictureFactoryTest2()
         {
@@ -130,9 +137,10 @@ public class PictureFactoryTest2{}/** extends JFrame implements ActionListener {
                      bi = ImageIO.read(new File(file.getPath()));
                      File file1=new File(file.getPath());
                      // sending the file to the Factory
-                 Pictures2 pictures2= Picture2Factory.getPicture("","miriam","voila",file1);
-
-                 PicRep.creat(pictures2);
+                // Pictures2 pictures2= Picture2Factory.getPicture("","miriam","voila",file1);
+                    mypic = MypicFactory.getMypic("ewrewrre",file1,"werter");
+                    // System.out.println(mypic.toString());
+                    picRep.creat(mypic);
 
 
 
@@ -160,7 +168,7 @@ public class PictureFactoryTest2{}/** extends JFrame implements ActionListener {
             String id=textField.getText();
             System.out.println(id+"  to read");
             if(id!=null){
-                ImageIcon icon = new ImageIcon(PicRep.read(id).getImage());
+                ImageIcon icon = new ImageIcon(picRep.read(id).getImage());
                 jLabel1=new JLabel();
                 jLabel1.setIcon(icon);
                 displayPanel.removeAll();
@@ -176,7 +184,7 @@ public class PictureFactoryTest2{}/** extends JFrame implements ActionListener {
             String id=textField.getText();
             System.out.println(id+"  to delete");
             if(id!=null){
-                ImageIcon icon = new ImageIcon(PicRep.delete(id).getImage());
+                ImageIcon icon = new ImageIcon(picRep.delete(id).getImage());
                 jLabel1=new JLabel();
                 jLabel1.setIcon(icon);
                 displayPanel.removeAll();
@@ -189,12 +197,12 @@ public class PictureFactoryTest2{}/** extends JFrame implements ActionListener {
             }
 
         }
-        if(e.getSource()==btn4){
+       /** if(e.getSource()==btn4){
            // String id=textField.getText();
             System.out.println("  to read All");
 
-                ArrayList<Pictures2>myList=new ArrayList<>();
-                myList=PicRep.getAll();
+                List<Mypic>myList=new List<>();
+                myList=picRep.readAll();
 
                 jLabel1=new JLabel();
 
@@ -213,7 +221,7 @@ public class PictureFactoryTest2{}/** extends JFrame implements ActionListener {
                 frame.repaint();
             }
 
-        }
+        }*/
 }
 
 public void drawing(Graphics d){
@@ -256,5 +264,5 @@ public void drawing(Graphics d){
 }
 
 
-*/
+
 

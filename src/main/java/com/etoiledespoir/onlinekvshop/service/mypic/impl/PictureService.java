@@ -28,7 +28,9 @@ public class PictureService implements PictureServiceInt {
 
     @Override
     public Mypic creat(Mypic mypic) {
-        return mypicInt.save(mypic);
+        System.out.println(mypic.toString());
+        //System.out.println(mypicInt.save(mypic).getItemId());
+        return mypic;
     }
 
     @Override

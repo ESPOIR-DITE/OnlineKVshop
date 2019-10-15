@@ -6,10 +6,11 @@ import com.etoiledespoir.onlinekvshop.util.Igenerator;
 import java.io.File;
 
 public class MypicFactory {
-    public static Mypic getMypic(String itemId, File image){
+    public static Mypic getMypic(String itemId, File image,String descriptioon){
         return new Mypic.Builder(Igenerator.getSuffixFromClassName(MypicFactory.class))
                 .buildImage(image)
                 .buildItemId(itemId)
+                .buildDesc(descriptioon)
                 .build();
     }
 }

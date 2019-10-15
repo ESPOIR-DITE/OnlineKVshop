@@ -100,10 +100,6 @@ public class Mypic {
             String myImage = null;
             if (file != null) {
                 try {
-                    // bufferedImage = ImageIO.read(file);
-                    //Image myimage = resize(bufferedImage, 500, 500);
-                    //bufferedImage= ImageIO.read(myfile);
-
                     this.image = FileUtils.readFileToByteArray(file);
 
                    // this.image = encodeImage(fileContent);
