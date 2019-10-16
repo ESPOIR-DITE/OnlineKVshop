@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
@@ -48,6 +49,15 @@ public class PicController implements Icontroller<Mypic,String> {
     public Mypic create(Mypic mypic) {
         return null;
     }
+
+    /**
+     * this method creats a item picture
+     * @param file
+     * @param id
+     * @param description
+     * @return
+     * @throws IOException
+     */
     @PostMapping("/upload")
     public Mypic create(@RequestParam("file")MultipartFile  file,@RequestParam("id")String id,@RequestParam("desc")String description) throws IOException {
 
@@ -55,17 +65,23 @@ public class PicController implements Icontroller<Mypic,String> {
         System.out.println(id+" my id");
         Mypic mypic = MypicFactory.getMypic(id,description);
 
-        File file = new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util", file.getOriginalFile);
 
-        bufferedImage= ImageIO.read(file);
+        File filenew = new File("C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"+file.getName()+".png");
 
+        filenew.createNewFile();
+
+        FileOutputStream fos = new FileOutputStream(filenew);
+        fos.write(file.getBytes());
+        fos.close();
+
+        //bufferedImage= ImageIO.read(file);
         //byte[] bytes=file.getBytes();
         //String encodedString = Base64.getEncoder().encodeToString(bytes);
         //FileUtils.writeByteArrayToFile(encodedString);
         //File convFile = new File(file.);
 
-        pictureService.creatImage(file,mypic.getItemId());
-
+        pictureService.creatImage(filenew,mypic.getItemId());
+        filenew.delete();
         return mypic;
     }
 
