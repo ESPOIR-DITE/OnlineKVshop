@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.itemService.category.beaute.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.BeautyMakeup;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.BeautyMakeup;
 import com.etoiledespoir.onlinekvshop.repository.item.category.beaute.BeautyRepInt;
 import com.etoiledespoir.onlinekvshop.service.itemService.category.beaute.BeautyServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;

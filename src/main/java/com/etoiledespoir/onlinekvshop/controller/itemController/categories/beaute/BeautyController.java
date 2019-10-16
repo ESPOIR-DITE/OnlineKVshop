@@ -1,16 +1,12 @@
 package com.etoiledespoir.onlinekvshop.controller.itemController.categories.beaute;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.BeautyMakeup;
-import com.etoiledespoir.onlinekvshop.repository.item.category.beaute.BeautyRepInt;
-import com.etoiledespoir.onlinekvshop.service.Iservice;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.BeautyMakeup;
 import com.etoiledespoir.onlinekvshop.service.itemService.category.beaute.impl.BeautyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/OKVS/beaty")

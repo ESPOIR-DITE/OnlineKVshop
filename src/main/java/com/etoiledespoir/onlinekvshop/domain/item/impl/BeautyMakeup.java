@@ -1,29 +1,20 @@
-package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
-
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
+package com.etoiledespoir.onlinekvshop.domain.item.impl;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Shoes  {
+public class BeautyMakeup {
     @Id
     private String ItemNumber;
+    private String ItemName;
     private String marque;
     private String itemType;
     private String size;
-    private String gender;
-    //@Column(name = "shoes_description" )
+    @Column(name = "beaty_description" )
     private String decription;
     private String color;
-
-    private Shoes() {
-    }
-
-    public String getColor() {
-        return color;
-    }
 
     public String getItemType() {
         return itemType;
@@ -33,10 +24,16 @@ public class Shoes  {
         this.itemType = itemType;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    private BeautyMakeup() {
     }
 
+    public String getItemName() {
+        return ItemName;
+    }
+
+    public void setItemName(String itemName) {
+        ItemName = itemName;
+    }
 
     public String getItemNumber() {
         return ItemNumber;
@@ -45,6 +42,7 @@ public class Shoes  {
     public void setItemNumber(String itemNumber) {
         ItemNumber = itemNumber;
     }
+
 
     public String getMarque() {
         return marque;
@@ -62,14 +60,6 @@ public class Shoes  {
         this.size = size;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getDecription() {
         return decription;
     }
@@ -80,62 +70,70 @@ public class Shoes  {
 
     @Override
     public String toString() {
-        return "Shoes{" +
-                ", ItemNumber='" + ItemNumber + '\'' +
+        return "BeautyMakeup{" +
+                "ItemNumber='" + ItemNumber + '\'' +
+                ", ItemName='" + ItemName + '\'' +
                 ", marque='" + marque + '\'' +
                 ", itemType='" + itemType + '\'' +
                 ", size='" + size + '\'' +
-                ", gender='" + gender + '\'' +
                 ", decription='" + decription + '\'' +
                 ", color='" + color + '\'' +
                 '}';
     }
 
-    public static class Builder{
+    public static class Builder {
         private String ItemNumber;
+        private String ItemName;
         private String marque;
         private String size;
-        private String gender;
-        private String decription;
         private String itemType;
+        private String decription;
         private String color;
-        public Builder(String itemNumber){
-            this.ItemNumber=itemNumber;
+
+        public Builder(String itemNumber) {
+            this.ItemNumber = itemNumber;
         }
-        public Builder buildMarque(String marque){
-            this.marque=marque;
-            return this;
-        }
-        public Builder buildColor(String color){
-            this.color=color;
+
+        public Builder buildName(String name) {
+            this.ItemName = name;
             return this;
         }
         public Builder buildItemType(String itemType){
             this.itemType=itemType;
             return this;
         }
-        public Builder buildSize(String size){
-            this.size=size;
+
+        public Builder buildColor(String color) {
+            this.color = color;
             return this;
         }
-        public Builder buildGender(String gender){
-            this.gender=gender;
+
+        public Builder buildMarque(String marque) {
+            this.marque = marque;
             return this;
         }
-        public Builder buildDescription(String decription){
-            this.decription=decription;
+
+        public Builder buildSize(String size) {
+            this.size = size;
             return this;
         }
-        public Shoes build(){
-            Shoes s=new Shoes();
-            s.decription=this.decription;
-            s.gender=this.gender;
-            s.ItemNumber=this.ItemNumber;
-            s.size=this.size;
-            s.marque=this.marque;
-            s.color=this.color;
-            s.itemType=this.itemType;
-            return s;
+
+        public Builder buildDescription(String decription) {
+            this.decription = decription;
+            return this;
         }
+
+        public BeautyMakeup build() {
+            BeautyMakeup b = new BeautyMakeup();
+            b.decription = this.decription;
+            b.ItemName = this.ItemName;
+            b.ItemNumber = this.ItemNumber;
+            b.marque = this.marque;
+            b.color = this.color;
+            b.size = this.size;
+            b.itemType=this.itemType;
+            return b;
+        }
+
     }
 }

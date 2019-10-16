@@ -1,16 +1,12 @@
 package com.etoiledespoir.onlinekvshop.controller.itemController.categories.hair;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.Hair;
-import com.etoiledespoir.onlinekvshop.repository.item.category.hair.HairRepInt;
-import com.etoiledespoir.onlinekvshop.service.Iservice;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.Hair;
 import com.etoiledespoir.onlinekvshop.service.itemService.category.hair.impl.HairService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/OKVS/hair")

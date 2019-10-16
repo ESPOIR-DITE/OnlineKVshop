@@ -13,6 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -24,6 +26,7 @@ import java.util.List;
 public class PicController implements Icontroller<Mypic,String> {
     @Autowired
     PictureService pictureService;
+    BufferedImage bufferedImage;
 
 
     FileInputStream fileInputStream = null;
@@ -46,19 +49,22 @@ public class PicController implements Icontroller<Mypic,String> {
         return null;
     }
     @PostMapping("/upload")
-    public Mypic create(@RequestParam("file")MultipartFile file,@RequestParam("id")String id,@RequestParam("desc")String description) throws IOException {
+    public Mypic create(@RequestParam("file")MultipartFile  file,@RequestParam("id")String id,@RequestParam("desc")String description) throws IOException {
 
         System.out.println(file.getName());
         System.out.println(id+" my id");
-        Mypic mypic=MypicFactory.getMypic(id,description);
+        Mypic mypic = MypicFactory.getMypic(id,description);
 
-        byte[] bytes=file.getBytes();
+        File file = new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util", file.getOriginalFile);
 
-        String encodedString = Base64.getEncoder().encodeToString(bytes);
-        FileUtils.writeByteArrayToFile(encodedString);
+        bufferedImage= ImageIO.read(file);
 
-        File convFile = new File(file.);
-        pictureService.creatImage(convFile,mypic.getItemId());
+        //byte[] bytes=file.getBytes();
+        //String encodedString = Base64.getEncoder().encodeToString(bytes);
+        //FileUtils.writeByteArrayToFile(encodedString);
+        //File convFile = new File(file.);
+
+        pictureService.creatImage(file,mypic.getItemId());
 
         return mypic;
     }

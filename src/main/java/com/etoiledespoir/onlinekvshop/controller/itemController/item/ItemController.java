@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.itemController.item;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
+import com.etoiledespoir.onlinekvshop.domain.item.Items;
 import com.etoiledespoir.onlinekvshop.service.itemService.items.impl.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

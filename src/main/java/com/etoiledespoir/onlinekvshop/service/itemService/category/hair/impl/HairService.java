@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.itemService.category.hair.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.Hair;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.Hair;
 import com.etoiledespoir.onlinekvshop.repository.item.category.hair.HairRepInt;
 import com.etoiledespoir.onlinekvshop.service.itemService.category.hair.HairServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;

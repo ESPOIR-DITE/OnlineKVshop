@@ -1,8 +1,5 @@
-package com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl;
+package com.etoiledespoir.onlinekvshop.domain.item.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity

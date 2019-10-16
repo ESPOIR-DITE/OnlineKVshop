@@ -1,4 +1,4 @@
-package com.etoiledespoir.onlinekvshop.domain.itemBuilder;
+package com.etoiledespoir.onlinekvshop.domain.item;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

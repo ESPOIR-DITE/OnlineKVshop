@@ -62,6 +62,7 @@ public class Picture {
 
     /**
      * this method converts files into image resized
+     *
      * **/
     public void convertFileToImgae(File file) {
         BufferedImage resized=null;

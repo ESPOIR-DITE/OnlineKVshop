@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.item;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.Cloths;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.Cloths;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class ClothsFactory {

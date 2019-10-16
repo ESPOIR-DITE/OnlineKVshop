@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.item;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.Items;
+import com.etoiledespoir.onlinekvshop.domain.item.Items;
 
 public class ItemFactory {
     public static Items getItems(String ItemNumber,double price,int quantity,String description){

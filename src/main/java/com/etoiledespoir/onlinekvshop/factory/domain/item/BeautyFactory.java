@@ -1,8 +1,7 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.item;
 
-import com.etoiledespoir.onlinekvshop.domain.itemBuilder.impl.BeautyMakeup;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.BeautyMakeup;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
-import org.hibernate.mapping.IdGenerator;
 
 public class BeautyFactory {
     public static BeautyMakeup getBeauty(String ItemName,String marque,String size,String decription,String color,String itemType){
