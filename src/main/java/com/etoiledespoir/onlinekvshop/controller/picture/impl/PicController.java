@@ -80,7 +80,8 @@ public class PicController implements Icontroller<Mypic,String> {
         //FileUtils.writeByteArrayToFile(encodedString);
         //File convFile = new File(file.);
 
-        pictureService.creatImage(filenew,mypic.getItemId());
+        String itemId=pictureService.creat(mypic).getItemId();
+        pictureService.creatImage(filenew,itemId);
         filenew.delete();
         return mypic;
     }

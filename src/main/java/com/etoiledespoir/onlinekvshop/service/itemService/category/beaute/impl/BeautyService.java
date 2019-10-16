@@ -28,7 +28,7 @@ public class BeautyService implements BeautyServiceInt {
     @Override
     public BeautyMakeup creat(BeautyMakeup beautyMakeup) {
         Optional<BeautyMakeup>mybeaty=beautyRepInt.findById(beautyMakeup.getItemNumber());
-        if(mybeaty==null) {
+        if(mybeaty!=null) {
             return beautyRepInt.save(beautyMakeup);
         }
         return mybeaty.orElse(null);
