@@ -22,6 +22,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class PictureService implements PictureServiceInt {
@@ -47,7 +48,6 @@ public class PictureService implements PictureServiceInt {
     @Override
     public Mypic creat(Mypic mypic) {
         System.out.println(mypic.toString());
-        //System.out.println(mypicInt.save(mypic));
         return mypicInt.save(mypic);
     }
 
@@ -60,7 +60,6 @@ public class PictureService implements PictureServiceInt {
         } catch (IOException e) {
             e.printStackTrace();
         }
-       // File newFile=new File(readPicturePath(id));
         return readFile(id);
     }
 
@@ -86,6 +85,7 @@ public class PictureService implements PictureServiceInt {
     public String readImage(String id){
         return readFile(id);
     }
+
     public Mypic findPictureByItemId(String itemId){
         List<Mypic>pic=mypicInt.findAll();
         for (Mypic mypic : pic) {
@@ -98,14 +98,41 @@ public class PictureService implements PictureServiceInt {
         return mypicInt.findAll();
     }
 
+    public List<String> readAllImage() throws IOException {
+        List<String> result=new ArrayList<>();
+        List<String> result2=new ArrayList<>();
+        String imageString=null;
+        /**
+         * here we are reading everything in the provisiore dericetoty
+         */
+        try (Stream<Path> walk = Files.walk(Paths.get("C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisiore"))) {
+
+            result = walk.filter(Files::isRegularFile)
+                    .map(x -> x.toString()).collect(Collectors.toList());
+
+            result.forEach(System.out::println);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for(String myimage:result){
+            File file =new File(myimage);
+            imageString=encoder(file);
+            result2.add(imageString);
+        }
+        return result2;
+    }
+
     /**
      * this me thode read all the files in the directory and return an arrayList of Base64
      * @return
      * @throws IOException
-     */
+
     public List<String> readAllImage() throws IOException {
         List<String>stringPictureList=new ArrayList<>();
-        List<File> filesInFolder = Files.walk(Paths.get("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"))
+       //List<File> filesInFolder = Files.walk(Paths.get("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"))
+        List<File> filesInFolder = Files.walk(Paths.get("        C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisiore\\"))
+
                 .filter(Files::isRegularFile)
                 .map(Path::toFile)
                 .collect(Collectors.toList());
@@ -113,7 +140,7 @@ public class PictureService implements PictureServiceInt {
             stringPictureList.add(encoder(file));
         }
         return stringPictureList;
-    }
+    }*/
 
     public void writePicture(Image image, String id){
         // System.out.println(id+"  the id");

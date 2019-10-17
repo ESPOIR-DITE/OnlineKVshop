@@ -74,11 +74,6 @@ public class PicController implements Icontroller<Mypic,String> {
         fos.write(file.getBytes());
         fos.close();
 
-        //bufferedImage= ImageIO.read(file);
-        //byte[] bytes=file.getBytes();
-        //String encodedString = Base64.getEncoder().encodeToString(bytes);
-        //FileUtils.writeByteArrayToFile(encodedString);
-        //File convFile = new File(file.);
 
         String itemId=pictureService.creat(mypic).getItemId();
         pictureService.creatImage(filenew,itemId);
@@ -87,13 +82,15 @@ public class PicController implements Icontroller<Mypic,String> {
     }
 
     @GetMapping("/read")
-    @Override
-
-    public Mypic read(@RequestParam("id") String id) {
+    public MypicHelpRead readImage(@RequestParam("id") String id) {
         Mypic mypic=pictureService.read(id);
-        //String imageString=decoder(mypic.);
-       // MypicHelpRead mypicHelpRead= MypicHelpReadFactory.getMypicture(mypic.getItemId(),mypic.getItemId(),mypic.getImage(),)
-        return mypic;
+        String imageString=pictureService.readFile(id);
+        MypicHelpRead mypicHelpRead= MypicHelpReadFactory.getMypicture(mypic.getItemId(),mypic.getItemId(),imageString,mypic.getDescription());
+        return mypicHelpRead;
+    }
+    @Override
+    public Mypic read(String id){
+        return null;
     }
     @PostMapping("/update")
     @Override
@@ -109,6 +106,10 @@ public class PicController implements Icontroller<Mypic,String> {
     @Override
     public List<Mypic> readAll() {
         return pictureService.readAll();
+    }
+    @GetMapping("/readsfile")
+    public List<String> readAllFile() throws IOException {
+        return pictureService.readAllImage();
     }
 
     public String decoder(byte[] image){

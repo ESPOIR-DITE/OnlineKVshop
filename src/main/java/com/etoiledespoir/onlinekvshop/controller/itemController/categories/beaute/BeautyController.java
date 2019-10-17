@@ -2,7 +2,9 @@ package com.etoiledespoir.onlinekvshop.controller.itemController.categories.beau
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.item.impl.BeautyMakeup;
+import com.etoiledespoir.onlinekvshop.domain.pic.picHelper.MypicHelpRead;
 import com.etoiledespoir.onlinekvshop.factory.domain.item.BeautyFactory;
+import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.MypicHelpReadFactory;
 import com.etoiledespoir.onlinekvshop.service.itemService.category.beaute.impl.BeautyService;
 import com.etoiledespoir.onlinekvshop.service.mypic.impl.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +51,18 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
     }
 
     @GetMapping("/read")
+
+    public MypicHelpRead readFile(@RequestParam("id") String id) {
+        BeautyMakeup mypic= beautyService.read(id);
+        String imageString=pictureService.readFile(id);
+        MypicHelpRead mypicHelpRead= MypicHelpReadFactory.getMypicture(mypic.getItemNumber(),mypic.getItemName(),imageString,mypic.getDecription());
+        System.out.println(mypicHelpRead.toString()+"  reading mypictureHelp in Beauty Controller");
+
+        return mypicHelpRead;
+    }
     @Override
     public BeautyMakeup read(@RequestParam("id") String id) {
-        return beautyService.read(id);
+       return null;
     }
 
     @PostMapping("/update")
