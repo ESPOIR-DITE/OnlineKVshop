@@ -2,15 +2,10 @@ package com.etoiledespoir.onlinekvshop.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 @Configuration
-public class Okvs_Security extends WebSecurityConfigurerAdapter {
+public class Okvs_Security{}/** extends WebSecurityConfigurerAdapter {
     private static final String USER_ROLE = "USER";
     private static final String ADMIN_ROLE = "ADMIN";
 
@@ -34,8 +29,8 @@ public class Okvs_Security extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/OKVS/**/creat").hasRole(ADMIN_ROLE)
-                .antMatchers(HttpMethod.GET, "/OKVS/**/reads").hasRole(USER_ROLE)
+                .antMatchers(HttpMethod.POST, "/OKVS//creat").hasRole(ADMIN_ROLE)
+                .antMatchers(HttpMethod.GET, "/OKVS//reads").hasRole(USER_ROLE)
                 .and()
                 .csrf().disable()
                 .formLogin().disable();
@@ -46,3 +41,4 @@ public class Okvs_Security extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 }
+*/

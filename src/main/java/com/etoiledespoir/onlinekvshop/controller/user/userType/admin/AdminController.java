@@ -24,7 +24,7 @@ public class AdminController implements Icontroller<Admin, String> {
         return "home";
     }
 
-    @PostMapping("/creat")
+    @PostMapping("/create")
     @Override
     public Admin create(@RequestBody Admin admin) {
         Login login= LoginFactory.getLogin(admin.getEmail(),"admin");

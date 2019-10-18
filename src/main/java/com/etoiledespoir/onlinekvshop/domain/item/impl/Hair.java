@@ -7,7 +7,7 @@ public class Hair {
     @Id
     private String ItemNumber;
     private String Itemname;
-    private String type;
+    private String itemType;
     private String size;
     private String gender;
     @Column(name = "hair_description" )
@@ -34,11 +34,11 @@ public class Hair {
     }
 
     public String getType() {
-        return type;
+        return itemType;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.itemType = type;
     }
 
     public String getSize() {
@@ -117,7 +117,7 @@ public class Hair {
         h.Itemname=this.Itemname;
         h.ItemNumber=this.ItemNumber;
         h.size=this.size;
-        h.type=this.type;
+        h.itemType=this.type;
         return h;
     }}
 }
