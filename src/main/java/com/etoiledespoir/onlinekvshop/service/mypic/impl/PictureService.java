@@ -26,6 +26,10 @@ import java.util.stream.Stream;
 
 @Service
 public class PictureService implements PictureServiceInt {
+    private String work="C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisiore\\";
+    private String home="C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\";
+    private String readAllWork="C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisiore";
+    private String readAllhome="C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES";
     private static PictureService pictureService;
     @Autowired
     MypicInt mypicInt;
@@ -41,8 +45,6 @@ public class PictureService implements PictureServiceInt {
         }
         return pictureService;
     }
-
-
 
 
     @Override
@@ -105,7 +107,7 @@ public class PictureService implements PictureServiceInt {
         /**
          * here we are reading everything in the provisiore dericetoty
          */
-        try (Stream<Path> walk = Files.walk(Paths.get("C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisiore"))) {
+        try (Stream<Path> walk = Files.walk(Paths.get(readAllhome))) {
 
             result = walk.filter(Files::isRegularFile)
                     .map(x -> x.toString()).collect(Collectors.toList());
@@ -123,30 +125,10 @@ public class PictureService implements PictureServiceInt {
         return result2;
     }
 
-    /**
-     * this me thode read all the files in the directory and return an arrayList of Base64
-     * @return
-     * @throws IOException
-
-    public List<String> readAllImage() throws IOException {
-        List<String>stringPictureList=new ArrayList<>();
-       //List<File> filesInFolder = Files.walk(Paths.get("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"))
-        List<File> filesInFolder = Files.walk(Paths.get("        C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisiore\\"))
-
-                .filter(Files::isRegularFile)
-                .map(Path::toFile)
-                .collect(Collectors.toList());
-        for(File file:filesInFolder){
-            stringPictureList.add(encoder(file));
-        }
-        return stringPictureList;
-    }*/
-
     public void writePicture(Image image, String id){
         // System.out.println(id+"  the id");
 
-       // File outputfile = new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"+id+".png");
-        File outputfile = new File("C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisiore\\"+id+".png");
+        File outputfile = new File(home+id+".png");
         try {
             ImageIO.write((RenderedImage) image,"png",outputfile);
         } catch (IOException e) {
@@ -155,15 +137,13 @@ public class PictureService implements PictureServiceInt {
     }
 
     public String readPicturePath(String id){
-       // return "C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"+id+".png";
-        return "C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisiore\\"+id+".png";
+        return home+id+".png";
     }
 
     public String readFile(String id){
         BufferedImage bufferedImage=null;
         String encodedString=null;
-        //File myfile=new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"+id+".png");
-        File myfile = new File("C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisiore\\"+id+".png");
+        File myfile = new File(home+id+".png");
 
         try {
             byte[] fileContent = FileUtils.readFileToByteArray(myfile);
@@ -187,10 +167,14 @@ public class PictureService implements PictureServiceInt {
         return encodedString;
     }
 
+    public Boolean deleteFromFile(String id){
 
-    public void deleteFromFile(String id){
-        File myfile=new File("C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"+id+".png");
-        myfile.delete();
+        File myfile=new File(home+id+".png");
+        if(myfile!=null) {
+            myfile.delete();
+            return true;
+        }
+        return false;
     }
     private static BufferedImage resize(BufferedImage img, int height, int width) {
         // System.out.println(img+"   in resize");

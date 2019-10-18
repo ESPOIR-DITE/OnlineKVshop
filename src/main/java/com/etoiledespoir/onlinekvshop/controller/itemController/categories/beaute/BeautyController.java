@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -25,6 +26,10 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
     BeautyService beautyService;
     @Autowired
     PictureService pictureService;
+
+    private String home="C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisior\\";
+    private String work="C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\";
+
 
     @PostMapping("/create")
     //public BeautyMakeup create(@RequestBody BeautyMakeup beautyMakeup) {
@@ -74,7 +79,11 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
     @GetMapping("/Delete")
     @Override
     public BeautyMakeup delete(@RequestParam("id") String id) {
-        return beautyService.delete(id);
+       boolean result= pictureService.deleteFromFile(id);
+       if(result==true) {
+           return beautyService.delete(id);
+       }
+       return null;
     }
 
     @GetMapping("/reads")
@@ -83,7 +92,7 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
         return beautyService.readAll();
     }
     public Boolean helpCreateFile(MultipartFile file,String id) throws IOException {
-        File filenew = new File("C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\"+id+".png");
+        File filenew = new File(home+id+".png");
         filenew.createNewFile();
 
         FileOutputStream fos = new FileOutputStream(filenew);
@@ -91,8 +100,10 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
         fos.close();
     if(file!=null) {
         pictureService.creatImage(filenew, id);
+        filenew.delete();
         return true;
     }
+
     return false;
 
     }
