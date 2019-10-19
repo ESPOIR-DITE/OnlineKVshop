@@ -9,7 +9,6 @@ public class Hair {
     private String Itemname;
     private String itemType;
     private String size;
-    private String gender;
     @Column(name = "hair_description" )
     private String decription;
     private String color;
@@ -49,14 +48,6 @@ public class Hair {
         this.size = size;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getDecription() {
         return decription;
     }
@@ -72,12 +63,24 @@ public class Hair {
     public void setColor(String color) {
         this.color = color;
     }
+
+    @Override
+    public String toString() {
+        return "Hair{" +
+                "ItemNumber='" + ItemNumber + '\'' +
+                ", Itemname='" + Itemname + '\'' +
+                ", itemType='" + itemType + '\'' +
+                ", size='" + size + '\'' +
+                ", decription='" + decription + '\'' +
+                ", color='" + color + '\'' +
+                '}';
+    }
+
     public static class Builder{
         private String ItemNumber;
         private String Itemname;
         private String type;
         private String size;
-        private String gender;
         private String decription;
         private String color;
 
@@ -100,10 +103,6 @@ public class Hair {
             this.color=color;
             return this;
         }
-        public Builder buildGender(String gender){
-            this.gender=gender;
-            return this;
-        }
         public Builder buildDescription(String decription){
             this.decription=decription;
             return this;
@@ -113,7 +112,6 @@ public class Hair {
         Hair h=new Hair();
         h.color=this.color;
         h.decription=this.decription;
-        h.gender=this.gender;
         h.Itemname=this.Itemname;
         h.ItemNumber=this.ItemNumber;
         h.size=this.size;

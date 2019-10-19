@@ -7,12 +7,14 @@ import com.etoiledespoir.onlinekvshop.service.mypic.PictureServiceInt;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -184,5 +186,22 @@ public class PictureService implements PictureServiceInt {
         g2d.drawImage(tmp, 0, 0, null);
         g2d.dispose();
         return resized;
+    }
+
+    public  Boolean helpCreateFile(MultipartFile file, String id) throws IOException {
+        File filenew = new File(home+id+".png");
+        filenew.createNewFile();
+
+        FileOutputStream fos = new FileOutputStream(filenew);
+        fos.write(file.getBytes());
+        fos.close();
+        if(file!=null) {
+            creatImage(filenew, id);
+            filenew.delete();
+            return true;
+        }
+
+        return false;
+
     }
 }

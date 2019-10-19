@@ -11,7 +11,6 @@ public class Shoes  {
     private String itemType;
     private String size;
     private String gender;
-    //@Column(name = "shoes_description" )
     private String decription;
     private String color;
 
