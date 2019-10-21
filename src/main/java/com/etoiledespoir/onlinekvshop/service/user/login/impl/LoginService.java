@@ -13,6 +13,7 @@ import java.util.Optional;
 public class LoginService implements LoginServiceInt {
     @Autowired
     private LoginRepository loginRepository;
+    @Autowired
     private static LoginService loginService;
 
     private LoginService() {
@@ -49,5 +50,14 @@ public class LoginService implements LoginServiceInt {
     @Override
     public List<Login> readAll() {
         return loginRepository.findAll();
+    }
+    public Login loging(String email,String password){
+        List<Login> result=loginRepository.findAll();
+        for(Login login: result){
+            if(login.getEmail().equals(email)&&login.getPassword().equals(password)){
+                return login;
+            }
+        }
+        return null;
     }
 }
