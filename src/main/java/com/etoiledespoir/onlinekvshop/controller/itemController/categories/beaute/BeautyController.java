@@ -1,21 +1,27 @@
 package com.etoiledespoir.onlinekvshop.controller.itemController.categories.beaute;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.item.impl.BeautyMakeup;
+import com.etoiledespoir.onlinekvshop.domain.generic_class.item_picture.Item_Pictures;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.BeautyHelper;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.BeautyMakeup;
 import com.etoiledespoir.onlinekvshop.domain.pic.picHelper.MypicHelpRead;
+import com.etoiledespoir.onlinekvshop.domain.pictures.Images;
+import com.etoiledespoir.onlinekvshop.factory.domain.genericFactory.item_picture.ItemPictureFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.item.BeautyFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.MypicHelpReadFactory;
+import com.etoiledespoir.onlinekvshop.factory.domain.pictures.ImagesFactory;
 import com.etoiledespoir.onlinekvshop.service.itemService.category.beaute.impl.BeautyService;
 import com.etoiledespoir.onlinekvshop.service.mypic.impl.PictureService;
+import com.etoiledespoir.onlinekvshop.service.pictures.ImagesService;
+import com.etoiledespoir.onlinekvshop.service.pictures.Item_PicturesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -26,13 +32,19 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
     BeautyService beautyService;
     @Autowired
     PictureService pictureService;
+    @Autowired
+    Item_PicturesService item_picturesService;
+    @Autowired
+    ImagesService imagesService;
 
     private String home="C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisior\\";
     private String work="C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\";
 
+    private BeautyFactory BF;
+    private ItemPictureFactory IPF;
+    private ImagesFactory IF;
 
     @PostMapping("/create")
-    //public BeautyMakeup create(@RequestBody BeautyMakeup beautyMakeup) {
    public BeautyMakeup create(@RequestParam("file") MultipartFile file,@RequestParam("ItemName") String ItemName,@RequestParam("size") String size,@RequestParam("decription") String decription,@RequestParam("color") String color) throws IOException {
         System.out.println(file.getName());
         BeautyMakeup beautyMakeup= BeautyFactory.getBeauty(ItemName,size,decription,color);
@@ -55,8 +67,30 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
         return null;
     }
 
-    @GetMapping("/read")
+    @PostMapping("/creatwithfile")
+    public Boolean create(@RequestBody BeautyHelper beaut) {
+        System.out.println(beaut.toString());
+        System.out.println(beaut.getItemName());
 
+        BeautyMakeup BM=BeautyFactory.getBeauty(beaut.getItemName(),beaut.getSize(),beaut.getDecription(),beaut.getColor());
+        if(BM!=null){
+            Images images= ImagesFactory.getImages(decoreder(beaut.getImage()));
+
+            System.out.println(images.toString());
+            if(images!=null){
+
+                imagesService.creat(images);
+                Item_Pictures IP=ItemPictureFactory.getItem_picture(BM.getItemNumber(),images.getId());
+                if(IP!=null) {
+                    item_picturesService.creat(IP);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @GetMapping("/read")
     public MypicHelpRead readFile(@RequestParam("id") String id) {
         BeautyMakeup mypic= beautyService.read(id);
         String imageString=pictureService.readFile(id);
@@ -91,8 +125,10 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
     public List<BeautyMakeup> readAll() {
         return beautyService.readAll();
     }
+
+
     public Boolean helpCreateFile(MultipartFile file,String id) throws IOException {
-        File filenew = new File(home+id+".png");
+        File filenew = new File(work+id+".png");
         filenew.createNewFile();
 
         FileOutputStream fos = new FileOutputStream(filenew);
@@ -106,5 +142,10 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
 
     return false;
 
+    }
+    public byte[] decoreder(byte[] image){
+      String  encodedString = Base64.getEncoder().encodeToString(image);
+        byte[] byteArrray = encodedString.getBytes();
+        return byteArrray;
     }
 }

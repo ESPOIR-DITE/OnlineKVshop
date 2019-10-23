@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.repository.item.category.beaute;
 
-import com.etoiledespoir.onlinekvshop.domain.item.impl.BeautyMakeup;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.BeautyMakeup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

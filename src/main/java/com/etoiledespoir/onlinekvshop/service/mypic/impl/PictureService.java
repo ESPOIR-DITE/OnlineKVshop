@@ -130,7 +130,7 @@ public class PictureService implements PictureServiceInt {
     public void writePicture(Image image, String id){
         // System.out.println(id+"  the id");
 
-        File outputfile = new File(home+id+".png");
+        File outputfile = new File(work+id+".png");
         try {
             ImageIO.write((RenderedImage) image,"png",outputfile);
         } catch (IOException e) {
@@ -139,13 +139,13 @@ public class PictureService implements PictureServiceInt {
     }
 
     public String readPicturePath(String id){
-        return home+id+".png";
+        return work+id+".png";
     }
 
     public String readFile(String id){
         BufferedImage bufferedImage=null;
         String encodedString=null;
-        File myfile = new File(home+id+".png");
+        File myfile = new File(work+id+".png");
 
         try {
             byte[] fileContent = FileUtils.readFileToByteArray(myfile);
@@ -171,7 +171,7 @@ public class PictureService implements PictureServiceInt {
 
     public Boolean deleteFromFile(String id){
 
-        File myfile=new File(home+id+".png");
+        File myfile=new File(work+id+".png");
         if(myfile!=null) {
             myfile.delete();
             return true;
@@ -189,7 +189,7 @@ public class PictureService implements PictureServiceInt {
     }
 
     public  Boolean helpCreateFile(MultipartFile file, String id) throws IOException {
-        File filenew = new File(home+id+".png");
+        File filenew = new File(work+id+".png");
         filenew.createNewFile();
 
         FileOutputStream fos = new FileOutputStream(filenew);

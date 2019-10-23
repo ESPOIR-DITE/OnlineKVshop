@@ -1,4 +1,4 @@
-package com.etoiledespoir.onlinekvshop.domain.item.impl;
+package com.etoiledespoir.onlinekvshop.domain.item.impl.cloths;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

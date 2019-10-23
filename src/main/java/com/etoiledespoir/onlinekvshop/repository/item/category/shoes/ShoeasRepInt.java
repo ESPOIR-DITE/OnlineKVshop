@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.repository.item.category.shoes;
 
-import com.etoiledespoir.onlinekvshop.domain.item.impl.Shoes;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.shoes.Shoes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

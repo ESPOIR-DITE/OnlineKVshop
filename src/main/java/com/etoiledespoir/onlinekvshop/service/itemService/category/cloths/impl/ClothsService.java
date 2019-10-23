@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.itemService.category.cloths.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.item.impl.Cloths;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.cloths.Cloths;
 import com.etoiledespoir.onlinekvshop.repository.item.category.cloths.ClothsRepInt;
 import com.etoiledespoir.onlinekvshop.service.itemService.category.cloths.ClothsServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;

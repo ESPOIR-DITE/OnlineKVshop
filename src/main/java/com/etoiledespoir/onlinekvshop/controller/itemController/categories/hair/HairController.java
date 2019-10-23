@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.itemController.categories.hair;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.item.impl.Hair;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.hair.Hair;
 import com.etoiledespoir.onlinekvshop.domain.pic.picHelper.MypicHelpRead;
 import com.etoiledespoir.onlinekvshop.factory.domain.item.HairFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.MypicHelpReadFactory;

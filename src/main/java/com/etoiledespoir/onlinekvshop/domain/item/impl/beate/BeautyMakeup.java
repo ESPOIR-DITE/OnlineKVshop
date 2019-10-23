@@ -1,4 +1,4 @@
-package com.etoiledespoir.onlinekvshop.domain.item.impl;
+package com.etoiledespoir.onlinekvshop.domain.item.impl.beate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ public class BeautyMakeup {
     //private String marque;
     //private String itemType;
     private String size;
-    @Column(name = "beaty_description" )
+    //@Column(name = "beaty_description" )
     private String decription;
     private String color;
 

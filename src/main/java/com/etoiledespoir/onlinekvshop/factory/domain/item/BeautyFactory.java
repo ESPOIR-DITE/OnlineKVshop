@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.item;
 
-import com.etoiledespoir.onlinekvshop.domain.item.impl.BeautyMakeup;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.BeautyMakeup;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class BeautyFactory {

@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.item;
 
-import com.etoiledespoir.onlinekvshop.domain.item.impl.Hair;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.hair.Hair;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class HairFactory {
