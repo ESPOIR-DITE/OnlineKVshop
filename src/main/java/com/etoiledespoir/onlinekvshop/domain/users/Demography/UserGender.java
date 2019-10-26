@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Gender {
+public class UserGender {
     @Id
     private String id;
     private String gender;
@@ -13,7 +13,7 @@ public class Gender {
     @Column(name = "Item_description" )
     private String description;
 
-    private Gender() {
+    private UserGender() {
     }
 
     public int getAge() {
@@ -78,8 +78,8 @@ public class Gender {
             this.description=description;
             return this;
         }
-        public Gender build(){
-            Gender gender= new Gender();
+        public UserGender build(){
+            UserGender gender= new UserGender();
             gender.description=this.description;
             gender.id=this.id;
             gender.gender=this.gender;

@@ -8,8 +8,8 @@ import javax.persistence.Id;
 public class Items {
     @Id
     private String ItemNumber;
-    private double price;
-    private int quantity;
+    private String name;
+    private String type;
     @Column(name = "item_description" )
     private String description;
 
@@ -24,20 +24,20 @@ public class Items {
         ItemNumber = itemNumber;
     }
 
-    public double getPrice() {
-        return price;
+    public String getNane() {
+        return name;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getType() {
+        return type;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantity(String type) {
+        this.type = type;
     }
 
     public String getDescription() {
@@ -52,26 +52,26 @@ public class Items {
     public String toString() {
         return "Items{" +
                 "ItemNumber='" + ItemNumber + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
+                ", price=" + name +
+                ", quantity=" + type +
                 ", description='" + description + '\'' +
                 '}';
     }
     public static class Builder{
         private String ItemNumber;
-        private double price;
-        private int quantity;
+        private String name;
+        private String type;
         private String description;
 
         public Builder(String itemNumber){
             this.ItemNumber=itemNumber;
         }
-        public Builder buildPrice(double price){
-            this.price=price;
+        public Builder buildName(String name){
+            this.name=name;
             return this;
         }
-        public Builder buildQuantity(int quantity){
-            this.quantity=quantity;
+        public Builder buildType(String type){
+            this.type=type;
             return this;
         }
         public Builder Description(String description){
@@ -82,8 +82,8 @@ public class Items {
             Items i=new Items();
             i.description=this.description;
             i.ItemNumber=this.ItemNumber;
-            i.price=this.price;
-            i.quantity=this.quantity;
+            i.name=this.name;
+            i.type=this.type;
             return i;
         }
 

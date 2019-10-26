@@ -1,5 +1,8 @@
 package com.etoiledespoir.onlinekvshop.domain.users.login;
 
+/**
+ * not sure about the use of this class in the controller????????????
+ */
 public class LoginHelper {
     private String email;
     private String pasword;

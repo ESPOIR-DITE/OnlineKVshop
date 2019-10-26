@@ -1,4 +1,4 @@
-package com.etoiledespoir.onlinekvshop.domain.users.Demography;
+package com.etoiledespoir.onlinekvshop.domain.users.address.impl;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,11 +11,20 @@ public class Address {
     @Id
     private String id;
     private String commun;
+    private String addressType;
     private String quartier;
     private String avenue;
     private int numero;
 
     private Address() {
+    }
+
+    public String getAddressType() {
+        return addressType;
+    }
+
+    public void setAddressType(String addressType) {
+        this.addressType = addressType;
     }
 
     public String getId() {
@@ -63,16 +72,19 @@ public class Address {
         return "Address{" +
                 "id='" + id + '\'' +
                 ", commun='" + commun + '\'' +
+                ", addressType='" + addressType + '\'' +
                 ", quartier='" + quartier + '\'' +
                 ", avenue='" + avenue + '\'' +
                 ", numero=" + numero +
                 '}';
     }
+
     public static class Builder{
         private String id;
         private String commun;
         private String quartier;
         private String avenue;
+        private String addressType;
         private int numero;
         public Builder(String id){
             this.id=id;
@@ -93,10 +105,15 @@ public class Address {
             this.numero=numero;
             return this;
         }
+        public Builder buildAddressType(String addressType){
+            this.addressType=addressType;
+            return this;
+        }
         public Address build(){
             Address A= new Address();
             A.avenue=this.avenue;
             A.commun=this.commun;
+            A.addressType=this.addressType;
             A.id=this.id;
             A.quartier=this.quartier;
             A.numero=this.numero;

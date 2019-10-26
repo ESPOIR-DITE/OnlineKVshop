@@ -6,14 +6,20 @@ import javax.persistence.Id;
 public class Hair {
     @Id
     private String ItemNumber;
-    private String Itemname;
-    private String itemType;
-    private String size;
+    private String logueur;
+    private String material;
     @Column(name = "hair_description" )
-    private String decription;
-    private String color;
+    private String poids;
 
     private Hair() {
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
     }
 
     public String getItemNumber() {
@@ -24,98 +30,60 @@ public class Hair {
         ItemNumber = itemNumber;
     }
 
-    public String getItemname() {
-        return Itemname;
+    public String getLogueur() {
+        return logueur;
     }
 
-    public void setItemname(String itemname) {
-        Itemname = itemname;
+    public void setLogueur(String logueur) {
+        this.logueur = logueur;
     }
 
-    public String getType() {
-        return itemType;
+    public String getPoids() {
+        return poids;
     }
 
-    public void setType(String type) {
-        this.itemType = type;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public String getDecription() {
-        return decription;
-    }
-
-    public void setDecription(String decription) {
-        this.decription = decription;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+    public void setPoids(String poids) {
+        this.poids = poids;
     }
 
     @Override
     public String toString() {
         return "Hair{" +
                 "ItemNumber='" + ItemNumber + '\'' +
-                ", Itemname='" + Itemname + '\'' +
-                ", itemType='" + itemType + '\'' +
-                ", size='" + size + '\'' +
-                ", decription='" + decription + '\'' +
-                ", color='" + color + '\'' +
+                ", logueur='" + logueur + '\'' +
+                ", material='" + material + '\'' +
+                ", poids='" + poids + '\'' +
                 '}';
     }
 
     public static class Builder{
         private String ItemNumber;
-        private String Itemname;
-        private String type;
-        private String size;
-        private String decription;
-        private String color;
+        private String poids;
+        private String logueur;
+        private String material;
 
         public Builder(String itemNumber){
             this.ItemNumber=itemNumber;
         }
-        public Builder buildName(String name){
-            this.Itemname=name;
+        public Builder buildPoids(String poids){
+            this.poids=poids;
             return this;
         }
-        public Builder buildType(String type){
-            this.type=type;
+        public Builder buildLongueur(String logueur){
+            this.logueur=logueur;
             return this;
         }
-        public Builder buildSize(String size){
-            this.size=size;
-            return this;
-        }
-        public Builder buildColor(String color){
-            this.color=color;
-            return this;
-        }
-        public Builder buildDescription(String decription){
-            this.decription=decription;
+        public Builder buildMaterial(String material){
+            this.material=material;
             return this;
         }
 
     public Hair build(){
         Hair h=new Hair();
-        h.color=this.color;
-        h.decription=this.decription;
-        h.Itemname=this.Itemname;
+        h.logueur=this.logueur;
+        h.poids=this.poids;
         h.ItemNumber=this.ItemNumber;
-        h.size=this.size;
-        h.itemType=this.type;
+        h.material=this.material;
         return h;
     }}
 }

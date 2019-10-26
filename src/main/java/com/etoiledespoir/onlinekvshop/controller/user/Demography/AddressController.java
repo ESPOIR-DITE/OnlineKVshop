@@ -1,21 +1,17 @@
 package com.etoiledespoir.onlinekvshop.controller.user.Demography;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.users.Demography.Address;
+import com.etoiledespoir.onlinekvshop.domain.users.address.impl.Address;
 import com.etoiledespoir.onlinekvshop.domain.users.Demography.helper.AddressHelper;
 import com.etoiledespoir.onlinekvshop.domain.users.userType.bridge.CustomerBridge;
 import com.etoiledespoir.onlinekvshop.factory.domain.address.AddressFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.bridge.CustomerBridgeFactory;
-import com.etoiledespoir.onlinekvshop.repository.user.Demography.AddressRepository;
-import com.etoiledespoir.onlinekvshop.service.Iservice;
 import com.etoiledespoir.onlinekvshop.service.user.Demography.impl.AddressService;
 import com.etoiledespoir.onlinekvshop.service.user.bridge.impl.CustomerBridgeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController

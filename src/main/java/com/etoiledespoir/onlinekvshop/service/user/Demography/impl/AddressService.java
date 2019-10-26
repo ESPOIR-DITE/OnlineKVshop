@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.user.Demography.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.users.Demography.Address;
+import com.etoiledespoir.onlinekvshop.domain.users.address.impl.Address;
 import com.etoiledespoir.onlinekvshop.repository.user.Demography.AddressRepository;
 import com.etoiledespoir.onlinekvshop.service.user.Demography.AddressServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;

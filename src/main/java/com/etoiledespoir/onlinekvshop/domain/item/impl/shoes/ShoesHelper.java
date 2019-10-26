@@ -1,25 +1,20 @@
-package com.etoiledespoir.onlinekvshop.domain.item.impl.beate;
+package com.etoiledespoir.onlinekvshop.domain.item.impl.shoes;
 
 import java.util.Arrays;
 
-public class BeautyHelper {
+public class ShoesHelper {
     private String itemName;
     private String size;
     private String decription;
     private String color;
-    private String type;
     private byte[] image;
+    private String type;
+    private String gender;
+    private String braind;
+    private double price;
+    private int quantity;
 
-    private BeautyHelper() {
-    }
-
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public ShoesHelper() {
     }
 
     public String getItemName() {
@@ -62,15 +57,59 @@ public class BeautyHelper {
         this.image = image;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getBraind() {
+        return braind;
+    }
+
+    public void setBraind(String braind) {
+        this.braind = braind;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
-        return "BeautyHelper{" +
+        return "ShoesHelper{" +
                 "itemName='" + itemName + '\'' +
                 ", size='" + size + '\'' +
                 ", decription='" + decription + '\'' +
                 ", color='" + color + '\'' +
-                ", type='" + type + '\'' +
                 ", image=" + Arrays.toString(image) +
+                ", type='" + type + '\'' +
+                ", gender='" + gender + '\'' +
+                ", braind='" + braind + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
     }
 }

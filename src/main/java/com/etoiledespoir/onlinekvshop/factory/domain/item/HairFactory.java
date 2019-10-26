@@ -4,22 +4,18 @@ import com.etoiledespoir.onlinekvshop.domain.item.impl.hair.Hair;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class HairFactory {
-    public static Hair getHair(String Itemname,String type,String size,String decription,String color){
+    public static Hair getHair(String langueur,String matiere,String poids){
         return new Hair.Builder(Igenerator.getSuffixFromClassName(HairFactory.class))
-                .buildColor(color)
-                .buildDescription(decription)
-                .buildName(Itemname)
-                .buildSize(size)
-                .buildType(type)
+                .buildLongueur(langueur)
+                .buildMaterial(matiere)
+                .buildPoids(poids)
                 .build();
     }
-    public static Hair updategetHair(String ItemNumber,String Itemname,String type,String size,String decription,String color){
-        return new Hair.Builder(Igenerator.getSuffixFromClassName(HairFactory.class))
-                .buildColor(color)
-                .buildDescription(decription)
-                .buildName(Itemname)
-                .buildSize(size)
-                .buildType(type)
+    public static Hair updategetHair(String id,String langueur,String matiere,String poids){
+        return new Hair.Builder(id)
+                .buildLongueur(langueur)
+                .buildMaterial(matiere)
+                .buildPoids(poids)
                 .build();
     }
 }
