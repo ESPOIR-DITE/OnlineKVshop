@@ -10,9 +10,7 @@ public class Customer{
     private String name;
     private String surName;
     private String status;
-    /**
-     * builder start here
-     */
+
     public  static class Builder {
         private String name;
         private String email;

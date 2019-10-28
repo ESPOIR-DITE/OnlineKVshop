@@ -1,4 +1,4 @@
-package com.etoiledespoir.onlinekvshop.domain.users.Demography.impl;
+package com.etoiledespoir.onlinekvshop.domain.gender;
 
 public class Gender {
     private String genderId;
@@ -25,7 +25,7 @@ public class Gender {
 
     @Override
     public String toString() {
-        return "CustomerGender{" +
+        return "Gender{" +
                 "genderId='" + genderId + '\'' +
                 ", gender='" + gender + '\'' +
                 '}';
@@ -34,17 +34,17 @@ public class Gender {
         private String genderId;
         private String gender;
         public Builder(String genderId){
-            this.genderId=genderId;
+            this.gender=genderId;
         }
         public Builder buildGender(String gender){
             this.gender=gender;
             return this;
         }
         public Gender build(){
-            Gender CG=new Gender();
-            CG.gender=this.gender;
-            CG.genderId=this.genderId;
-            return CG;
+            Gender gender=new Gender();
+            gender.gender=this.gender;
+            gender.genderId=this.genderId;
+            return gender;
         }
     }
 }

@@ -1,10 +1,12 @@
-package com.etoiledespoir.onlinekvshop.domain.users.Demography;
+package com.etoiledespoir.onlinekvshop.domain.gender.bridge;
 
-public class itemGender {
+import com.etoiledespoir.onlinekvshop.domain.gender.Gender;
+
+public class ItemGender {
     private String itemId;
     private String genderId;
 
-    private itemGender() {
+    private ItemGender() {
     }
 
     public String getItemId() {
@@ -25,7 +27,7 @@ public class itemGender {
 
     @Override
     public String toString() {
-        return "itemGender{" +
+        return "ItemGender{" +
                 "itemId='" + itemId + '\'' +
                 ", genderId='" + genderId + '\'' +
                 '}';
@@ -40,11 +42,11 @@ public class itemGender {
             this.genderId=genderId;
             return this;
         }
-    }
-    public itemGender build(){
-        itemGender itemGender=new itemGender();
-        itemGender.genderId=this.genderId;
-        itemGender.itemId=this.itemId;
-        return itemGender;
+        public ItemGender build(){
+            ItemGender itemGender=new ItemGender();
+            itemGender.genderId=this.genderId;
+            itemGender.itemId=this.itemId;
+            return itemGender;
+        }
     }
 }

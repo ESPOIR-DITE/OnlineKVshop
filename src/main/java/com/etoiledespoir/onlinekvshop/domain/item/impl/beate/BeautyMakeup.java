@@ -9,9 +9,19 @@ public class BeautyMakeup {
     @Id
     private String ItemNumber;
     private String size;
+    private String type;
 
     private BeautyMakeup() {
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getItemNumber() {
         return ItemNumber;
     }
@@ -35,7 +45,7 @@ public class BeautyMakeup {
     public static class Builder {
         private String ItemNumber;
         private String size;
-        private String decription;
+        private String type;
 
         public Builder(String itemNumber) {
             this.ItemNumber = itemNumber;
@@ -45,8 +55,8 @@ public class BeautyMakeup {
             return this;
         }
 
-        public Builder buildDescription(String decription) {
-            this.decription = decription;
+        public Builder buildType(String type) {
+            this.type = type;
             return this;
         }
 
@@ -54,6 +64,7 @@ public class BeautyMakeup {
             BeautyMakeup b = new BeautyMakeup();
             b.ItemNumber = this.ItemNumber;
             b.size = this.size;
+            b.type=this.type;
             return b;
         }
 

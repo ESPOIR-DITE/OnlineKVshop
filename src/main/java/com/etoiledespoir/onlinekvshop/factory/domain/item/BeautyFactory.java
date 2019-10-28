@@ -4,15 +4,15 @@ import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.BeautyMakeup;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class BeautyFactory {
-    public static BeautyMakeup getBeauty(String size,String decription){
+    public static BeautyMakeup getBeauty(String size,String type){
         return new BeautyMakeup.Builder(Igenerator.getSuffixFromClassName(BeautyMakeup.class))
-                .buildDescription(decription)
+                .buildType(type)
                 .buildSize(size)
                 .build();
     }
-    public static BeautyMakeup updateBeauty(String itemNumber,String ItemName,String marque,String size,String decription,String color,String itemType){
+    public static BeautyMakeup updateBeauty(String itemNumber,String size,String type){
         return new BeautyMakeup.Builder(itemNumber)
-                .buildDescription(decription)
+                .buildType(type)
                 .buildSize(size)
                 .build();
     }

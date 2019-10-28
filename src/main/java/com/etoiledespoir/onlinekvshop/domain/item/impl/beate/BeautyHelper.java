@@ -8,6 +8,8 @@ public class BeautyHelper {
     private String decription;
     private String color;
     private String type;
+    private int quantity;
+    private double price;
     private byte[] image;
 
     private BeautyHelper() {
@@ -20,6 +22,22 @@ public class BeautyHelper {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getItemName() {
@@ -70,6 +88,8 @@ public class BeautyHelper {
                 ", decription='" + decription + '\'' +
                 ", color='" + color + '\'' +
                 ", type='" + type + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
                 ", image=" + Arrays.toString(image) +
                 '}';
     }
