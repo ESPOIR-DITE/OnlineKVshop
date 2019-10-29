@@ -139,9 +139,11 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
     @GetMapping("/read")
     public MypicHelpRead readFile(@RequestParam("id") String id) {
         BeautyMakeup mypic= beautyService.read(id);
-        ArrayList<>
+        ArrayList<String>stringImage=new ArrayList<>();
+        ArrayList<Item_Pictures>result=new ArrayList<>();
         for(int i=0;i<item_picturesService.readAllFileOf(id).size();i++){
-
+            //result.add(item_picturesService.readAllFileOf(id).get(i));
+            stringImage.add(Base64.getEncoder().encodeToString((imagesService.read(item_picturesService.readAllFileOf(id).get(i).getImageId()).getImage())));
         }
 
 

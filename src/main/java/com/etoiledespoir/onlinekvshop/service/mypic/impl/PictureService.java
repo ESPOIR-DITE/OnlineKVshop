@@ -1,7 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.mypic.impl;
 
 import com.etoiledespoir.onlinekvshop.domain.pic.Mypic;
-import com.etoiledespoir.onlinekvshop.domain.users.Demography.Gender;
 import com.etoiledespoir.onlinekvshop.repository.pic.MypicInt;
 import com.etoiledespoir.onlinekvshop.service.mypic.PictureServiceInt;
 import org.apache.commons.io.FileUtils;
