@@ -5,6 +5,7 @@ import com.etoiledespoir.onlinekvshop.repository.color.ColorRep;
 import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +49,8 @@ public class ColorService implements Iservice<Color,String> {
     public List<Color> readAll() {
         return colorRep.findAll();
     }
-    /*public List<Color>itemColors(String id){
+    public List<String>itemColors(ArrayList<String> list){
+        List<String>toreturn=new ArrayList<>();
         List<Color>result=colorRep.findAll();
         for(Color color: result){
             if(color.)

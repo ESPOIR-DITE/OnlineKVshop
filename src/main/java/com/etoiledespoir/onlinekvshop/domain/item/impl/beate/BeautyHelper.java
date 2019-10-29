@@ -1,20 +1,37 @@
 package com.etoiledespoir.onlinekvshop.domain.item.impl.beate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BeautyHelper {
     private String itemName;
     private String size;
     private String decription;
-    private String color;
+    private String gender;
     private String type;
     private int quantity;
     private double price;
     private byte[] image;
+    private ArrayList<String> colors;
 
     private BeautyHelper() {
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public ArrayList<String> getColors() {
+        return colors;
+    }
+
+    public void setColors(ArrayList<String> colors) {
+        this.colors = colors;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public String getType() {
         return type;
@@ -64,13 +81,6 @@ public class BeautyHelper {
         this.decription = decription;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
 
     public byte[] getImage() {
         return image;
@@ -86,11 +96,12 @@ public class BeautyHelper {
                 "itemName='" + itemName + '\'' +
                 ", size='" + size + '\'' +
                 ", decription='" + decription + '\'' +
-                ", color='" + color + '\'' +
+                ", gender='" + gender + '\'' +
                 ", type='" + type + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", image=" + Arrays.toString(image) +
+                ", colors=" + colors +
                 '}';
     }
 }

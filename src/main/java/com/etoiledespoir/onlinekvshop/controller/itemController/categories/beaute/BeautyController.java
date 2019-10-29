@@ -1,15 +1,23 @@
 package com.etoiledespoir.onlinekvshop.controller.itemController.categories.beaute;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
+import com.etoiledespoir.onlinekvshop.domain.color.impl.ItemColor;
+import com.etoiledespoir.onlinekvshop.domain.gender.Gender;
+import com.etoiledespoir.onlinekvshop.domain.gender.bridge.ItemGender;
 import com.etoiledespoir.onlinekvshop.domain.generic_class.item_picture.Item_Pictures;
 import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.BeautyHelper;
 import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.BeautyMakeup;
 import com.etoiledespoir.onlinekvshop.domain.pic.picHelper.MypicHelpRead;
 import com.etoiledespoir.onlinekvshop.domain.pictures.Images;
+import com.etoiledespoir.onlinekvshop.factory.domain.gender.GenderFactory;
+import com.etoiledespoir.onlinekvshop.factory.domain.gender.ItemGenderFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.genericFactory.item_picture.ItemPictureFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.item.BeautyFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.MypicHelpReadFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.pictures.ImagesFactory;
+import com.etoiledespoir.onlinekvshop.service.color.ItemColorService;
+import com.etoiledespoir.onlinekvshop.service.gender.GenderService;
+import com.etoiledespoir.onlinekvshop.service.gender.ItemGenderService;
 import com.etoiledespoir.onlinekvshop.service.itemService.category.beaute.impl.BeautyService;
 import com.etoiledespoir.onlinekvshop.service.mypic.impl.PictureService;
 import com.etoiledespoir.onlinekvshop.service.pictures.ImagesService;
@@ -36,7 +44,12 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
     Item_PicturesService item_picturesService;
     @Autowired
     ImagesService imagesService;
-
+    @Autowired
+    GenderService genderService;
+    @Autowired
+    ItemGenderService itemGenderService;
+    @Autowired
+    ItemColorService itemColorService;
     private String home="C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisior\\";
     private String work="C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\";
 
@@ -44,23 +57,8 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
     private ItemPictureFactory IPF;
     private ImagesFactory IF;
 
-    @PostMapping("/create")
-   public BeautyMakeup create(@RequestParam("file") MultipartFile file,@RequestParam("ItemName") String ItemName,@RequestParam("size") String size,@RequestParam("decription") String decription,@RequestParam("color") String color) throws IOException {
-        System.out.println(file.getName());
-        BeautyMakeup beautyMakeup= BeautyFactory.getBeauty(ItemName,size,decription,color);
-        System.out.println(beautyMakeup+" factory Beauty");
-        BeautyMakeup result = beautyService.creat(beautyMakeup);
-        System.out.println(result+" result from service");
-        if(result!=null) {
-            System.out.println(result.toString()+" viewing the object");
-            if (helpCreateFile(file, result.getItemNumber())==true) {
-                return result;
-            }
-            beautyService.delete(result.getItemNumber());
-            return null;
-        }
-        return null;
-    }
+    private ItemGender gender;
+    private String itemGenderID;
 
     @Override
     public BeautyMakeup create(BeautyMakeup beautyMakeup) {
@@ -70,10 +68,20 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
     @PostMapping("/creatwithfile")
     public Boolean create(@RequestBody BeautyHelper beaut) {
         System.out.println(beaut.toString());
-        System.out.println(beaut.getItemName());
+        BeautyMakeup BM=BeautyFactory.getBeauty(beaut.getSize(),beaut.getType());
 
-        BeautyMakeup BM=BeautyFactory.getBeauty(beaut.getItemName(),beaut.getSize(),beaut.getDecription(),beaut.getColor());
+
+
         if(BM!=null){
+            /** reading the genderId*/
+            itemGenderID= genderService.readWithGender(beaut.getGender());
+            /** creating itemGender*/
+            gender= ItemGenderFactory.getItemGender(BM.getItemNumber(),itemGenderID);
+            itemGenderService.creat(gender);
+            /***creating item color*/
+
+            itemColorService.creatList(beaut.getColors(),BM.getItemNumber());
+
             Images images= ImagesFactory.getImages(decoreder(beaut.getImage()));
 
             System.out.println(images.toString());
