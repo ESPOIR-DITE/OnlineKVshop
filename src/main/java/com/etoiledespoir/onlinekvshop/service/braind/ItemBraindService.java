@@ -4,10 +4,11 @@ import com.etoiledespoir.onlinekvshop.domain.braind.impl.ItemBraind;
 import com.etoiledespoir.onlinekvshop.repository.braind.ItemBraindRep;
 import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ItemBraindService implements Iservice<ItemBraind,String> {
     @Autowired
     private ItemBraindRep itemBraindRep;

@@ -50,4 +50,13 @@ public class AccountingServce implements Iservice<Accounting,String> {
     public List<Accounting> readAll() {
         return accountingRep.findAll();
     }
+    public Accounting readwithItemId(String itemId){
+        List<Accounting>result=accountingRep.findAll();
+        for(Accounting accounting: result){
+            if(accounting.getItemId().equals(itemId)){
+                return accounting;
+            }
+        }
+        return null;
+    }
 }

@@ -12,9 +12,9 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public class ItemColorService implements Iservice<ItemColor,String> {
+    private static ItemColorService itemColorService=null;
     @Autowired
     ItemColorRep itemColorRep;
-    private static ItemColorService itemColorService=null;
 
     private ItemColorService() {
     }
@@ -51,12 +51,15 @@ public class ItemColorService implements Iservice<ItemColor,String> {
     public List<ItemColor> readAll() {
         return itemColorRep.findAll();
     }
-    public void creatList(ArrayList<String> colorList,String itemId){
-        List<ItemColor>toReturn=new ArrayList<>();
-        for(int i=0;i<colorList.size();i++){
-            ItemColor result= ItemColorFactory.getItemColer(itemId,colorList.get(i));
+
+    /**
+     * this method creates item colors from data provided by the controller
+     * @param colorId
+     * @param itemId
+     */
+    public void creatList(String colorId,String itemId){
+            ItemColor result= ItemColorFactory.getItemColer(itemId,colorId);
             creat(result);
-           // toReturn.add(result);
-        }
+
     }
 }

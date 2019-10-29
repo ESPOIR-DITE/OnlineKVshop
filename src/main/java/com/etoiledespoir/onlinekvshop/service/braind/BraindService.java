@@ -4,10 +4,11 @@ import com.etoiledespoir.onlinekvshop.domain.braind.Braind;
 import com.etoiledespoir.onlinekvshop.repository.braind.BraindRep;
 import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class BraindService implements Iservice<Braind,String> {
     @Autowired
     private BraindRep braindRep;
@@ -42,6 +43,15 @@ public class BraindService implements Iservice<Braind,String> {
     public Braind read(String id) {
         Optional<Braind> result=braindRep.findById(id);
         return result.orElse(null);
+    }
+    public Braind readWithName(String name) {
+       List<Braind> result=braindRep.findAll();
+       for(Braind braind: result){
+           if(braind.getBraind().equals(name)){
+               return braind;
+           }
+       }
+        return null;
     }
 
     @Override

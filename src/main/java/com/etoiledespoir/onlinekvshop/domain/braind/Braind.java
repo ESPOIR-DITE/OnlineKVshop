@@ -4,7 +4,7 @@ public class Braind {
     private String braindId;
     private String braind;
 
-    public Braind() {
+    private Braind() {
     }
 
     public String getBraindId() {
@@ -39,6 +39,12 @@ public class Braind {
         public Builder buidBraind(String braind){
             this.braind=braind;
             return this;
+        }
+        public Braind build(){
+            Braind b=new Braind();
+            b.braind=this.braind;
+            b.braindId=this.braindId;
+            return b;
         }
     }
 }

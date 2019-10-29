@@ -1,5 +1,7 @@
 package com.etoiledespoir.onlinekvshop.domain.item.impl.beate;
 
+import com.etoiledespoir.onlinekvshop.domain.color.Color;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,21 +13,30 @@ public class BeautyHelper {
     private String type;
     private int quantity;
     private double price;
-    private byte[] image;
-    private ArrayList<String> colors;
+    private ArrayList<byte[]> image;
+    private ArrayList<Color> colors;
+    private String braind;
 
     private BeautyHelper() {
+    }
+
+    public String getBraind() {
+        return braind;
+    }
+
+    public void setBraind(String braind) {
+        this.braind = braind;
     }
 
     public String getGender() {
         return gender;
     }
 
-    public ArrayList<String> getColors() {
+    public ArrayList<Color> getColors() {
         return colors;
     }
 
-    public void setColors(ArrayList<String> colors) {
+    public void setColors(ArrayList<Color> colors) {
         this.colors = colors;
     }
 
@@ -82,11 +93,11 @@ public class BeautyHelper {
     }
 
 
-    public byte[] getImage() {
+    public ArrayList<byte[]> getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(ArrayList<byte[]> image) {
         this.image = image;
     }
 
@@ -100,8 +111,9 @@ public class BeautyHelper {
                 ", type='" + type + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
-                ", image=" + Arrays.toString(image) +
+                ", image=" + image +
                 ", colors=" + colors +
+                ", braind='" + braind + '\'' +
                 '}';
     }
 }

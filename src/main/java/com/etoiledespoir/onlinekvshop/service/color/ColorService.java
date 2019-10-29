@@ -4,11 +4,12 @@ import com.etoiledespoir.onlinekvshop.domain.color.Color;
 import com.etoiledespoir.onlinekvshop.repository.color.ColorRep;
 import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ColorService implements Iservice<Color,String> {
     @Autowired
     ColorRep colorRep;
@@ -44,16 +45,27 @@ public class ColorService implements Iservice<Color,String> {
         Optional<Color>result=colorRep.findById(id);
         return result.orElse(null);
     }
+    public Color readWithName(String colorName){
+        List<Color>result=colorRep.findAll();
+        for(Color color:result){
+            if(color.getColor().equals(colorName)){
+                return color;
+            }
+        }
+        return null;
+    }
 
     @Override
     public List<Color> readAll() {
         return colorRep.findAll();
     }
-    public List<String>itemColors(ArrayList<String> list){
-        List<String>toreturn=new ArrayList<>();
+
+    public List<Color>itemColors(ArrayList<Color> list){
+        List<Color>toreturn=new ArrayList<>();
         List<Color>result=colorRep.findAll();
-        for(Color color: result){
-            if(color.)
+        for(int i=0; i<list.size();i++){
+            toreturn.add(readWithName(list.get(i).getColor()));     // we are reading the entire list of color and send it to the readWithName to get the entire object of the specified color
         }
-    }*/
+        return toreturn;
+    }
 }

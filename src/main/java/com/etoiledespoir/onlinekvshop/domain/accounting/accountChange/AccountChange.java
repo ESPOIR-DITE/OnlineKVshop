@@ -15,8 +15,17 @@ public class AccountChange {
     private String date;
     private int intialquantity;
     private int postQuantity;
+    private String descriptioin;
 
     private AccountChange() {
+    }
+
+    public String getDescriptioin() {
+        return descriptioin;
+    }
+
+    public void setDescriptioin(String descriptioin) {
+        this.descriptioin = descriptioin;
     }
 
     public String getId() {
@@ -67,19 +76,27 @@ public class AccountChange {
                 ", date='" + date + '\'' +
                 ", intialquantity=" + intialquantity +
                 ", postQuantity=" + postQuantity +
+                ", descriptioin='" + descriptioin + '\'' +
                 '}';
     }
+
     public static class Builder{
         private String id;
         private String itemId;
         private String date;
         private int intialquantity;
         private int postQuantity;
+        private String descriptioin;
+
         public Builder(String id){
             this.id=id;
         }
         public Builder buildItemId(String itemId){
             this.itemId=itemId;
+            return this;
+        }
+        public Builder buildDescription(String descriptioin){
+            this.descriptioin=descriptioin;
             return this;
         }
         public Builder buildDate(String date){
@@ -98,6 +115,7 @@ public class AccountChange {
             AccountChange a=new AccountChange();
             a.date=this.date;
             a.id=this.id;
+            a.descriptioin=this.descriptioin;
             a.intialquantity=this.intialquantity;
             a.postQuantity=this.postQuantity;
             a.itemId=this.itemId;

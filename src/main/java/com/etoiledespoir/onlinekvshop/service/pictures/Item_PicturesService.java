@@ -6,6 +6,7 @@ import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,5 +47,15 @@ public static Item_PicturesService getItem_picturesService(){
     @Override
     public List<Item_Pictures> readAll() {
         return ipr.findAll();
+    }
+
+    public List<Item_Pictures> readAllFileOf(String itemId){
+    List<Item_Pictures>toReturn=new ArrayList<>();
+    List<Item_Pictures>result=ipr.findAll();
+    for(Item_Pictures item_pictures: result){
+        if(item_pictures.getItemId().equals(itemId)){
+            toReturn.add( item_pictures);
+        }
+    }return toReturn;
     }
 }
