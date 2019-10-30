@@ -147,8 +147,9 @@ public class BeautyController implements Icontroller<BeautyMakeup, String> {
         }
 
 
+
         String imageString=pictureService.readFile(id);
-        MypicHelpRead mypicHelpRead= MypicHelpReadFactory.getMypicture(mypic.getItemNumber(),mypic.getItemName(),imageString,mypic.getDecription());
+        MypicHelpRead mypicHelpRead= MypicHelpReadFactory.getMypicture(mypic.getItemNumber(),);
         System.out.println(mypicHelpRead.toString()+"  reading mypictureHelp in Beauty Controller");
 
         return mypicHelpRead;

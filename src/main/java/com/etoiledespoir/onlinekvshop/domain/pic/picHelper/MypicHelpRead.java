@@ -1,36 +1,56 @@
 package com.etoiledespoir.onlinekvshop.domain.pic.picHelper;
 
 
+import java.util.ArrayList;
+
 public class MypicHelpRead {
-    private String id;
-    private String itemId;
-    private String image;
+    private String name;
+    private String braind;
+    private String gender;
+    private double price;
+    private ArrayList<String> image;
     private String description;
 
     public MypicHelpRead() {
     }
 
-    public String getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getItemId() {
-        return itemId;
+    public String getBraind() {
+        return braind;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setBraind(String braind) {
+        this.braind = braind;
     }
 
-    public String getImage() {
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public ArrayList<String> getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(ArrayList<String> image) {
         this.image = image;
     }
 
@@ -45,25 +65,38 @@ public class MypicHelpRead {
     @Override
     public String toString() {
         return "MypicHelpRead{" +
-                "id='" + id + '\'' +
-                ", itemId='" + itemId + '\'' +
-                ", image='" + image + '\'' +
+                "name='" + name + '\'' +
+                ", braind='" + braind + '\'' +
+                ", gender='" + gender + '\'' +
+                ", price=" + price +
+                ", image=" + image +
                 ", description='" + description + '\'' +
                 '}';
     }
+
     public static class Builder{
-        private String id;
-        private String itemId;
-        private String image;
+        private String name;
+        private String braind;
+        private String gender;
+        private double price;
+        private ArrayList<String> image;
         private String description;
-        public Builder(String id){
-            this.id=id;
+        public Builder(String name){
+            this.name=name;
         }
-        public Builder buildItemId(String itemId){
-            this.itemId=itemId;
+        public Builder buildBraind(String braind){
+            this.braind=braind;
             return this;
         }
-        public Builder buildImage(String image){
+        public Builder buildGender(String gender){
+            this.gender=gender;
+            return this;
+        }
+        public Builder buildPrice(double price){
+            this.price=price;
+            return this;
+        }
+        public Builder buildImage(ArrayList<String> image){
             this.image=image;
             return this;
         }
@@ -74,9 +107,11 @@ public class MypicHelpRead {
         public MypicHelpRead build(){
             MypicHelpRead mhr=new MypicHelpRead();
             mhr.description=this.description;
-            mhr.id=this.id;
+            mhr.name=this.name;
             mhr.image=this.image;
-            mhr.itemId=this.itemId;
+            mhr.price=this.price;
+            mhr.braind=this.braind;
+            mhr.gender=this.gender;
             return mhr;
         }
     }
