@@ -1,6 +1,11 @@
 package com.etoiledespoir.onlinekvshop.domain.gender;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Gender {
+    @Id
     private String genderId;
     private String gender;
 

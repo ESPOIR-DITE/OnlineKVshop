@@ -6,6 +6,7 @@ import com.etoiledespoir.onlinekvshop.service.orderline.OrderLineServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -49,5 +50,24 @@ public class OrderLineService implements OrderLineServiceInt {
     @Override
     public List<OrderLine> readAll() {
         return orderLineRep.findAll();
+    }
+
+    public List<OrderLine> readWithOrderId(String orderId){
+        List<OrderLine> orderLines=new ArrayList<>();
+        for(OrderLine orderLine: readAll()){
+            if(orderLine.getOrderNumber().equals(orderId)){
+                orderLines.add(orderLine);
+            }
+        }
+        return orderLines;
+    }
+    public List<OrderLine> readWithItemId(String itemId){
+        List<OrderLine> orderLines=new ArrayList<>();
+        for(OrderLine orderLine: readAll()){
+            if(orderLine.getOrderNumber().equals(itemId)){
+                orderLines.add(orderLine);
+            }
+        }
+        return orderLines;
     }
 }

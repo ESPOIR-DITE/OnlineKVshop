@@ -1,13 +1,14 @@
 package com.etoiledespoir.onlinekvshop.domain.item.impl.beate;
 
 import com.etoiledespoir.onlinekvshop.domain.color.Color;
+import com.etoiledespoir.onlinekvshop.domain.size.Size;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BeautyHelper {
     private String itemName;
-    private String size;
+    private ArrayList<Size> size;
     private String decription;
     private String gender;
     private String type;
@@ -76,11 +77,11 @@ public class BeautyHelper {
         this.itemName = itemName;
     }
 
-    public String getSize() {
+    public ArrayList<Size> getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(ArrayList<Size> size) {
         this.size = size;
     }
 

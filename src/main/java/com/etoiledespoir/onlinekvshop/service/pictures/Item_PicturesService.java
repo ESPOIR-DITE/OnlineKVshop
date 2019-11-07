@@ -49,6 +49,12 @@ public static Item_PicturesService getItem_picturesService(){
         return ipr.findAll();
     }
 
+    /**
+     * this method returns all the item_pictures of a specific itemId
+     * item_picture contains itemPiscture id and item id
+     * @param itemId
+     * @return
+     */
     public List<Item_Pictures> readAllFileOf(String itemId){
     List<Item_Pictures>toReturn=new ArrayList<>();
     List<Item_Pictures>result=ipr.findAll();

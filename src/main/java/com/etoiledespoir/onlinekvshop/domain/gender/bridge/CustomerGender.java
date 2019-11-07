@@ -1,6 +1,11 @@
 package com.etoiledespoir.onlinekvshop.domain.gender.bridge;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class CustomerGender {
+    @Id
     private String customerId;
     private String genderId;
     private String age;

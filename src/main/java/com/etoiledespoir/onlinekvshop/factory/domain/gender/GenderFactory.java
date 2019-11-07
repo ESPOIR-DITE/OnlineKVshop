@@ -4,7 +4,7 @@ import com.etoiledespoir.onlinekvshop.domain.gender.Gender;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class GenderFactory {
-    public static Gender getGender(int age, String gender, String description){
+    public static Gender getGender( String gender){
         return new Gender.Builder(Igenerator.getSuffixFromClassName(GenderFactory.class))
                 .buildGender(gender)
                 .build();

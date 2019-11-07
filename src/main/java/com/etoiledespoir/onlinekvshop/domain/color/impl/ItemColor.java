@@ -1,6 +1,11 @@
 package com.etoiledespoir.onlinekvshop.domain.color.impl;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ItemColor {
+    @Id
     private String itemId;
     private String colorId;
 

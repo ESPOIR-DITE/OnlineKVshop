@@ -1,6 +1,11 @@
 package com.etoiledespoir.onlinekvshop.domain.users.address;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class AddressType {
+    @Id
     private String addressTypeId;
     private String type;
 

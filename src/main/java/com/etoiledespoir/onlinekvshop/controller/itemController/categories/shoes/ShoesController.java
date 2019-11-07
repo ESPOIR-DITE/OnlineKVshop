@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/OKVS/shoes")
-public class ShoesController implements Icontroller<Shoes, String> {
+public class ShoesController{}/** implements Icontroller<Shoes, String> {
 
     @Autowired
     ShoesService shoesService;
@@ -86,4 +86,4 @@ public class ShoesController implements Icontroller<Shoes, String> {
     public List<Shoes> readAll() {
         return shoesService.readAll();
     }
-}
+}*/

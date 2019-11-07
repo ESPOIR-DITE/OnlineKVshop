@@ -6,51 +6,51 @@ import javax.persistence.Id;
 @Entity
 public class ContactType {
     @Id
-    private String contactType;
-    private String contact;
+    private String id;
+    private String type;
 
     private ContactType() {
     }
 
-    public String getContactType() {
-        return contactType;
+    public String getId() {
+        return id;
     }
 
-    public void setContactType(String contactType) {
-        this.contactType = contactType;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getContact() {
-        return contact;
+    public String getType() {
+        return type;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
         return "ContactType{" +
-                "contactType='" + contactType + '\'' +
-                ", contact='" + contact + '\'' +
+                "id='" + id + '\'' +
+                ", id='" + type + '\'' +
                 '}';
     }
     public static class Builder{
-        private String contactType;
-        private String contact;
+        private String type;
+        private String id;
 
-        public Builder (String contactType){
-            this.contactType=contactType;
+        public Builder (String type){
+            this.type =type;
         }
-        public Builder buildContact(String contact ){
-            this.contact=contact;
+        public Builder buildContact(String id ){
+            this.id =id;
             return this;
         }
         public ContactType build(){
 
             ContactType contactType=new ContactType();
-            contactType.contact=this.contact;
-            contactType.contactType=this.contactType;
+            contactType.type =this.id;
+            contactType.id =this.type;
             return contactType;
         }
     }

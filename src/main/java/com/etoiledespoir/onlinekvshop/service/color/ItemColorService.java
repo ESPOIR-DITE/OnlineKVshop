@@ -62,4 +62,13 @@ public class ItemColorService implements Iservice<ItemColor,String> {
             creat(result);
 
     }
+    public ArrayList<ItemColor> getColorIdList(String itemID){
+        ArrayList<ItemColor> colorIds=new ArrayList<>();
+        for(ItemColor itemColor:readAll()){
+            if(itemColor.getItemId().equals(itemID)){
+                colorIds.add(itemColor);
+            }
+        }
+        return colorIds;
+    }
 }

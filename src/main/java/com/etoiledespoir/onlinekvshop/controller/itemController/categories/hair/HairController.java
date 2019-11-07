@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/OKVS/hair")
-public class HairController implements Icontroller<Hair, String> {
+public class HairController{}/*** implements Icontroller<Hair, String> {
 @Autowired
     HairService hairService;
     @Autowired
@@ -88,4 +88,4 @@ public class HairController implements Icontroller<Hair, String> {
     public List<Hair> readAll() {
         return hairService.readAll();
     }
-}
+}*/

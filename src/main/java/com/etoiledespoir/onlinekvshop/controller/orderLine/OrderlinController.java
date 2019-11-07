@@ -2,7 +2,9 @@ package com.etoiledespoir.onlinekvshop.controller.orderLine;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.order.OrderLine;
+import com.etoiledespoir.onlinekvshop.factory.domain.OrderLineFactory;
 import com.etoiledespoir.onlinekvshop.service.orderline.impl.OrderLineService;
+import com.etoiledespoir.onlinekvshop.util.CurrentDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +18,9 @@ public class OrderlinController implements Icontroller<OrderLine,String> {
     @PostMapping("/create")
     @Override
     public OrderLine create(@RequestBody OrderLine orderLine) {
-        return orderLineService.creat(orderLine);
+        System.out.println(orderLine.toString());
+    OrderLine orderLine1= OrderLineFactory.getLine(orderLine.getItemNumber(),orderLine.getOrderNumber(), CurrentDate.getCurrentTimeUsingDate());
+        return orderLineService.creat(orderLine1);
     }
 
     @GetMapping("/read")
@@ -41,5 +45,13 @@ public class OrderlinController implements Icontroller<OrderLine,String> {
     @Override
     public List<OrderLine> readAll() {
         return orderLineService.readAll();
+    }
+    @GetMapping("/readWithItemId")
+    public List<OrderLine> readWithItemId(@RequestParam("id") String itemId){
+        return orderLineService.readWithItemId(itemId);
+    }
+    @GetMapping("/readWithOrderId")
+    public List<OrderLine> readWithOrderId(@RequestParam("id") String orderId){
+        return orderLineService.readWithOrderId(orderId);
     }
 }

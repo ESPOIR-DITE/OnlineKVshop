@@ -1,9 +1,11 @@
 package com.etoiledespoir.onlinekvshop.controller.user.userType.customer;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
+import com.etoiledespoir.onlinekvshop.domain.gender.bridge.CustomerGender;
 import com.etoiledespoir.onlinekvshop.domain.users.login.Login;
 import com.etoiledespoir.onlinekvshop.domain.users.userType.impl.Customer;
 import com.etoiledespoir.onlinekvshop.factory.domain.login.LoginFactory;
+import com.etoiledespoir.onlinekvshop.service.gender.CustGenderService;
 import com.etoiledespoir.onlinekvshop.service.user.login.impl.LoginService;
 import com.etoiledespoir.onlinekvshop.service.user.userType.customerService.impl.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class CustomerController implements Icontroller<Customer, String> {
 
     @Autowired
     private CustomerService customer;
+    @Autowired
+    CustGenderService custGenderService;
     @Autowired
     private LoginService loginService;
 

@@ -8,10 +8,19 @@ public class OrderLine {
     @Id
     private String linecode;
     private String itemNumber;
-    private String OrderNumber;
+    private String orderNumber;
+    private String date;
 
 
     private OrderLine() {
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getLinecode() {
@@ -31,13 +40,22 @@ public class OrderLine {
     }
 
     public String getOrderNumber() {
-        return OrderNumber;
+        return orderNumber;
     }
 
     public void setOrderNumber(String orderNumber) {
-        OrderNumber = orderNumber;
+        this.orderNumber = orderNumber;
     }
 
+    @Override
+    public String toString() {
+        return "OrderLine{" +
+                "linecode='" + linecode + '\'' +
+                ", itemNumber='" + itemNumber + '\'' +
+                ", orderNumber='" + orderNumber + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
 
     public static  class Builder{
         private String linecode;
@@ -53,6 +71,7 @@ public class OrderLine {
         }
         public Builder buildOrderNumb(String orderNumber){
             this.OrderNumber=orderNumber;
+            System.out.println(orderNumber);
             return this;
         }
         public Builder buildDate(String date)
@@ -64,7 +83,8 @@ public class OrderLine {
             OrderLine line=new OrderLine();
             line.itemNumber=this.itemNumber;
             line.linecode=this.linecode;
-            line.OrderNumber=this.OrderNumber;
+            line.orderNumber =this.OrderNumber;
+            line.date=this.date;
             return line;
         }
 

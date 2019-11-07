@@ -1,6 +1,11 @@
 package com.etoiledespoir.onlinekvshop.domain.braind.impl;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ItemBraind {
+    @Id
     private String braindId;
     private String itemId;
 
