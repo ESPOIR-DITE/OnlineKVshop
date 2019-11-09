@@ -60,7 +60,6 @@ public class ItemColorService implements Iservice<ItemColor,String> {
     public void creatList(String colorId,String itemId){
             ItemColor result= ItemColorFactory.getItemColer(itemId,colorId);
             creat(result);
-
     }
     public ArrayList<ItemColor> getColorIdList(String itemID){
         ArrayList<ItemColor> colorIds=new ArrayList<>();

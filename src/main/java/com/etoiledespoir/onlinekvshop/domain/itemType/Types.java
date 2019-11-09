@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Types {
     @Id
     private String id;
-    private String type;
+    private String typeName;
 
     private Types() {
     }
@@ -20,19 +20,19 @@ public class Types {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     @Override
     public String toString() {
         return "Types{" +
                 "id='" + id + '\'' +
-                ", type='" + type + '\'' +
+                ", typeName='" + typeName + '\'' +
                 '}';
     }
     public static class Builder{
@@ -48,7 +48,7 @@ public class Types {
         public Types build(){
             Types types=new Types();
             types.id=this.id;
-            types.type=this.type;
+            types.typeName =this.type;
             return types;
         }
     }

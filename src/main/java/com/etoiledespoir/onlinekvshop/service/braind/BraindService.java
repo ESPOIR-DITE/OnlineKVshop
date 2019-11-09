@@ -47,7 +47,7 @@ public class BraindService implements Iservice<Braind,String> {
     public Braind readWithName(String name) {
        List<Braind> result=braindRep.findAll();
        for(Braind braind: result){
-           if(braind.getBraind().equals(name)){
+           if(braind.getBraindName().equals(name)){
                return braind;
            }
        }

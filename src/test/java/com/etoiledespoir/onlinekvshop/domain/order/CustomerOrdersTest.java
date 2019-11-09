@@ -6,14 +6,14 @@ import org.junit.Test;
 
 public class CustomerOrdersTest {
 
-    CustomerOrders order= OrderFactory.getOrders("0000","432/qwereqwe");
+    //orderService order= OrderFactory.getOrders("0000","432/qwereqwe");
     @Before
     public void setUp() throws Exception {
     }
 
     @Test
     public void getDate() {
-        System.out.println(order.toString());
+       // System.out.println(order.toString());
     }
 
     @Test

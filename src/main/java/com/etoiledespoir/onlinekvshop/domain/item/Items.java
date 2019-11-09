@@ -9,7 +9,7 @@ public class Items {
     @Id
     private String ItemNumber;
     private String name;
-    private String type;
+    private String typeName;
     @Column(name = "item_description" )
     private String description;
 
@@ -32,12 +32,12 @@ public class Items {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getTypeName() {
+        return typeName;
     }
 
     public void setQuantity(String type) {
-        this.type = type;
+        this.typeName = type;
     }
 
     public String getDescription() {
@@ -53,7 +53,7 @@ public class Items {
         return "Items{" +
                 "ItemNumber='" + ItemNumber + '\'' +
                 ", price=" + name +
-                ", quantity=" + type +
+                ", quantity=" + typeName +
                 ", description='" + description + '\'' +
                 '}';
     }
@@ -83,7 +83,7 @@ public class Items {
             i.description=this.description;
             i.ItemNumber=this.ItemNumber;
             i.name=this.name;
-            i.type=this.type;
+            i.typeName =this.type;
             return i;
         }
 

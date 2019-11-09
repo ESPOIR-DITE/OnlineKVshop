@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Color {
     @Id
     private String colorId;
-    private String color;
+    private String colorName;
 
     public Color() {
     }
@@ -20,19 +20,19 @@ public class Color {
         this.colorId = colorId;
     }
 
-    public String getColor() {
-        return color;
+    public String getColorName() {
+        return colorName;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColorName(String colorName) {
+        this.colorName = colorName;
     }
 
     @Override
     public String toString() {
         return "Color{" +
                 "colorId='" + colorId + '\'' +
-                ", color='" + color + '\'' +
+                ", colorName='" + colorName + '\'' +
                 '}';
     }
     public static class Builder{
@@ -47,7 +47,7 @@ public class Color {
         }
         public Color build(){
             Color color=new Color();
-            color.color=this.color;
+            color.colorName =this.color;
             color.colorId=this.colorId;
             return color;
         }

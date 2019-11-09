@@ -1,51 +1,6 @@
 package com.etoiledespoir.onlinekvshop.controller.itemController.categories.cloths;
 
-import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.accounting.Accounting;
-import com.etoiledespoir.onlinekvshop.domain.accounting.accountChange.AccountChange;
-import com.etoiledespoir.onlinekvshop.domain.braind.impl.ItemBraind;
-import com.etoiledespoir.onlinekvshop.domain.color.Color;
-import com.etoiledespoir.onlinekvshop.domain.gender.Gender;
-import com.etoiledespoir.onlinekvshop.domain.gender.bridge.ItemGender;
-import com.etoiledespoir.onlinekvshop.domain.generic_class.item_picture.Item_Pictures;
-import com.etoiledespoir.onlinekvshop.domain.item.impl.allItems.Products;
-import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.BeautyHelper;
-import com.etoiledespoir.onlinekvshop.domain.item.impl.cloths.Cloths;
-import com.etoiledespoir.onlinekvshop.domain.pic.picHelper.MypicHelpRead;
-import com.etoiledespoir.onlinekvshop.domain.pictures.Images;
-import com.etoiledespoir.onlinekvshop.factory.domain.accounting.AccountChangeFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.accounting.AccountingFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.braind.ItemBraindFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.gender.ItemGenderFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.genericFactory.item_picture.ItemPictureFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.item.ClothsFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.MypicHelpReadFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.pictures.ImagesFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.product.ProductFactory;
-import com.etoiledespoir.onlinekvshop.service.braind.BraindService;
-import com.etoiledespoir.onlinekvshop.service.braind.ItemBraindService;
-import com.etoiledespoir.onlinekvshop.service.color.ColorService;
-import com.etoiledespoir.onlinekvshop.service.color.ItemColorService;
-import com.etoiledespoir.onlinekvshop.service.gender.GenderService;
-import com.etoiledespoir.onlinekvshop.service.gender.ItemGenderService;
-import com.etoiledespoir.onlinekvshop.service.itemService.accounting.AccountChangeService;
-import com.etoiledespoir.onlinekvshop.service.itemService.accounting.AccountingServce;
-import com.etoiledespoir.onlinekvshop.service.itemService.category.cloths.impl.ClothsService;
-import com.etoiledespoir.onlinekvshop.service.mypic.impl.PictureService;
-import com.etoiledespoir.onlinekvshop.service.pictures.ImagesService;
-import com.etoiledespoir.onlinekvshop.service.pictures.Item_PicturesService;
-import com.etoiledespoir.onlinekvshop.service.product.ProductService;
-import com.etoiledespoir.onlinekvshop.service.size.ItemSizeService;
-import com.etoiledespoir.onlinekvshop.service.size.SizeService;
-import com.etoiledespoir.onlinekvshop.util.CurrentDate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
 
 @RestController
 @RequestMapping("/OKVS/cloths")
@@ -86,14 +41,14 @@ public class ClothsController{}/** implements Icontroller<Cloths, String> {
     private ArrayList<Color> colorList = new ArrayList<>();
 
    @PostMapping("/create")
-    public Boolean createAll(@RequestBody BeautyHelper b) throws IOException {
+    public Boolean createAll(@RequestBody MyItemHelper b) throws IOException {
        //Cloths cloths= ClothsFactory.getCloths(name,type,size,marque,gender,desc,color);
        Products products= ProductFactory.getProduct(b.getItemName(),b.getDecription());
        if (products != null) {
            //**create the product*/
           // String productid=productService.creat(products).getId();
            /** reading the genderId*/
-        //  String  itemGenderID = genderService.readWithGender(b.getGender());
+        //  String  itemGenderID = genderService.readWithGender(b.getGenderName());
            /** creating itemGender*/
         //   gender = ItemGenderFactory.getItemGender(products.getId(), itemGenderID);
         //   /***creating item color*/
@@ -102,7 +57,7 @@ public class ClothsController{}/** implements Icontroller<Cloths, String> {
         //       itemColorService.creatList(colorList.get(i).getColorId(), products.getId());
         //   }
            /**creating Braind**/
-        //   String braindId = braindService.readWithName(b.getBraind()).getBraindId();
+        //   String braindId = braindService.readWithName(b.getBraindName()).getBraindId();
         //   ItemBraind itemBraind = ItemBraindFactory.getItemBraind(braindId, products.getId());
         //   itemBraindService.creat(itemBraind);
            /**Accounting and History**/

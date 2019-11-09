@@ -40,7 +40,7 @@ public class PictureFactoryTest{}/** extends JFrame implements ActionListener {
             frame.setLayout(new GridLayout(3,1,10,10));
             frame.setVisible(true);
             frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            frame.setSize(960,1200);
+            frame.setSizeNumber(960,1200);
 
             panelText.setLayout(new GridLayout(3,1,10,10));
             displayPanel.setLayout(new FlowLayout());

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Braind {
     @Id
     private String braindId;
-    private String braind;
+    private String braindName;
 
     private Braind() {
     }
@@ -20,19 +20,19 @@ public class Braind {
         this.braindId = braindId;
     }
 
-    public String getBraind() {
-        return braind;
+    public String getBraindName() {
+        return braindName;
     }
 
-    public void setBraind(String braind) {
-        this.braind = braind;
+    public void setBraindName(String braindName) {
+        this.braindName = braindName;
     }
 
     @Override
     public String toString() {
         return "Braind{" +
                 "braindId='" + braindId + '\'' +
-                ", braind='" + braind + '\'' +
+                ", braindName='" + braindName + '\'' +
                 '}';
     }
     public static class Builder{
@@ -47,7 +47,7 @@ public class Braind {
         }
         public Braind build(){
             Braind b=new Braind();
-            b.braind=this.braind;
+            b.braindName =this.braind;
             b.braindId=this.braindId;
             return b;
         }

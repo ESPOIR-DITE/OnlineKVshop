@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.orderService.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.order.CustomerOrders;
+import com.etoiledespoir.onlinekvshop.domain.order.Orders;
 import com.etoiledespoir.onlinekvshop.repository.OrderRepo.Iorder;
 import com.etoiledespoir.onlinekvshop.service.orderService.IorderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +24,13 @@ public class OrderService implements IorderService {
     }
 
     @Override
-    public CustomerOrders creat(CustomerOrders order) {
+    public Orders creat(Orders order) {
         return iorder.save(order);
     }
 
     @Override
-    public CustomerOrders delete(String id) {
-        Optional<CustomerOrders> myOrder=iorder.findById(id);
+    public Orders delete(String id) {
+        Optional<Orders> myOrder=iorder.findById(id);
         if(myOrder!=null){
             iorder.deleteById(id);
         }
@@ -38,18 +38,18 @@ public class OrderService implements IorderService {
     }
 
     @Override
-    public CustomerOrders Update(CustomerOrders order) {
+    public Orders Update(Orders order) {
         return iorder.save(order);
     }
 
     @Override
-    public CustomerOrders read(String id) {
-        Optional<CustomerOrders> myOrder=iorder.findById(id);
+    public Orders read(String id) {
+        Optional<Orders> myOrder=iorder.findById(id);
         return myOrder.orElse(null);
     }
 
     @Override
-    public List<CustomerOrders> readAll() {
+    public List<Orders> readAll() {
         return iorder.findAll();
     }
 

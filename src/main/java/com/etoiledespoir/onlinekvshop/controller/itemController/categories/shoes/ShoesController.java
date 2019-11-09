@@ -53,7 +53,7 @@ public class ShoesController{}/** implements Icontroller<Shoes, String> {
         if(shoes!=null){
             String StringImage=pictureService.readFile(id);
             if(StringImage!=null||StringImage.equals("")){
-                MypicHelpRead mypicHelpRead= MypicHelpReadFactory.getMypicture(id,shoes.getItemNumber(),shoes.getColor(),shoes.toString());
+                MypicHelpRead mypicHelpRead= MypicHelpReadFactory.getMypicture(id,shoes.getItemNumber(),shoes.getColorName(),shoes.toString());
                 return mypicHelpRead;
             }
         }

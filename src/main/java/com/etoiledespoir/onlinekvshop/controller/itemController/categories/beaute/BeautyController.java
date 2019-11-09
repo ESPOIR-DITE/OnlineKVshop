@@ -1,6 +1,5 @@
 package com.etoiledespoir.onlinekvshop.controller.itemController.categories.beaute;
 
-import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.accounting.Accounting;
 import com.etoiledespoir.onlinekvshop.domain.accounting.accountChange.AccountChange;
 import com.etoiledespoir.onlinekvshop.domain.braind.impl.ItemBraind;
@@ -10,11 +9,12 @@ import com.etoiledespoir.onlinekvshop.domain.gender.bridge.ItemGender;
 import com.etoiledespoir.onlinekvshop.domain.generic_class.item_picture.Item_Pictures;
 import com.etoiledespoir.onlinekvshop.domain.item.impl.allItems.ProductType;
 import com.etoiledespoir.onlinekvshop.domain.item.impl.allItems.Products;
-import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.BeautyHelper;
+import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.MyItemHelper;
 import com.etoiledespoir.onlinekvshop.domain.item.impl.beate.BeautyMakeup;
 import com.etoiledespoir.onlinekvshop.domain.itemType.Types;
 import com.etoiledespoir.onlinekvshop.domain.pic.picHelper.MypicHelpRead;
 import com.etoiledespoir.onlinekvshop.domain.pictures.Images;
+import com.etoiledespoir.onlinekvshop.domain.size.ProductSize;
 import com.etoiledespoir.onlinekvshop.domain.size.Size;
 import com.etoiledespoir.onlinekvshop.factory.domain.accounting.AccountChangeFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.accounting.AccountingFactory;
@@ -26,6 +26,7 @@ import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.Mypic
 import com.etoiledespoir.onlinekvshop.factory.domain.pictures.ImagesFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.product.ProductFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.product.ProductTypeFactory;
+import com.etoiledespoir.onlinekvshop.factory.domain.size.ItemSizeFactory;
 import com.etoiledespoir.onlinekvshop.service.braind.BraindService;
 import com.etoiledespoir.onlinekvshop.service.braind.ItemBraindService;
 import com.etoiledespoir.onlinekvshop.service.color.ColorService;
@@ -89,6 +90,7 @@ public class BeautyController {
     private ItemSizeService itemSizeService;
 
 
+
     @Autowired
     ProductService productService;
     @Autowired
@@ -97,7 +99,7 @@ public class BeautyController {
     TypesService typesService;
 
     private String home = "C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisior\\";
-    private String work = "C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\";
+   // private String work = "C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\";
 
     private BeautyFactory BF;
     private ItemPictureFactory IPF;
@@ -111,14 +113,14 @@ public class BeautyController {
 
 
     @PostMapping("/creatwithfile")
-    public Boolean create(@RequestBody BeautyHelper beaut) {
+    public Boolean create(@RequestBody MyItemHelper beaut) {
         System.out.println(beaut.toString());
-        //BeautyMakeup BM=BeautyFactory.getBeauty(beaut.getSize(),beaut.getType());
+        //BeautyMakeup BM=BeautyFactory.getBeauty(beaut.getSizeNumber(),beaut.getTypeName());
         Products BM = ProductFactory.getProduct(beaut.getItemName(), beaut.getDecription());
 
         if (BM != null) {
             /** reading and create product type*/
-            Types productType=  typesService.read(beaut.getType());
+            Types productType=  typesService.read(beaut.getItemType());
             if(productType!=null){
                 ProductType productType1=ProductTypeFactory.getProductType(BM.getId(),productType.getId());
                 productTypeservice.creat(productType1);
@@ -133,6 +135,13 @@ public class BeautyController {
             for (int i = 0; i < colorList.size(); i++) {
                 itemColorService.creatList(colorList.get(i).getColorId(), BM.getId());
             }
+            /***reading the size and creating it*/
+            for (int i=0;i<beaut.getSize().size();i++){
+                Size sizeObj=sizeService.read(beaut.getSize().get(i));
+                ProductSize size= ItemSizeFactory.getProductSize(sizeObj.getId(),BM.getId());
+                itemSizeService.creat(size);
+            }
+
             /**creating Braind**/
             braindId = braindService.readWithName(beaut.getBraind()).getBraindId();
             ItemBraind itemBraind = ItemBraindFactory.getItemBraind(braindId, BM.getId());
@@ -177,7 +186,7 @@ public class BeautyController {
     public String getItemType(String itemID){
         String productTypeStr=null;
         ProductType productType =productTypeservice.read(itemID);
-        return  productTypeStr=typesService.read(productType.getType()).getType();
+        return  productTypeStr=typesService.read(productType.getTypeName()).getTypeName();
     }
 
     public ArrayList<Size> getSizesList(String id) {
@@ -200,13 +209,13 @@ public class BeautyController {
 
     public String getBraind(String itemId) {
         braindId = itemBraindService.read(itemId).getBraindId();
-        String myBraind = braindService.read(braindId).getBraind();
+        String myBraind = braindService.read(braindId).getBraindName();
         return myBraind;
     }
 
     public String getGender(String itemid) {
         String genderId = itemGenderService.read(itemid).getGenderId();
-        String mygender = genderService.read(genderId).getGender();
+        String mygender = genderService.read(genderId).getGenderName();
         return mygender;
     }
 
@@ -256,7 +265,7 @@ public class BeautyController {
 
 
     public Boolean helpCreateFile(MultipartFile file, String id) throws IOException {
-        File filenew = new File(work + id + ".png");
+        File filenew = new File(home + id + ".png");
         filenew.createNewFile();
 
         FileOutputStream fos = new FileOutputStream(filenew);

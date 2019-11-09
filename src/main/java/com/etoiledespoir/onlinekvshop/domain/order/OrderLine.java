@@ -9,19 +9,12 @@ public class OrderLine {
     private String linecode;
     private String itemNumber;
     private String orderNumber;
-    private String date;
+
 
 
     private OrderLine() {
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public String getLinecode() {
         return linecode;
@@ -53,7 +46,6 @@ public class OrderLine {
                 "linecode='" + linecode + '\'' +
                 ", itemNumber='" + itemNumber + '\'' +
                 ", orderNumber='" + orderNumber + '\'' +
-                ", date='" + date + '\'' +
                 '}';
     }
 
@@ -61,7 +53,6 @@ public class OrderLine {
         private String linecode;
         private String itemNumber;
         private String OrderNumber;
-        private String date;
         public Builder (String linecode){
             this.linecode=linecode;
         }
@@ -74,17 +65,12 @@ public class OrderLine {
             System.out.println(orderNumber);
             return this;
         }
-        public Builder buildDate(String date)
-        {
-            this.date=date;
-            return this;
-        }
+
         public OrderLine getOrderLine(){
             OrderLine line=new OrderLine();
             line.itemNumber=this.itemNumber;
             line.linecode=this.linecode;
             line.orderNumber =this.OrderNumber;
-            line.date=this.date;
             return line;
         }
 

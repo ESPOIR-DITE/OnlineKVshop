@@ -48,7 +48,7 @@ public class ColorService implements Iservice<Color,String> {
     public Color readWithName(String colorName){
         List<Color>result=colorRep.findAll();
         for(Color color:result){
-            if(color.getColor().equals(colorName)){
+            if(color.getColorName().equals(colorName)){
                 return color;
             }
         }
@@ -60,11 +60,12 @@ public class ColorService implements Iservice<Color,String> {
         return colorRep.findAll();
     }
 
-    public List<Color>itemColors(ArrayList<Color> list){
+    public List<Color>itemColors(ArrayList<String> list){
         List<Color>toreturn=new ArrayList<>();
         List<Color>result=colorRep.findAll();
         for(int i=0; i<list.size();i++){
-            toreturn.add(readWithName(list.get(i).getColor()));     // we are reading the entire list of color and send it to the readWithName to get the entire object of the specified color
+            //readWithName(list.get(i))
+            toreturn.add(readWithName(list.get(i)));     // we are reading the entire list of color and send it to the readWithName to get the entire object of the specified color
         }
         return toreturn;
     }

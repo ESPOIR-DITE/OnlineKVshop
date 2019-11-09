@@ -19,7 +19,7 @@ public class OrderlinController implements Icontroller<OrderLine,String> {
     @Override
     public OrderLine create(@RequestBody OrderLine orderLine) {
         System.out.println(orderLine.toString());
-    OrderLine orderLine1= OrderLineFactory.getLine(orderLine.getItemNumber(),orderLine.getOrderNumber(), CurrentDate.getCurrentTimeUsingDate());
+    OrderLine orderLine1= OrderLineFactory.getLine(orderLine.getItemNumber(),orderLine.getOrderNumber());
         return orderLineService.creat(orderLine1);
     }
 

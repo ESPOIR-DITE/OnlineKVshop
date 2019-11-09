@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Gender {
     @Id
     private String genderId;
-    private String gender;
+    private String genderName;
 
     private Gender() {
     }
@@ -20,19 +20,19 @@ public class Gender {
         this.genderId = genderId;
     }
 
-    public String getGender() {
-        return gender;
+    public String getGenderName() {
+        return genderName;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGenderName(String genderName) {
+        this.genderName = genderName;
     }
 
     @Override
     public String toString() {
         return "Gender{" +
                 "genderId='" + genderId + '\'' +
-                ", gender='" + gender + '\'' +
+                ", genderName='" + genderName + '\'' +
                 '}';
     }
     public static class Builder{
@@ -47,7 +47,7 @@ public class Gender {
         }
         public Gender build(){
             Gender gender=new Gender();
-            gender.gender=this.gender;
+            gender.genderName =this.gender;
             gender.genderId=this.genderId;
             return gender;
         }

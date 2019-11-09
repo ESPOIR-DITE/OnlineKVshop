@@ -6,27 +6,27 @@ import javax.persistence.Id;
 @Entity
 public class Payment  {
     @Id
-    private String paymentNUmber;
-    private String PaymentType;
+    private String paymentNumber;
+    private String PaymentTypeId;
     private double amount;
     private int orderNumber;
 
     private Payment(){}
 
-    public String getPaymentNUmber() {
-        return paymentNUmber;
+    public String getPaymentNumber() {
+        return paymentNumber;
     }
 
-    public void setPaymentNUmber(String paymentNUmber) {
-        this.paymentNUmber = paymentNUmber;
+    public void setPaymentNumber(String paymentNumber) {
+        this.paymentNumber = paymentNumber;
     }
 
-    public String getPaymentType() {
-        return PaymentType;
+    public String getPaymentTypeId() {
+        return PaymentTypeId;
     }
 
-    public void setPaymentType(String paymentType) {
-        PaymentType = paymentType;
+    public void setPaymentTypeId(String paymentTypeId) {
+        PaymentTypeId = paymentTypeId;
     }
 
     public double getAmount() {
@@ -48,8 +48,8 @@ public class Payment  {
     @Override
     public String toString() {
         return "Payment{" +
-                "paymentNUmber='" + paymentNUmber + '\'' +
-                ", PaymentType='" + PaymentType + '\'' +
+                "paymentNumber='" + paymentNumber + '\'' +
+                ", PaymentTypeId='" + PaymentTypeId + '\'' +
                 ", amount=" + amount +
                 ", customer=" + orderNumber +
                 '}';
@@ -85,8 +85,8 @@ public class Payment  {
             Payment payment=new Payment();
             payment.amount=this.amount;
             payment.orderNumber=this.orderNumber;
-            payment.paymentNUmber=this.paymentNUmber;
-            payment.PaymentType=this.paymentType;
+            payment.paymentNumber =this.paymentNUmber;
+            payment.PaymentTypeId =this.paymentType;
             return payment;
         }
 

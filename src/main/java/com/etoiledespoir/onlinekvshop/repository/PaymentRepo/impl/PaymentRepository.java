@@ -28,7 +28,7 @@ public class PaymentRepository{}/** implements Ipayment {
     public Payment creat(Payment payment) {
         String code=getPremier();
         try {
-            String sql="INSERT INTO payment(PAYMENT_NUMBER,PAYMENT_TYPE,AMOUNT,CUSTOMER_CODE) VALUES ("+code+",'"+payment.getPaymentType()+"',"+payment.getAmount()+",'"+payment.getCustomer()+"');";
+            String sql="INSERT INTO payment(PAYMENT_NUMBER,PAYMENT_TYPE,AMOUNT,CUSTOMER_CODE) VALUES ("+code+",'"+payment.getPaymentTypeId()+"',"+payment.getAmount()+",'"+payment.getCustomer()+"');";
             PreparedStatement statement=conne.prepareStatement(sql);
 
             statement.executeUpdate();
@@ -40,7 +40,7 @@ public class PaymentRepository{}/** implements Ipayment {
 
     @Override
     public Payment delete(String id) {
-        payment= PaymentFactory.getPayment(read(id).getPaymentNUmber(),read(id).getPaymentType(),read(id).getAmount(),read(id).getCustomer());
+        payment= PaymentFactory.getPayment(read(id).getPaymentNumber(),read(id).getPaymentTypeId(),read(id).getAmount(),read(id).getCustomer());
         try{
             String sql="DELETE FROM payment where PAYMENT_NUMBER="+id+";";
             PreparedStatement statement=conne.prepareStatement(sql);
@@ -55,14 +55,14 @@ public class PaymentRepository{}/** implements Ipayment {
     @Override
     public Payment Update(Payment payment) {
         try{
-            String sql="UPDATE  payment SET PAYMENT_TYPE='"+payment.getPaymentType()+"',AMOUNT="+payment.getAmount()+",CUSTOMER_CODE='"+payment.getCustomer()+"' WHERE PAYMENT_NUMBER="+payment.getPaymentNUmber()+";";
+            String sql="UPDATE  payment SET PAYMENT_TYPE='"+payment.getPaymentTypeId()+"',AMOUNT="+payment.getAmount()+",CUSTOMER_CODE='"+payment.getCustomer()+"' WHERE PAYMENT_NUMBER="+payment.getPaymentNumber()+";";
             PreparedStatement statement=conne.prepareStatement(sql);
             statement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return read(payment.getPaymentNUmber());
+        return read(payment.getPaymentNumber());
     }
 
     @Override

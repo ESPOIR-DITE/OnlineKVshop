@@ -17,7 +17,7 @@ public class BraindController implements Icontroller<Braind,String> {
     @PostMapping("/create")
     @Override
     public Braind create(@RequestBody Braind braind) {
-        Braind braind1= BraindFactory.getBraind(braind.getBraind());
+        Braind braind1= BraindFactory.getBraind(braind.getBraindName());
         return braindService.creat(braind1);
     }
 

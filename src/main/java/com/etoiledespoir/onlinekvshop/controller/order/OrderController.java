@@ -1,8 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.order;
 
 
-import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.order.CustomerOrders;
+import com.etoiledespoir.onlinekvshop.domain.order.Orders;
 import com.etoiledespoir.onlinekvshop.factory.domain.OrderFactory;
 import com.etoiledespoir.onlinekvshop.service.orderService.impl.OrderService;
 import com.etoiledespoir.onlinekvshop.util.CurrentDate;
@@ -13,34 +12,37 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/OKVS/order")
-public class OrderController implements Icontroller<CustomerOrders,String> {
+public class OrderController  {
     @Autowired
     private OrderService orderService;
 
     @PostMapping("/create")
-    public CustomerOrders create(@RequestBody CustomerOrders customerOrders1){
-        System.out.println(customerOrders1.getCustomer());
-        CustomerOrders customerOrders = OrderFactory.getOrders(customerOrders1.getCustomer(), CurrentDate.getCurrentTimeUsingDate());
-        return orderService.creat(customerOrders);
+    public Orders create(@RequestBody Orders orders){
+        System.out.println(orders.toString());
+        /**
+         * remember the getDate should return the customer id.
+         */
+        Orders orders1 = OrderFactory.getOrders(orders.getCustomerId(), CurrentDate.getCurrentTimeUsingDate());
+        return orderService.creat(orders1);
     }
     @GetMapping("/read")
-    @Override
-    public CustomerOrders read(@RequestParam(value = "id") String id) {
+    public Orders read(@RequestParam(value = "id") String id) {
         return orderService.read(id);
     }
     @PostMapping("/update")
-    @Override
-    public CustomerOrders update(@RequestBody CustomerOrders order) {
-        return null;
+
+    public Orders update(@RequestBody Orders order) {
+        System.out.println(order.toString());
+        return orderService.Update(order);
     }
     @GetMapping("/delete")
-    @Override
-    public CustomerOrders delete(@RequestParam(value = "id")  String id) {
-        return null;
+
+    public Orders delete(@RequestParam(value = "id")  String id) {
+        return orderService.delete(id);
     }
     @GetMapping("/reads")
-    @Override
-    public List<CustomerOrders> readAll() {
+
+    public List<Orders> readAll() {
         return orderService.readAll();
     }
 

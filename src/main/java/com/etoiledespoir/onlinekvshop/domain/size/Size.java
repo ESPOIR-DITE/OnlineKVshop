@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Size {
     @Id
     private String id;
-    private String size;
+    private String sizeNumber;
 
     private Size() {
     }
@@ -20,19 +20,19 @@ public class Size {
         this.id = id;
     }
 
-    public String getSize() {
-        return size;
+    public String getSizeNumber() {
+        return sizeNumber;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setSizeNumber(String sizeNumber) {
+        this.sizeNumber = sizeNumber;
     }
 
     @Override
     public String toString() {
         return "Size{" +
                 "id='" + id + '\'' +
-                ", size='" + size + '\'' +
+                ", sizeNumber='" + sizeNumber + '\'' +
                 '}';
     }
     public static class Builder{
@@ -49,7 +49,7 @@ public class Size {
         public Size build(){
             Size size=new Size();
             size.id=this.id;
-            size.size=this.size;
+            size.sizeNumber =this.size;
             return size;
         }
     }

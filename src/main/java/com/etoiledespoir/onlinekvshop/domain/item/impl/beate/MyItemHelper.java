@@ -4,21 +4,20 @@ import com.etoiledespoir.onlinekvshop.domain.color.Color;
 import com.etoiledespoir.onlinekvshop.domain.size.Size;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class BeautyHelper {
+public class MyItemHelper {
     private String itemName;
-    private ArrayList<Size> size;
+    private ArrayList<String> size;
     private String decription;
     private String gender;
-    private String type;
+    private String itemType;
     private int quantity;
     private double price;
     private ArrayList<byte[]> image;
-    private ArrayList<Color> colors;
+    private ArrayList<String> colors;
     private String braind;
 
-    private BeautyHelper() {
+    private MyItemHelper() {
     }
 
     public String getBraind() {
@@ -33,11 +32,11 @@ public class BeautyHelper {
         return gender;
     }
 
-    public ArrayList<Color> getColors() {
+    public ArrayList<String> getColors() {
         return colors;
     }
 
-    public void setColors(ArrayList<Color> colors) {
+    public void setColors(ArrayList<String> colors) {
         this.colors = colors;
     }
 
@@ -45,12 +44,12 @@ public class BeautyHelper {
         this.gender = gender;
     }
 
-    public String getType() {
-        return type;
+    public String getItemType() {
+        return itemType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
     }
 
     public int getQuantity() {
@@ -77,11 +76,11 @@ public class BeautyHelper {
         this.itemName = itemName;
     }
 
-    public ArrayList<Size> getSize() {
+    public ArrayList<String> getSize() {
         return size;
     }
 
-    public void setSize(ArrayList<Size> size) {
+    public void setSize(ArrayList<String> size) {
         this.size = size;
     }
 
@@ -104,12 +103,12 @@ public class BeautyHelper {
 
     @Override
     public String toString() {
-        return "BeautyHelper{" +
+        return "MyItemHelper{" +
                 "itemName='" + itemName + '\'' +
                 ", size='" + size + '\'' +
                 ", decription='" + decription + '\'' +
                 ", gender='" + gender + '\'' +
-                ", type='" + type + '\'' +
+                ", itemType='" + itemType + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", image=" + image +
