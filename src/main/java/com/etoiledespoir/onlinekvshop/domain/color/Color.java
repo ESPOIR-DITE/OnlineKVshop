@@ -42,7 +42,7 @@ public class Color {
             this.colorId=colorId;
         }
         public Builder buildColor(String color){
-            this.colorId=color;
+            this.color=color;
             return this;
         }
         public Color build(){

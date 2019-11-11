@@ -16,7 +16,7 @@ public class AddressTypeController implements Icontroller<AddressType,String > {
     @PostMapping("/create")
     @Override
     public AddressType create(@RequestBody AddressType addressType) {
-        AddressType addressType1= AddressTypeFact.getAddresType(addressType.getType());
+        AddressType addressType1= AddressTypeFact.getAddresType(addressType.getAddressType());
         return addressTypeService.creat(addressType1);
     }
 

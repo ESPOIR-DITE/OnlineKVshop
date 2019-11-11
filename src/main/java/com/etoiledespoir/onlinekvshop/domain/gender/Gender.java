@@ -39,7 +39,7 @@ public class Gender {
         private String genderId;
         private String gender;
         public Builder(String genderId){
-            this.gender=genderId;
+            this.genderId=genderId;
         }
         public Builder buildGender(String gender){
             this.gender=gender;

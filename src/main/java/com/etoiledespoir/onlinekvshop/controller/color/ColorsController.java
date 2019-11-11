@@ -17,6 +17,7 @@ public class ColorsController implements Icontroller<Color,String> {
     @PostMapping("/create")
     @Override
     public Color create(@RequestBody Color color) {
+        System.out.println(color.toString());
         Color color1= ColorFactory.getColor(color.getColorName());
         return colorService.creat(color1);
     }

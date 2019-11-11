@@ -46,7 +46,7 @@ public class AddressTypeService implements Iservice<AddressType,String> {
     }
     public String readWithAddressType(String type){
         for(AddressType addressType:readAll()){
-            if(addressType.getType().equals(type)){
+            if(addressType.getAddressType().equals(type)){
                 return addressType.getAddressTypeId();
             }
         }

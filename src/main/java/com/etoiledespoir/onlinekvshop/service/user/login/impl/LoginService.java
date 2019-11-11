@@ -13,7 +13,7 @@ import java.util.Optional;
 public class LoginService implements LoginServiceInt {
     @Autowired
     private LoginRepository loginRepository;
-    @Autowired
+
     private static LoginService loginService;
 
     private LoginService() {

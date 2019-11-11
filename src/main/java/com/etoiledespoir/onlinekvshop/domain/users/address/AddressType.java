@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class AddressType {
     @Id
     private String addressTypeId;
-    private String type;
+    private String addressType;
 
     private AddressType() {
     }
@@ -20,19 +20,19 @@ public class AddressType {
         this.addressTypeId = addressTypeId;
     }
 
-    public String getType() {
-        return type;
+    public String getAddressType() {
+        return addressType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAddressType(String addressType) {
+        this.addressType = addressType;
     }
 
     @Override
     public String toString() {
         return "AddressType{" +
                 "addressTypeId='" + addressTypeId + '\'' +
-                ", type='" + type + '\'' +
+                ", addressType='" + addressType + '\'' +
                 '}';
     }
     public static class Builder{
@@ -49,7 +49,7 @@ public class AddressType {
         public AddressType build(){
             AddressType AT=new AddressType();
             AT.addressTypeId=this.addressTypeId;
-            AT.type=this.type;
+            AT.addressType =this.type;
             return AT;
         }
     }
