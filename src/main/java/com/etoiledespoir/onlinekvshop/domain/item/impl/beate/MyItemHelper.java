@@ -9,7 +9,7 @@ public class MyItemHelper {
     private String itemName;
     private ArrayList<String> size;
     private String decription;
-    private String gender;
+    private ArrayList<String> gender;
     private String itemType;
     private int quantity;
     private double price;
@@ -28,7 +28,7 @@ public class MyItemHelper {
         this.braind = braind;
     }
 
-    public String getGender() {
+    public ArrayList<String> getGender() {
         return gender;
     }
 
@@ -40,7 +40,7 @@ public class MyItemHelper {
         this.colors = colors;
     }
 
-    public void setGender(String gender) {
+    public void setGender(ArrayList<String> gender) {
         this.gender = gender;
     }
 

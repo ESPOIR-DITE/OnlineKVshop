@@ -120,16 +120,18 @@ public class BeautyController {
 
         if (BM != null) {
             /** reading and create product type*/
-            Types productType=  typesService.read(beaut.getItemType());
+            Types productType=typesService.read(beaut.getItemType());
             if(productType!=null){
                 ProductType productType1=ProductTypeFactory.getProductType(BM.getId(),productType.getId());
                 productTypeservice.creat(productType1);
 
             /** reading the genderId*/
-            itemGenderID = genderService.readWithGender(beaut.getGender());
+            for(int i=0;i<beaut.getGender().size();i++){
+            itemGenderID = genderService.readWithGender(beaut.getGender().get(i));
             /** creating itemGender*/
             gender = ItemGenderFactory.getItemGender(BM.getId(), itemGenderID);
             itemGenderService.creat(gender);
+            }
             /***creating item color*/
             colorList.addAll(colorService.itemColors(beaut.getColors())); // getting all the objects of the colors
             for (int i = 0; i < colorList.size(); i++) {
