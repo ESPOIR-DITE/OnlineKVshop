@@ -6,10 +6,19 @@ import javax.persistence.Id;
 @Entity
 public class Item_Pictures {
     @Id
+    private String id;
     private String itemId;
     private String imageId;
 
     private Item_Pictures() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getItemId() {
@@ -31,11 +40,14 @@ public class Item_Pictures {
     @Override
     public String toString() {
         return "Item_Pictures{" +
-                "itemId='" + itemId + '\'' +
+                "id='" + id + '\'' +
+                ", itemId='" + itemId + '\'' +
                 ", imageId='" + imageId + '\'' +
                 '}';
     }
+
     public static class Builder{
+        private String id;
         private String itemId;
         private String imageId;
         public Builder(String itemId){
@@ -45,10 +57,15 @@ public class Item_Pictures {
             this.imageId=imageId;
             return this;
         }
+        public Builder buildId(String id){
+            this.id=id;
+            return this;
+        }
         public Item_Pictures build(){
             Item_Pictures IP=new Item_Pictures();
             IP.imageId=this.imageId;
             IP.itemId=this.itemId;
+            IP.id=this.id;
             return IP;
         }
     }

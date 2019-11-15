@@ -65,7 +65,7 @@ public class ColorService implements Iservice<Color,String> {
         List<Color>result=colorRep.findAll();
         for(int i=0; i<list.size();i++){
             //readWithName(list.get(i))
-            toreturn.add(readWithName(list.get(i)));     // we are reading the entire list of color and send it to the readWithName to get the entire object of the specified color
+            toreturn.add(read(list.get(i)));     // we are reading the entire list of color and send it to the readWithName to get the entire object of the specified color
         }
         return toreturn;
     }

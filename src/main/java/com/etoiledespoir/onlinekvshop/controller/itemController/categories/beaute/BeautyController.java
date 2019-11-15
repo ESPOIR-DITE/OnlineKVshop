@@ -145,7 +145,7 @@ public class BeautyController {
             }
 
             /**creating Braind**/
-            braindId = braindService.readWithName(beaut.getBraind()).getBraindId();
+            braindId = braindService.read(beaut.getBraind()).getBraindId();
             ItemBraind itemBraind = ItemBraindFactory.getItemBraind(braindId, BM.getId());
             itemBraindService.creat(itemBraind);
             /**Accounting and History**/
@@ -157,12 +157,11 @@ public class BeautyController {
                 if (images != null) {
                     imagesService.creat(images);
                     Item_Pictures IP = ItemPictureFactory.getItem_picture(BM.getId(), images.getId());
-                    if (IP != null) {
                         item_picturesService.creat(IP);
-                        productService.creat(BM);
-                    }
                 }
-            }}
+            }
+                productService.creat(BM);
+            }
             return true;
             //System.out.println(images.toString());
 
@@ -264,8 +263,6 @@ public class BeautyController {
     public List<BeautyMakeup> readAll() {
         return beautyService.readAll();
     }
-
-
     public Boolean helpCreateFile(MultipartFile file, String id) throws IOException {
         File filenew = new File(home + id + ".png");
         filenew.createNewFile();
@@ -278,9 +275,7 @@ public class BeautyController {
             filenew.delete();
             return true;
         }
-
         return false;
-
     }
 
     public byte[] decoreder(byte[] image) {
@@ -288,11 +283,18 @@ public class BeautyController {
         byte[] byteArrray = encodedString.getBytes();
         return byteArrray;
     }
-
     public void Accounthistory(Accounting accounting) {
+         try {
         int intialQuantity = accountingServce.read(accounting.getItemId()).getQuantity();
-        accountingServce.creat(accounting);
-        AccountChange accountChange = AccountChangeFactory.getAccount(accounting.getItemId(), CurrentDate.getCurrentTimeUsingDate(), intialQuantity, accounting.getQuantity(), accounting.toString());
-        accountChangeService.creat(accountChange);
+        if(intialQuantity!=0){
+            AccountChange accountChange = AccountChangeFactory.getAccount(accounting.getItemId(), CurrentDate.getCurrentTimeUsingDate(), intialQuantity, accounting.getQuantity(), accounting.toString());
+            accountChangeService.creat(accountChange);
+        }
+             accountingServce.creat(accounting);
+         }catch (NullPointerException ex) {
+             accountingServce.creat(accounting);
+             System.out.println("null point catch");
+         }
+
     }
 }

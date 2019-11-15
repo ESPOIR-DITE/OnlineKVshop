@@ -2,6 +2,7 @@ package com.etoiledespoir.onlinekvshop.controller.size;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.size.Size;
+import com.etoiledespoir.onlinekvshop.factory.domain.size.SizeFactory;
 import com.etoiledespoir.onlinekvshop.service.size.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +14,11 @@ import java.util.List;
 public class SizeController implements Icontroller<Size,String> {
     @Autowired
     SizeService sizeService;
-    @PostMapping("/read")
+    @PostMapping("/create")
     @Override
     public Size create(@RequestBody Size size) {
-        return sizeService.creat(size);
+        Size mysSize= SizeFactory.getSize(size.getSizeNumber());
+        return sizeService.creat(mysSize);
     }
 
     @GetMapping("/read")
