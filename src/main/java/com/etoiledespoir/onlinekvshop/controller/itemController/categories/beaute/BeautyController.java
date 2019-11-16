@@ -88,6 +88,8 @@ public class BeautyController {
     private SizeService sizeService;
     @Autowired
     private ItemSizeService itemSizeService;
+    @Autowired
+    private TypesService typesService;
 
 
 
@@ -95,8 +97,7 @@ public class BeautyController {
     ProductService productService;
     @Autowired
     ProductTypeservice productTypeservice;
-    @Autowired
-    TypesService typesService;
+
 
     private String home = "C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisior\\";
    // private String work = "C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\";
@@ -115,7 +116,7 @@ public class BeautyController {
     @PostMapping("/creatwithfile")
     public Boolean create(@RequestBody MyItemHelper beaut) {
         System.out.println(beaut.toString());
-        //BeautyMakeup BM=BeautyFactory.getBeauty(beaut.getSizeNumber(),beaut.getTypeName());
+        //BeautyMakeup BM=BeautyFactory.getBeauty(beaut.getSizeNumber(),beaut.getTypeId());
         Products BM = ProductFactory.getProduct(beaut.getItemName(), beaut.getDecription());
 
         if (BM != null) {
@@ -187,7 +188,7 @@ public class BeautyController {
     public String getItemType(String itemID){
         String productTypeStr=null;
         ProductType productType =productTypeservice.read(itemID);
-        return  productTypeStr=typesService.read(productType.getTypeName()).getTypeName();
+        return  productTypeStr=typesService.read(productType.getTypeId()).getTypeName();
     }
 
     public ArrayList<Size> getSizesList(String id) {

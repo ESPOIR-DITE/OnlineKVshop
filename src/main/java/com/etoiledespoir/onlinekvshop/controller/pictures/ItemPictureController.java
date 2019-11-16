@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/OKVS/itemProduct")
+@RequestMapping("/OKVS/itemPicture")
 public class ItemPictureController {
     @Autowired
     Item_PicturesService item_picturesService;

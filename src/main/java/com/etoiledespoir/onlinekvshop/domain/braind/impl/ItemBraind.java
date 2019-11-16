@@ -6,8 +6,9 @@ import javax.persistence.Id;
 @Entity
 public class ItemBraind {
     @Id
-    private String braindId;
     private String itemId;
+    private String braindId;
+
 
     public ItemBraind() {
     }
