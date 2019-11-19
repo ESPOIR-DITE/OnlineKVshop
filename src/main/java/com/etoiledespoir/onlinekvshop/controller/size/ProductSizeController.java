@@ -44,7 +44,7 @@ public class ProductSizeController implements Icontroller<ProductSize,String> {
         return itemSizeService.readAll();
     }
     @GetMapping("/readWithItem")
-    public List<ProductSize> productSizeList(String itemId){
+    public List<ProductSize> productSizeList(@RequestParam("id") String itemId){
         return itemSizeService.productSizeList(itemId);
     }
 }

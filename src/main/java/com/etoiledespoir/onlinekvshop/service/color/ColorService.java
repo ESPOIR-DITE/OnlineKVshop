@@ -60,6 +60,7 @@ public class ColorService implements Iservice<Color,String> {
         return colorRep.findAll();
     }
 
+
     public List<Color>itemColors(ArrayList<String> list){
         List<Color>toreturn=new ArrayList<>();
         List<Color>result=colorRep.findAll();
