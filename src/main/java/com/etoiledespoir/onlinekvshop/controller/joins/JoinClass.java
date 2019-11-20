@@ -12,6 +12,7 @@ import com.etoiledespoir.onlinekvshop.domain.generic_class.item_picture.Item_Pic
 import com.etoiledespoir.onlinekvshop.domain.item.impl.allItems.Products;
 import com.etoiledespoir.onlinekvshop.domain.joins.ItemView;
 import com.etoiledespoir.onlinekvshop.domain.pictures.Images;
+import com.etoiledespoir.onlinekvshop.factory.domain.genericFactory.item_picture.ItemPictureFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.join.ItemViewFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.join.ViewProductFactory;
 import com.etoiledespoir.onlinekvshop.service.braind.BraindService;
@@ -94,6 +95,7 @@ public class JoinClass {
         Products product = productService.read(id);
 
         ArrayList<Color> colors = new ArrayList<>();
+        ArrayList<byte[]> images = new ArrayList<>();
         if (product != null) {
             //reading the colors
             for (int i = 0; i < itemColorService.getColorIdList(id).size(); i++) {
@@ -112,9 +114,12 @@ public class JoinClass {
             Accounting accounting = accountingServce.read(id);
 
             //reading picture
-            Item_Pictures
+            Item_Pictures item_pictures= item_picturesService.getItemPicture(id);
+            for(int i=0;i<item_picturesService.readAllFileOf(id).size();i++){
+                images.add(imagesService.read(item_picturesService.readAllFileOf(id).get(i).getImageId()).getImage() );
+            }
 
-            viewProduct = ViewProductFactory.getViewProduct(product.getId(), product.getName(), braind.getBraindName(), accounting.getPrice(), product.getDescription(), accounting.getQuantity(), colors);
+            viewProduct = ViewProductFactory.getViewProduct(product.getId(), product.getName(), braind.getBraindName(), accounting.getPrice(), product.getDescription(), accounting.getQuantity(), colors,images);
 
             return viewProduct;
         }
