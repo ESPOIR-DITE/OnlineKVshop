@@ -9,12 +9,20 @@ public class OrderLine {
     private String linecode;
     private String itemNumber;
     private String orderNumber;
+    private int quantity;
 
 
 
     private OrderLine() {
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public String getLinecode() {
         return linecode;
@@ -46,6 +54,7 @@ public class OrderLine {
                 "linecode='" + linecode + '\'' +
                 ", itemNumber='" + itemNumber + '\'' +
                 ", orderNumber='" + orderNumber + '\'' +
+                ", quantity=" + quantity +
                 '}';
     }
 
@@ -53,8 +62,14 @@ public class OrderLine {
         private String linecode;
         private String itemNumber;
         private String OrderNumber;
+        private int quantity;
+
         public Builder (String linecode){
             this.linecode=linecode;
+        }
+        public Builder buildQuantity(int quantity){
+            this.quantity=quantity;
+            return this;
         }
         public Builder buildItemNumber(String itemNumber){
             this.itemNumber=itemNumber;
@@ -71,6 +86,7 @@ public class OrderLine {
             line.itemNumber=this.itemNumber;
             line.linecode=this.linecode;
             line.orderNumber =this.OrderNumber;
+            line.quantity=this.quantity;
             return line;
         }
 

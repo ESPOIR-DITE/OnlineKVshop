@@ -1,4 +1,4 @@
-package com.etoiledespoir.onlinekvshop.factory.domain;
+package com.etoiledespoir.onlinekvshop.factory.domain.order;
 
 import com.etoiledespoir.onlinekvshop.domain.order.Orders;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;

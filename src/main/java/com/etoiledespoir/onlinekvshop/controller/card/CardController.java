@@ -2,6 +2,7 @@ package com.etoiledespoir.onlinekvshop.controller.card;
 
 import com.etoiledespoir.onlinekvshop.controller.card.impl.CardControllerInt;
 import com.etoiledespoir.onlinekvshop.domain.card.Card;
+import com.etoiledespoir.onlinekvshop.factory.domain.card.CardFactory;
 import com.etoiledespoir.onlinekvshop.service.card.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,8 @@ public class CardController implements CardControllerInt {
     @PostMapping("/create")
     @Override
     public Card create(@RequestBody Card card) {
-        return cardService.creat(card);
+        Card card1= CardFactory.getCard(card.getItemId(),card.getCustomerId());
+        return cardService.creat(card1);
     }
 
     @GetMapping("/read")

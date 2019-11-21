@@ -1,6 +1,5 @@
 package com.etoiledespoir.onlinekvshop.domain.order;
 
-import com.etoiledespoir.onlinekvshop.factory.domain.OrderFactory;
 import org.junit.Before;
 import org.junit.Test;
 
