@@ -29,10 +29,9 @@ public class CardController implements CardControllerInt {
     @PostMapping("/create")
     @Override
     public Card create(@RequestBody Card card) {
-        Card card1= CardFactory.getCard(card.getItemId(),card.getCustomerId());
+        Card card1= CardFactory.getCard(card.getItemId(),card.getCustomerId(),card.getQuantity());
         return cardService.creat(card1);
     }
-
     @GetMapping("/read")
     @Override
     public Card read(@RequestParam("id") String id) {

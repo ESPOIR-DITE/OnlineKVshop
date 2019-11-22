@@ -9,8 +9,17 @@ public class Card {
     private String id;
     private String itemId;
     private String customerId;
+    private int quantity;
 
     private Card() {
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getId() {
@@ -49,9 +58,15 @@ public class Card {
         private String id;
         private String itemId;
         private String customerId;
+        private int quantity;
+
 
         public Builder(String id){
             this.id=id;
+        }
+        public Builder buildQuantity(int quantity){
+            this.quantity=quantity;
+            return this;
         }
         public Builder buildItemId(String itemId){
             this.itemId=itemId;
@@ -66,6 +81,7 @@ public class Card {
             card.customerId=this.customerId;
             card.id=this.id;
             card.itemId=this.itemId;
+            card.quantity=this.quantity;
             return card;
         }
     }
