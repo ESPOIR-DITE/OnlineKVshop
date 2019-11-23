@@ -8,16 +8,26 @@ public class CheckOut {
     private double price;
     private int quantity;
     private double total;
+    private String itemId;
 
     public CheckOut() {
     }
 
-    public CheckOut(byte[] image, String description, double price, int quantity, double total) {
+    public CheckOut(byte[] image, String description, double price, int quantity, double total,String itemId) {
         this.image = image;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
         this.total = total;
+        this.itemId=itemId;
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public byte[] getImage() {

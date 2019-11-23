@@ -29,8 +29,17 @@ public class CardController implements CardControllerInt {
     @PostMapping("/create")
     @Override
     public Card create(@RequestBody Card card) {
+        Card key=cardService.verify(card);
+        if(key!=null){
+            cardService.delete(key.getId());
+        }
         Card card1= CardFactory.getCard(card.getItemId(),card.getCustomerId(),card.getQuantity());
         return cardService.creat(card1);
+    }
+    @PostMapping("/remove")
+    public boolean remove(@RequestBody Card card) {
+        Card card1= CardFactory.getCard(card.getItemId(),card.getCustomerId(),card.getQuantity());
+        return cardService.remove(card1);
     }
     @GetMapping("/read")
     @Override

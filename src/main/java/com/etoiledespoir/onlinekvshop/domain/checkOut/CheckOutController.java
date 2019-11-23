@@ -33,7 +33,7 @@ public class CheckOutController {
         Images images=imagesService.read(item_pictures.getImageId());
         Accounting accounting=accountingServce.readwithItemId(card.getItemId());
         double total=calculte(card.getQuantity(),accounting.getPrice());
-        CheckOut checkOut=new CheckOut(images.getImage(),products.getDescription(),accounting.getPrice(),card.getQuantity(),total);
+        CheckOut checkOut=new CheckOut(images.getImage(),products.getDescription(),accounting.getPrice(),card.getQuantity(),total,card.getItemId());
        // System.out.println(checkOut.toString());
         return checkOut;
     }

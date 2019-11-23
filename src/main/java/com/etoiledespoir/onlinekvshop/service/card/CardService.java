@@ -29,6 +29,15 @@ public class CardService implements CardServiceInt {
     public Card creat(Card card) {
         return cardRepository.save(card);
     }
+    public Boolean remove(Card card){
+        for(Card card1: readAll()){
+            if(card1.getItemId().equals(card.getItemId())&&card1.getCustomerId().equals(card.getCustomerId())){
+                cardRepository.delete(card1);
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public Card delete(String id) {
@@ -52,6 +61,7 @@ public class CardService implements CardServiceInt {
     public List<Card> readAll() {
         return cardRepository.findAll();
     }
+
     public List<Card> readWithItemId(String itemId){
         List<Card> cardList=new ArrayList<>();
         for(Card card: readAll()){
@@ -69,5 +79,12 @@ public class CardService implements CardServiceInt {
             }
         }
         return cardList;
+    }
+    public Card verify(Card card){
+        for(Card card1: readAll()){
+            if( card1.getCustomerId().equals(card.getCustomerId())&& card1.getItemId().equals(card.getItemId())){
+                return card1;
+            }
+        }return  null;
     }
 }
