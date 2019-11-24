@@ -51,10 +51,11 @@ public class ItemSizeService implements Iservice<ProductSize,String> {
     public List<ProductSize> readAll() {
         return itemSizeRepo.findAll();
     }
-    public List<ProductSize> productSizeList(String sizeId){
+
+    public List<ProductSize> productSizeList(String itemId){
         List<ProductSize> productSizes=new ArrayList<>();
         for(ProductSize productSize:readAll()){
-            if(productSize.getItemId().equals(sizeId)){
+            if(productSize.getItemId().equals(itemId)){
                 productSizes.add(productSize);
             }
         }

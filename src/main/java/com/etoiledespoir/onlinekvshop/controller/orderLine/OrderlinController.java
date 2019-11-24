@@ -2,9 +2,8 @@ package com.etoiledespoir.onlinekvshop.controller.orderLine;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.order.OrderLine;
-import com.etoiledespoir.onlinekvshop.factory.domain.OrderLineFactory;
+import com.etoiledespoir.onlinekvshop.factory.domain.order.OrderLineFactory;
 import com.etoiledespoir.onlinekvshop.service.orderline.impl.OrderLineService;
-import com.etoiledespoir.onlinekvshop.util.CurrentDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +18,7 @@ public class OrderlinController implements Icontroller<OrderLine,String> {
     @Override
     public OrderLine create(@RequestBody OrderLine orderLine) {
         System.out.println(orderLine.toString());
-    OrderLine orderLine1= OrderLineFactory.getLine(orderLine.getItemNumber(),orderLine.getOrderNumber());
+    OrderLine orderLine1= OrderLineFactory.getLine(orderLine.getItemNumber(),orderLine.getOrderNumber(),11);
         return orderLineService.creat(orderLine1);
     }
 

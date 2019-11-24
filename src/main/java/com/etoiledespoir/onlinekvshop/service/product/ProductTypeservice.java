@@ -49,4 +49,12 @@ public class ProductTypeservice implements Iservice<ProductType,String> {
     public List<ProductType> readAll() {
         return productTypeRepo.findAll();
     }
+    public ProductType readWithTypeId(String typeId){
+        for(ProductType productType: readAll()){
+            if(productType.getTypeId().equals(typeId)){
+                return productType;
+            }
+        }
+        return null;
+    }
 }

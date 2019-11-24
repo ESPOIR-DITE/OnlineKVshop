@@ -64,4 +64,12 @@ public static Item_PicturesService getItem_picturesService(){
         }
     }return toReturn;
     }
+    public Item_Pictures getItemPicture(String itemId){
+        for(Item_Pictures item_pictures: readAll()){
+            if(item_pictures.getItemId().equals(itemId)){
+               return item_pictures;
+            }
+        }
+        return null;
+    }
 }

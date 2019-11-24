@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class ProductType {
     @Id
     private String itemId;
-    private String typeName;
+    private String typeId;
 
     private ProductType() {
     }
@@ -20,19 +20,19 @@ public class ProductType {
         this.itemId = itemId;
     }
 
-    public String getTypeName() {
-        return typeName;
+    public String getTypeId() {
+        return typeId;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
     }
 
     @Override
     public String toString() {
         return "ProductType{" +
                 "itemId='" + itemId + '\'' +
-                ", typeName='" + typeName + '\'' +
+                ", typeId='" + typeId + '\'' +
                 '}';
     }
     public static class Builder{
@@ -48,7 +48,7 @@ public class ProductType {
         public ProductType build(){
             ProductType productType=new ProductType();
             productType.itemId=this.itemId;
-            productType.typeName =this.type;
+            productType.typeId =this.type;
             return productType;
         }
     }

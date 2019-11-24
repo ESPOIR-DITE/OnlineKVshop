@@ -56,11 +56,11 @@ public class ImagesService implements Iservice<Images,String> {
     public List<Images> readAll() {
         return ir.findAll();
     }
-    public List<Images> readFiles(String itemId){
+    public List<Images> readFiles(String imageId){
         List<Images>reserve=new ArrayList<>();
         List<Images>images=ir.findAll();
         for (Images images1: images){
-            if(images1.getId().equals(itemId)){
+            if(images1.getId().equals(imageId)){
                 reserve.add(images1);
             }
         }

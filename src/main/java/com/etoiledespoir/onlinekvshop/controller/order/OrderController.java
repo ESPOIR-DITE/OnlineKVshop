@@ -2,7 +2,7 @@ package com.etoiledespoir.onlinekvshop.controller.order;
 
 
 import com.etoiledespoir.onlinekvshop.domain.order.Orders;
-import com.etoiledespoir.onlinekvshop.factory.domain.OrderFactory;
+import com.etoiledespoir.onlinekvshop.factory.domain.order.OrderFactory;
 import com.etoiledespoir.onlinekvshop.service.orderService.impl.OrderService;
 import com.etoiledespoir.onlinekvshop.util.CurrentDate;
 import org.springframework.beans.factory.annotation.Autowired;

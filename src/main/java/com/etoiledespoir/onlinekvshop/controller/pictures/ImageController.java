@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/OKVS/image")
+@RequestMapping("OKVS/image")
 public class ImageController implements Icontroller<Images,String> {
     @Autowired
     private ImagesService imagesService;
@@ -43,5 +43,9 @@ public class ImageController implements Icontroller<Images,String> {
     @Override
     public List<Images> readAll() {
         return imagesService.readAll();
+    }
+    @GetMapping("/readFor")
+    public List<Images> readFor(@RequestParam("id") String id){
+        return imagesService.readFiles(id);
     }
 }
