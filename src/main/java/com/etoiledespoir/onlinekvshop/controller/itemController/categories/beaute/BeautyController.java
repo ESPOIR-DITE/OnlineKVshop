@@ -91,8 +91,6 @@ public class BeautyController {
     @Autowired
     private TypesService typesService;
 
-
-
     @Autowired
     ProductService productService;
     @Autowired
@@ -100,7 +98,7 @@ public class BeautyController {
 
 
     private String home = "C:\\Users\\ESPOIR\\IntelliJIDEAProjects\\onlinekvshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\provisior\\";
-   // private String work = "C:\\Users\\Nicole Abrahams\\Desktop\\ACTUAL_WORK\\ADP_PROJECT\\OnlineKVshop\\src\\main\\java\\com\\etoiledespoir\\onlinekvshop\\util\\MYPICTURES\\";
+    private String work = "C:\\";
 
     private BeautyFactory BF;
     private ItemPictureFactory IPF;
@@ -265,7 +263,7 @@ public class BeautyController {
         return beautyService.readAll();
     }
     public Boolean helpCreateFile(MultipartFile file, String id) throws IOException {
-        File filenew = new File(home + id + ".png");
+        File filenew = new File(work + id + ".png");
         filenew.createNewFile();
 
         FileOutputStream fos = new FileOutputStream(filenew);

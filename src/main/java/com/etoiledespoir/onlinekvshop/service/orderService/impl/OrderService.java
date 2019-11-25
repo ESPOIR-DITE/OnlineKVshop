@@ -6,6 +6,7 @@ import com.etoiledespoir.onlinekvshop.service.orderService.IorderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +52,14 @@ public class OrderService implements IorderService {
     @Override
     public List<Orders> readAll() {
         return iorder.findAll();
+    }
+    public List<Orders> readWithCust(String custId){
+        List<Orders> result=new ArrayList<>();
+        for(Orders orders:readAll()){
+            if(orders.getCustomerId().equals(custId)){
+                result.add(orders);
+            }
+        }return result;
     }
 
 

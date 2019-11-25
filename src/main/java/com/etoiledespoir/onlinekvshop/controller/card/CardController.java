@@ -31,7 +31,14 @@ public class CardController implements CardControllerInt {
     public Card create(@RequestBody Card card) {
         Card key=cardService.verify(card);
         if(key!=null){
-            cardService.delete(key.getId());
+            //cardService.delete(key.getId());
+            //so here we will combine the quantity of the prvios card to the actual
+            Card card1= CardFactory.getCard(card.getItemId(),card.getCustomerId(),card.getQuantity()+key.getQuantity());
+            return cardService.creat(card1);
+        }
+        if(card.getQuantity()<1){
+            Card card1= CardFactory.getCard(card.getItemId(),card.getCustomerId(),1);
+            return cardService.creat(card1);
         }
         Card card1= CardFactory.getCard(card.getItemId(),card.getCustomerId(),card.getQuantity());
         return cardService.creat(card1);
