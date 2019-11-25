@@ -14,15 +14,15 @@ public class SendEmailSMTP {
 
     // for example, smtp.mailgun.org
     private static final String SMTP_SERVER = "smtp.sendgrid.net";
-    private static final String USERNAME = "onlinekevineshop";
-    private static final String PASSWORD = "SG.0EvCgxYjRWCV8PeGC4P8BQ.oIgaXqX9uSyvGrJX_0Gj4KRZSO80Wje8ToRBbBZ__GI";
+    private static final String USERNAME = "apikey";
+    private static final String PASSWORD = "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";
 
     private static final String EMAIL_FROM = "216093805@mycput.ac.za";
-    private static final String EMAIL_TO = "espoirditekemena@gmail.com";
+    private static final String EMAIL_TO = "ismailcharlesk@gmail.com";
     private static final String EMAIL_TO_CC = "";
 
     private static final String EMAIL_SUBJECT = "Test Send Email via SMTP";
-    private static final String EMAIL_TEXT = "Hello Java Mail \n ABC123";
+    private static final String EMAIL_TEXT = "Hello Java Mail \n ABC123 from OKVS Espoir";
 
     public static void main(String[] args) {
 
