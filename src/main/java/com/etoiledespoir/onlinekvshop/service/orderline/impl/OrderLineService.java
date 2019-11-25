@@ -70,4 +70,13 @@ public class OrderLineService implements OrderLineServiceInt {
         }
         return orderLines;
     }
+    public OrderLine readWithOrderNumber(String orderId){
+
+        for(OrderLine orderLine: readAll()){
+            if(orderLine.getOrderNumber().equals(orderId)){
+                return orderLine;
+            }
+        }
+        return null;
+    }
 }

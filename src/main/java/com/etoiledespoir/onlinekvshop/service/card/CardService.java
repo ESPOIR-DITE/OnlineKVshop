@@ -80,6 +80,7 @@ public class CardService implements CardServiceInt {
         }
         return cardList;
     }
+    //if the card exist with the same item and same customer
     public Card verify(Card card){
         for(Card card1: readAll()){
             if( card1.getCustomerId().equals(card.getCustomerId())&& card1.getItemId().equals(card.getItemId())){
