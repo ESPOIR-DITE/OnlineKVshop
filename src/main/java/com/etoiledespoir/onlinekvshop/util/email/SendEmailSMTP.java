@@ -12,19 +12,20 @@ import java.util.Properties;
 
 public class SendEmailSMTP {
 
-    // for example, smtp.mailgun.org
     private static final String SMTP_SERVER = "smtp.sendgrid.net";
     private static final String USERNAME = "apikey";
     private static final String PASSWORD = "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";
 
     private static final String EMAIL_FROM = "216093805@mycput.ac.za";
-    private static final String EMAIL_TO = "ismailcharlesk@gmail.com";
+
     private static final String EMAIL_TO_CC = "";
 
-    private static final String EMAIL_SUBJECT = "Test Send Email via SMTP";
-    private static final String EMAIL_TEXT = "Hello Java Mail \n ABC123 from OKVS Espoir";
+    public static void sendGrid(String email, int index, String code) {
+        // for example, smtp.mailgun.org
 
-    public static void main(String[] args) {
+        String EMAIL_SUBJECT = "Welcome on OKVS board";
+        String EMAIL_TEXT = decode(index)+code;
+        String EMAIL_TO = email;
 
         Properties prop = System.getProperties();
         prop.put("mail.smtp.host", SMTP_SERVER); //optional, defined in SMTPTransport
@@ -44,8 +45,8 @@ public class SendEmailSMTP {
                     InternetAddress.parse(EMAIL_TO, false));
 
             // cc
-           // msg.setRecipients(Message.RecipientType.CC,
-                 //   InternetAddress.parse(EMAIL_TO_CC, false));
+            // msg.setRecipients(Message.RecipientType.CC,
+            //   InternetAddress.parse(EMAIL_TO_CC, false));
 
             // subject
             msg.setSubject(EMAIL_SUBJECT);
@@ -72,6 +73,13 @@ public class SendEmailSMTP {
             e.printStackTrace();
         }
 
-
     }
+    public static String decode(int code){
+        switch (code){
+            case 001:
+                return "Thank you for registering on our system\nTo confirm your registration please click on the following link\n";
+        }
+        return null;
+    }
+
 }

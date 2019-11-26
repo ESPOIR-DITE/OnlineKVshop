@@ -60,4 +60,11 @@ public class LoginService implements LoginServiceInt {
         }
         return null;
     }
+    public Login readWithPassword(String password){
+        for (Login login:readAll()){
+            if(login.getPassword().equals(password)){
+                return login;
+            }
+        }return null;
+    }
 }

@@ -49,4 +49,8 @@ public class LoginController implements Icontroller<Login,String> {
     public Login login(@RequestBody LoginHelper loginHelper){
         return loginRepository.loging(loginHelper.getEmail(),loginHelper.getPasword());
     }
+    @GetMapping("/readwithpassword")
+    public Login readWithPassword(@RequestParam("id") String pasword){
+        return loginRepository.readWithPassword(pasword);
+    }
 }
