@@ -8,6 +8,7 @@ import com.etoiledespoir.onlinekvshop.factory.domain.login.LoginFactory;
 import com.etoiledespoir.onlinekvshop.service.gender.CustGenderService;
 import com.etoiledespoir.onlinekvshop.service.user.login.impl.LoginService;
 import com.etoiledespoir.onlinekvshop.service.user.userType.customerService.impl.CustomerService;
+import com.etoiledespoir.onlinekvshop.util.email.SendEmailSMTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,7 @@ public class CustomerController implements Icontroller<Customer, String> {
         Login login= LoginFactory.getLogin(customer.getEmail(),"customer");
         Login result= loginService.creat(login);
         if(result!=null) {
+            SendEmailSMTP.sendGrid(customer.getEmail(),001,"http://localhost:4009/customer/register/"+result.getPassword());
             return this.customer.creat(customer);
         }
         return null;

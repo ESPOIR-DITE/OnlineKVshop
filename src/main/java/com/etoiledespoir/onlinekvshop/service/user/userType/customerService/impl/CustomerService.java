@@ -15,7 +15,7 @@ public class CustomerService implements IcustomerService {
     private static CustomerService custServ=null;
     String name="espoir";
 
-    Customer customerx= CustomerFactory.getCustomer("@espoir.com","espoir","activ","ditemejek");
+   // Customer customerx= CustomerFactory.getCustomer("@espoir.com","espoir","activ","ditemejek");
 @Autowired
     Icustomer custRep;
     private  CustomerService() {
@@ -56,9 +56,6 @@ public String getName()
     public Customer read(String email) {
         System.out.println(email);
         Optional<Customer> mycustomer=custRep.findById(email);
-        if(mycustomer!=null){
-            custRep.findById(email);
-        }
         return mycustomer.orElse(null);
     }
 

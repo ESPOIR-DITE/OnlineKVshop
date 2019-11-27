@@ -27,9 +27,10 @@ public class LoginController implements Icontroller<Login,String> {
         return loginRepository.read(id);
     }
 
-    @GetMapping("/update")
+    @PostMapping("/update")
     @Override
     public Login update(@RequestBody Login login) {
+        loginRepository.delete(login.getEmail());
         return loginRepository.Update(login);
     }
 
@@ -46,7 +47,11 @@ public class LoginController implements Icontroller<Login,String> {
     }
 
     @PostMapping("/log")
-    public Login login(@RequestBody LoginHelper loginHelper){
-        return loginRepository.loging(loginHelper.getEmail(),loginHelper.getPasword());
+    public Login login(@RequestBody Login loginHelper){
+        return loginRepository.loging(loginHelper.getEmail(),loginHelper.getPassword());
+    }
+    @GetMapping("/readwithpassword")
+    public Login readWithPassword(@RequestParam("id") String pasword){
+        return loginRepository.readWithPassword(pasword);
     }
 }
