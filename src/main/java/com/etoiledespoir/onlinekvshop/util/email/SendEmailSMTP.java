@@ -14,17 +14,18 @@ public class SendEmailSMTP {
 
     private static final String SMTP_SERVER = "smtp.sendgrid.net";
     private static final String USERNAME = "apikey";
-    private static final String PASSWORD = "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";
+    //private static final String PASSWORD = "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";
 
+    private static final String PASSWORD = "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";
     private static final String EMAIL_FROM = "216093805@mycput.ac.za";
 
     private static final String EMAIL_TO_CC = "";
 
     public static void sendGrid(String email, int index, String code) {
         // for example, smtp.mailgun.org
-
+        System.out.println("sending message from "+EMAIL_FROM+"  to "+email);
         String EMAIL_SUBJECT = "Welcome on OKVS board";
-        String EMAIL_TEXT = decode(index)+code;
+        String EMAIL_TEXT = decode(index)+"  <a href="+code +">"+code+"</a>";
         String EMAIL_TO = email;
 
         Properties prop = System.getProperties();
