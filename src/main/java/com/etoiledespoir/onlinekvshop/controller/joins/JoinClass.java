@@ -83,6 +83,26 @@ public class JoinClass {
         }
         return viewList;
     }
+@GetMapping("/readAll")
+    public List<ViewProduct> getAllProduct() {
+        List<ViewProduct> viewList = new ArrayList<>();
+        for (int i = 0; i < productService.readAll().size(); i++) {
+            Products product = productService.read(productService.readAll().get(i).getId());
+            System.out.println("product Object: " + product.toString());
+            Accounting accounting = accountingServce.read(product.getId());
+            System.out.println("Account Object: " + accounting.toString());
+            System.out.println("product id: " + product.getId());
+
+            ItemBraind itemBraind=itemBraindService.read(product.getId());
+            Braind braind=braindService.read(itemBraind.getBraindId());
+            //System.out.println("image id: "+imageId.toString());
+
+            //System.out.println("image id: "+images.toString());
+            ViewProduct itemView = ViewProductFactory.getViewProduct(product.getId(),product.getName(),braind.getBraindName(),accounting.getPrice(),product.getDescription(),accounting.getQuantity(),getColors(product.getId()),getImages(product.getId()));
+            viewList.add(itemView);
+        }
+        return viewList;
+    }
 
     /*** this method first read the product
      *  reads all the colors of that product
@@ -124,6 +144,19 @@ public class JoinClass {
             return viewProduct;
         }
         return null;
+    }
+    public ArrayList<Color>getColors(String itemId){
+        ArrayList<Color> colorList=new ArrayList<>();
+        for(int i=0;i<itemColorService.getColorIdList(itemId).size();i++){
+            colorList.add(colorService.read(itemColorService.getColorIdList(itemId).get(i).getColorId()));
+        }return colorList;
+    }
+    public ArrayList<byte[]> getImages(String productId){
+        ArrayList<byte[]>imagesList=new ArrayList<>();
+        for(int i=0;i<item_picturesService.readAllFileOf(productId).size();i++){
+            Images images = imagesService.read(item_picturesService.readAllFileOf(productId).get(i).getImageId());
+            imagesList.add(images.getImage());
+        }return imagesList;
     }
 
 }
