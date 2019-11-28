@@ -16,7 +16,6 @@ public class SendEmailSMTP {
     private static final String USERNAME = "apikey";
     
 
-    private static final String EMAIL_FROM = "216093805@mycput.ac.za";
 
     private static final String EMAIL_TO_CC = "";
 
