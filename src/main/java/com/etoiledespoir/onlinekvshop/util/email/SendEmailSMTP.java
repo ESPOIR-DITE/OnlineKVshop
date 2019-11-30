@@ -16,7 +16,7 @@ public class SendEmailSMTP {
     private static final String USERNAME = "apikey";
     //private static final String PASSWORD = "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";
 
-    private static final String PASSWORD = "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";
+    private static final String PASSWORD = "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";
     private static final String EMAIL_FROM = "216093805@mycput.ac.za";
 
     private static final String EMAIL_TO_CC = "";
@@ -25,7 +25,8 @@ public class SendEmailSMTP {
         // for example, smtp.mailgun.org
         System.out.println("sending message from "+EMAIL_FROM+"  to "+email);
         String EMAIL_SUBJECT = "Welcome on OKVS board";
-        String EMAIL_TEXT = decode(index)+"  <a href="+code +">"+code+"</a>";
+        String EMAIL_TEXT = decode(index)+"192.168.1.59:4009/customer/register/"+code;
+        System.out.println(EMAIL_TEXT);
         String EMAIL_TO = email;
 
         Properties prop = System.getProperties();
