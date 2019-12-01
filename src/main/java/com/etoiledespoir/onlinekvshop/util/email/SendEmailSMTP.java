@@ -14,10 +14,9 @@ public class SendEmailSMTP {
 
     private static final String SMTP_SERVER = "smtp.sendgrid.net";
     private static final String USERNAME = "apikey";
-    //private static final String PASSWORD = "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";
 
-    private static final String PASSWORD = "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";
-    private static final String EMAIL_FROM = "216093805@mycput.ac.za";
+    private static final String PASSWORD = "";
+    private static final String EMAIL_FROM = "";
 
     private static final String EMAIL_TO_CC = "";
 
