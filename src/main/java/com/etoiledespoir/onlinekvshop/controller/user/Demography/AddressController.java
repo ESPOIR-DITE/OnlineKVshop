@@ -2,12 +2,10 @@ package com.etoiledespoir.onlinekvshop.controller.user.Demography;
 
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.users.address.AddressType;
 import com.etoiledespoir.onlinekvshop.domain.users.address.impl.Address;
 import com.etoiledespoir.onlinekvshop.factory.domain.address.AddressFactory;
 import com.etoiledespoir.onlinekvshop.service.address.AddressService;
 import com.etoiledespoir.onlinekvshop.service.address.impl.AddressTypeService;
-import com.etoiledespoir.onlinekvshop.service.gender.CustGenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +25,7 @@ public class AddressController implements Icontroller<Address, String> {
 
         String addressTypeid=addressTypeService.readWithAddressType(ad.getAddressType());
         if(addressTypeid!=null){
-        Address address1= AddressFactory.getAddress(ad.getId(),addressTypeid,ad.getCommun(),ad.getQuartier(),ad.getAvenue(),ad.getNumero());
+        Address address1= AddressFactory.getAddress(ad.getId(),addressTypeid,ad.getCommun(),ad.getAddress(),ad.getAvenue(),ad.getNumero());
         if(address1!=null){
             Address myAddress=addressService.creat(address1);
 
@@ -44,7 +42,7 @@ public class AddressController implements Icontroller<Address, String> {
         Address ad=addressService.read(id);
         if(ad!=null) {
             String addressTypeid = addressTypeService.readWithAddressType(ad.getAddressType());
-            Address address1 = AddressFactory.getAddress(ad.getId(), addressTypeid, ad.getCommun(), ad.getQuartier(), ad.getAvenue(), ad.getNumero());
+            Address address1 = AddressFactory.getAddress(ad.getId(), addressTypeid, ad.getCommun(), ad.getAddress(), ad.getAvenue(), ad.getNumero());
             return address1;
         }
         return null;

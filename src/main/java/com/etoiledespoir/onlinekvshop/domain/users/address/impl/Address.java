@@ -10,21 +10,18 @@ import javax.persistence.Id;
 public class Address {
     @Id
     private String id;
-    private String commun;
-    private String addressType;
-    private String quartier;
-    private String avenue;
-    private int numero;
+    private String address;
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     private Address() {
-    }
-
-    public String getAddressType() {
-        return addressType;
-    }
-
-    public void setAddressType(String addressType) {
-        this.addressType = addressType;
     }
 
     public String getId() {
@@ -35,88 +32,44 @@ public class Address {
         this.id = id;
     }
 
-    public String getCommun() {
-        return commun;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCommun(String commun) {
-        this.commun = commun;
-    }
-
-    public String getQuartier() {
-        return quartier;
-    }
-
-    public void setQuartier(String quartier) {
-        this.quartier = quartier;
-    }
-
-    public String getAvenue() {
-        return avenue;
-    }
-
-    public void setAvenue(String avenue) {
-        this.avenue = avenue;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
         return "Address{" +
                 "id='" + id + '\'' +
-                ", commun='" + commun + '\'' +
-                ", addressType='" + addressType + '\'' +
-                ", quartier='" + quartier + '\'' +
-                ", avenue='" + avenue + '\'' +
-                ", numero=" + numero +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 
     public static class Builder{
         private String id;
-        private String commun;
-        private String quartier;
-        private String avenue;
-        private String addressType;
-        private int numero;
+        private String address;
+        private String phoneNumber;
+
         public Builder(String id){
             this.id=id;
         }
-        public Builder buildCommune(String commun){
-            this.commun=commun;
+        public Builder buildAddress(String address){
+            this.address =address;
             return this;
         }
-        public Builder buildQuartier(String quartier){
-            this.quartier=quartier;
+        public Builder buildPhoneNumber(String phonenumber){
+            this.phoneNumber=phonenumber;
             return this;
         }
-        public Builder buildAvenue(String avenue){
-            this.avenue=avenue;
-            return this;
-        }
-        public Builder buildNumbero(int numero){
-            this.numero=numero;
-            return this;
-        }
-        public Builder buildAddressType(String addressType){
-            this.addressType=addressType;
-            return this;
-        }
+
         public Address build(){
             Address A= new Address();
-            A.avenue=this.avenue;
-            A.commun=this.commun;
-            A.addressType=this.addressType;
             A.id=this.id;
-            A.quartier=this.quartier;
-            A.numero=this.numero;
+            A.address =this.address;
             return A;
         }
     }
