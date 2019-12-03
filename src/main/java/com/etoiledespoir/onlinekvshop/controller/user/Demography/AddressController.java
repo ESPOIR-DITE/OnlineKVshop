@@ -2,6 +2,7 @@ package com.etoiledespoir.onlinekvshop.controller.user.Demography;
 
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
+import com.etoiledespoir.onlinekvshop.domain.users.address.AddressHelper;
 import com.etoiledespoir.onlinekvshop.domain.users.address.impl.Address;
 import com.etoiledespoir.onlinekvshop.factory.domain.address.AddressFactory;
 import com.etoiledespoir.onlinekvshop.service.address.AddressService;
@@ -20,32 +21,25 @@ public class AddressController implements Icontroller<Address, String> {
     AddressTypeService addressTypeService;
 
     @PostMapping("/create")
-    @Override
-    public Address create(@RequestBody Address ad) {
-
+    public Address creat(@RequestBody AddressHelper ad) {
         String addressTypeid=addressTypeService.readWithAddressType(ad.getAddressType());
-        if(addressTypeid!=null){
-        Address address1= AddressFactory.getAddress(ad.getId(),addressTypeid,ad.getCommun(),ad.getAddress(),ad.getAvenue(),ad.getNumero());
-        if(address1!=null){
-            Address myAddress=addressService.creat(address1);
-
+        Address address1= AddressFactory.getAddress(ad.getUserId(),ad.getAddress(),addressTypeid,ad.getPhoneNumber());
+        if(address1!=null) {
+            Address myAddress = addressService.creat(address1);
             return myAddress;
-                    }
         }
+        return null;
+    }
 
+    @Override
+    public Address create(Address address) {
         return null;
     }
 
     @GetMapping("/read")
     @Override
     public Address read(@RequestParam("id") String id) {
-        Address ad=addressService.read(id);
-        if(ad!=null) {
-            String addressTypeid = addressTypeService.readWithAddressType(ad.getAddressType());
-            Address address1 = AddressFactory.getAddress(ad.getId(), addressTypeid, ad.getCommun(), ad.getAddress(), ad.getAvenue(), ad.getNumero());
-            return address1;
-        }
-        return null;
+        return addressService.read(id);
     }
 
     @PostMapping("/update")
