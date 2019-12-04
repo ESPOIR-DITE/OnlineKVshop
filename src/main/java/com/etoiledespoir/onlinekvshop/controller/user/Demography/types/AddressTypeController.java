@@ -43,4 +43,9 @@ public class AddressTypeController implements Icontroller<AddressType,String > {
     public List<AddressType> readAll() {
         return addressTypeService.readAll();
     }
+
+    @GetMapping("/readwithType")
+    public AddressType readWithAddressType(@RequestParam("id") String type){
+        return addressTypeService.readWithAddressType(type);
+    }
 }

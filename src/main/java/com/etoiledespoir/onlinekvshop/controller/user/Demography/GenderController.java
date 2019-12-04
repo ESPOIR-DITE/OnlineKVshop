@@ -47,5 +47,9 @@ public class GenderController implements Icontroller<Gender, String> {
     public List<Gender> readAll() {
         return genderService.readAll();
     }
+    @GetMapping("/readWith")
+    public Gender readWithGender(@RequestParam("id") String gender){
+        return genderService.readWithGender(gender);
+    }
 
 }

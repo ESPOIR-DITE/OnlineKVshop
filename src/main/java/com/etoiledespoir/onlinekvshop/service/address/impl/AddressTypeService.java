@@ -44,10 +44,10 @@ public class AddressTypeService implements Iservice<AddressType,String> {
         Optional<AddressType> result=addressTypeRep.findById(id);
         return result.orElse(null);
     }
-    public String readWithAddressType(String type){
+    public AddressType readWithAddressType(String type){
         for(AddressType addressType:readAll()){
             if(addressType.getAddressType().equals(type)){
-                return addressType.getAddressTypeId();
+                return addressType;
             }
         }
         return null;

@@ -45,11 +45,11 @@ public class GenderService implements Iservice<Gender,String> {
         Optional<Gender> result=genderRepository.findById(id);
         return result.orElse(null);
     }
-    public String readWithGender(String gender){
+    public Gender readWithGender(String gender){
         List<Gender>result=genderRepository.findAll();
         for(Gender gender1: result){
             if(gender1.equals(gender1)){
-                return gender1.getGenderId();
+                return gender1;
             }
         }
         return null;
