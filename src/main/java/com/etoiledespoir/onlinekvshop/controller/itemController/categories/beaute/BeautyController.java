@@ -126,7 +126,7 @@ public class BeautyController {
 
             /** reading the genderId*/
             for(int i=0;i<beaut.getGender().size();i++){
-            itemGenderID = genderService.readWithGender(beaut.getGender().get(i));
+            itemGenderID = genderService.readWithGender(beaut.getGender().get(i)).getGenderId();
             /** creating itemGender*/
             gender = ItemGenderFactory.getItemGender(BM.getId(), itemGenderID);
             itemGenderService.creat(gender);

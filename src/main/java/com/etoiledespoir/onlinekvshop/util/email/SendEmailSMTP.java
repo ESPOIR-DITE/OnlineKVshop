@@ -12,8 +12,8 @@ import java.util.Properties;
 
 public class SendEmailSMTP {
 
-    private static final String SMTP_SERVER = "smtp.sendgrid.net";
-    private static final String USERNAME = "apikey";
+    private static final String SMTP_SERVER = "";
+    private static final String USERNAME = "";
 
     private static final String PASSWORD = "";
     private static final String EMAIL_FROM = "";
@@ -24,7 +24,7 @@ public class SendEmailSMTP {
         // for example, smtp.mailgun.org
         System.out.println("sending message from "+EMAIL_FROM+"  to "+email);
         String EMAIL_SUBJECT = "Welcome on OKVS board";
-        String EMAIL_TEXT = decode(index)+"192.168.1.59:4009/customer/register/"+code;
+        String EMAIL_TEXT = decode(index,code);
         System.out.println(EMAIL_TEXT);
         String EMAIL_TO = email;
 
@@ -75,10 +75,12 @@ public class SendEmailSMTP {
         }
 
     }
-    public static String decode(int code){
+    public static String decode(int code,String item){
         switch (code){
             case 001:
-                return "Thank you for registering on our system\nTo confirm your registration please click on the following link\n";
+                return "Thank you for registering on our system\nTo confirm your registration please click on the following link\n 192.168.1.59:4009/customer/register/"+item;
+            case 002:
+                return "Thank you for placing an order on our system please use the following code to track and request refund in case incident on your order\n\n"+item;
         }
         return null;
     }

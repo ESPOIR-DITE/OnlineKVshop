@@ -22,7 +22,7 @@ public class AddressController implements Icontroller<Address, String> {
 
     @PostMapping("/create")
     public Address creat(@RequestBody AddressHelper ad) {
-        String addressTypeid=addressTypeService.readWithAddressType(ad.getAddressType());
+        String addressTypeid=addressTypeService.readWithAddressType(ad.getAddressType()).getAddressTypeId();
         Address address1= AddressFactory.getAddress(ad.getUserId(),ad.getAddress(),addressTypeid,ad.getPhoneNumber());
         if(address1!=null) {
             Address myAddress = addressService.creat(address1);
