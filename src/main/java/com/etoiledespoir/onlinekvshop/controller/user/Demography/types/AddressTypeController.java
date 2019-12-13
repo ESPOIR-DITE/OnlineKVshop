@@ -17,6 +17,7 @@ public class AddressTypeController implements Icontroller<AddressType,String > {
     @Override
     public AddressType create(@RequestBody AddressType addressType) {
         AddressType addressType1= AddressTypeFact.getAddresType(addressType.getAddressType());
+        System.out.println(addressType1.toString());
         return addressTypeService.creat(addressType1);
     }
 

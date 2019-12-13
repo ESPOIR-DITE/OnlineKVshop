@@ -12,11 +12,12 @@ import java.util.Properties;
 
 public class SendEmailSMTP {
 
-    private static final String SMTP_SERVER = "";
-    private static final String USERNAME = "";
+    private static final String SMTP_SERVER = "smtp.sendgrid.net";
+    private static final String USERNAME = "apikey";
+    //private static final String PASSWORD = "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";
 
-    private static final String PASSWORD = "";
-    private static final String EMAIL_FROM = "";
+    private static final String PASSWORD = "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";
+    private static final String EMAIL_FROM = "216093805@mycput.ac.za";
 
     private static final String EMAIL_TO_CC = "";
 
