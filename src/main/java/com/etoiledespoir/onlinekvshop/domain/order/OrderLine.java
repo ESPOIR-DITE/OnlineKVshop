@@ -9,18 +9,18 @@ public class OrderLine {
     private String linecode;
     private String itemNumber;
     private String orderNumber;
-    private int quantity;
+    private double quantity;
 
 
 
     private OrderLine() {
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 

@@ -35,7 +35,7 @@ import com.etoiledespoir.onlinekvshop.service.gender.GenderService;
 import com.etoiledespoir.onlinekvshop.service.gender.ItemGenderService;
 import com.etoiledespoir.onlinekvshop.service.itemService.accounting.AccountChangeService;
 import com.etoiledespoir.onlinekvshop.service.itemService.accounting.AccountingServce;
-import com.etoiledespoir.onlinekvshop.service.itemService.category.beaute.impl.BeautyService;
+import com.etoiledespoir.onlinekvshop.service.itemService.category.impl.BeautyService;
 import com.etoiledespoir.onlinekvshop.service.mypic.impl.PictureService;
 import com.etoiledespoir.onlinekvshop.service.pictures.ImagesService;
 import com.etoiledespoir.onlinekvshop.service.pictures.Item_PicturesService;

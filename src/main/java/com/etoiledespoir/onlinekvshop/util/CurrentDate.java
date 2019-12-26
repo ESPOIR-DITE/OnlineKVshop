@@ -11,4 +11,9 @@ public class CurrentDate {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         return formatter.format(calendar.getTime());
     }
+    public static Date getCurrentDateTime(){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        return calendar.getTime();
+    }
 }

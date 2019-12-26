@@ -36,6 +36,10 @@ public class AddressService implements Iservice<Address,String> {
 
     @Override
     public Address Update(Address address) {
+        Address myAddress=read(address.getUserId());
+        if(myAddress!=null){
+            delete(address.getUserId());
+        }
         return addressRep.save(address);
     }
 

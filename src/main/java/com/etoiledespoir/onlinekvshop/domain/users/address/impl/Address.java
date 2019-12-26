@@ -9,7 +9,6 @@ import javax.persistence.Id;
 @Entity
 public class Address {
     @Id
-    private String id;
     private String userId;
     private String address;
     private String addressTypeId;
@@ -42,14 +41,6 @@ public class Address {
     private Address() {
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -61,7 +52,6 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "id='" + id + '\'' +
                 ", userId='" + userId + '\'' +
                 ", address='" + address + '\'' +
                 ", addressTypeId='" + addressTypeId + '\'' +
@@ -98,7 +88,6 @@ public class Address {
 
         public Address build(){
             Address A= new Address();
-            A.id=this.id;
             A.address =this.address;
             A.phoneNumber=this.phoneNumber;
             A.userId=this.userId;

@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/OKVS/gender")
 public class GenderController implements Icontroller<Gender, String> {
-
     @Autowired
     GenderService genderService;
 
@@ -21,7 +20,6 @@ public class GenderController implements Icontroller<Gender, String> {
         Gender myGender= GenderFactory.getGender(gender.getGenderName());
         System.out.println(myGender.toString());
         return genderService.creat(myGender);
-
     }
 
     @GetMapping("/read")

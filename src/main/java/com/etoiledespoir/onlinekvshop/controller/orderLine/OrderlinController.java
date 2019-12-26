@@ -43,6 +43,7 @@ public class OrderlinController implements Icontroller<OrderLine,String> {
     @GetMapping("/reads")
     @Override
     public List<OrderLine> readAll() {
+        System.out.println("we are in");
         return orderLineService.readAll();
     }
     @GetMapping("/readWithItemId")

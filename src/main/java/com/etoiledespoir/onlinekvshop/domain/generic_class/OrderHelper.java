@@ -4,7 +4,7 @@ public class OrderHelper {
     private String orderId;
     private String date;
     private String itemName;
-    private int quantity;
+    private double quantity;
     private double price;
     private String orderStat;
 
@@ -32,7 +32,7 @@ public class OrderHelper {
         this.itemName = itemName;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
@@ -71,7 +71,7 @@ public class OrderHelper {
         private String orderId;
         private String date;
         private String itemName;
-        private int quanriry;
+        private double quanriry;
         private double price;
         private String orderStat;
 
@@ -86,7 +86,7 @@ public class OrderHelper {
             this.itemName=itemName;
             return this;
         }
-        public Builder buildQuantity(int quanriry){
+        public Builder buildQuantity(double quanriry){
             this.quanriry=quanriry;
             return this;
         }
