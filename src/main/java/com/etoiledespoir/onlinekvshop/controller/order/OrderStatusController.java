@@ -45,4 +45,9 @@ public class OrderStatusController implements Icontroller<OrderStatus,String> {
     public List<OrderStatus> readAll() {
         return orderStatusService.readAll();
     }
+
+    @GetMapping("readFor")
+    public List<OrderStatus> readAllFor(@RequestParam("orderId") String orderId){
+        return orderStatusService.readAllOf(orderId);
+    }
 }

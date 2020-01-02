@@ -6,6 +6,7 @@ import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,11 +42,22 @@ public class OrderStatusService implements Iservice<OrderStatus,String> {
     public List<OrderStatus> readAll() {
         return orderStatusRep.findAll();
     }
+
     public OrderStatus readWithOrderId(String orderId){
         for(OrderStatus orderStatus:readAll()){
             if(orderStatus.getOrderId().equals(orderId)){
                 return orderStatus;
             }
         }return null;
+    }
+
+    public List<OrderStatus> readAllOf(String orderId){
+        List<OrderStatus>toReturn=new ArrayList<>();
+        for(OrderStatus orderStatus:readAll()){
+            if(orderStatus.getOrderId().equals(orderId)){
+                toReturn.add(orderStatus);
+            }
+        }
+        return toReturn;
     }
 }
