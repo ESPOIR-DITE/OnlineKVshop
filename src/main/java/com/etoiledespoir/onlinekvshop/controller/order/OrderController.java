@@ -19,8 +19,7 @@ import com.etoiledespoir.onlinekvshop.service.orderService.orderStatus.OrderStat
 import com.etoiledespoir.onlinekvshop.service.orderline.impl.OrderLineService;
 import com.etoiledespoir.onlinekvshop.service.product.ProductService;
 import com.etoiledespoir.onlinekvshop.util.CurrentDate;
-import com.etoiledespoir.onlinekvshop.util.email.SendEmailSMTP;
-import org.apache.tomcat.jni.Time;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,7 +55,7 @@ public class OrderController {
                 OrderStatus orderStatus= OrderStatusFactory.getOrderstatus(orders1.getId(),"New Order",CurrentDate.getCurrentDateTime(),"System");
                 orderStatusService.creat(orderStatus);
                 cardService.delete(card.getId());
-                SendEmailSMTP.sendGrid(card.getCustomerId(), 002, orders1.getId());
+                //SendEmailSMTP.sendGrid(card.getCustomerId(), 002, orders1.getId());
                 return true;
             }
         }

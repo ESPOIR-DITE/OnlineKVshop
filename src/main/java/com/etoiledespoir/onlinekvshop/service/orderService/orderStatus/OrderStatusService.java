@@ -55,6 +55,7 @@ public class OrderStatusService implements Iservice<OrderStatus,String> {
         List<OrderStatus>toReturn=new ArrayList<>();
         for(OrderStatus orderStatus:readAll()){
             if(orderStatus.getOrderId().equals(orderId)){
+                System.out.println(orderStatus.getDate());
                 toReturn.add(orderStatus);
             }
         }

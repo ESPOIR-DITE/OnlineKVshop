@@ -2,6 +2,7 @@ package com.etoiledespoir.onlinekvshop.controller.order;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.order.OrderStatus;
+import com.etoiledespoir.onlinekvshop.factory.domain.order.OrderStatusFactory;
 import com.etoiledespoir.onlinekvshop.service.orderService.orderStatus.OrderStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,8 @@ public class OrderStatusController implements Icontroller<OrderStatus,String> {
     @PostMapping("create")
     @Override
     public OrderStatus create(@RequestBody OrderStatus orderStatus) {
-        return orderStatusService.creat(orderStatus);
+        OrderStatus orderStatus1= OrderStatusFactory.getOrderstatus(orderStatus.getOrderId(),orderStatus.getStat(),orderStatus.getDate(),orderStatus.getModifiedBy());
+        return orderStatusService.creat(orderStatus1);
     }
 
     @GetMapping("read")

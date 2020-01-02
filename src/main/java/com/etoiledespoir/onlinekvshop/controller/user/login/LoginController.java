@@ -54,4 +54,9 @@ public class LoginController implements Icontroller<Login,String> {
     public Login readWithPassword(@RequestParam("id") String pasword){
         return loginRepository.readWithPassword(pasword);
     }
+    @GetMapping("/univelogin")
+    public Login UniversalLogin(@RequestParam("email") String email,@RequestParam("password") String pasword){
+        System.out.println(email);
+        return loginRepository.loging(email,pasword);
+    }
 }

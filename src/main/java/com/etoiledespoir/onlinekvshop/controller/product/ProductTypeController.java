@@ -2,7 +2,6 @@ package com.etoiledespoir.onlinekvshop.controller.product;
 
 import com.etoiledespoir.onlinekvshop.domain.item.impl.allItems.ProductType;
 import com.etoiledespoir.onlinekvshop.service.product.ProductTypeservice;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
