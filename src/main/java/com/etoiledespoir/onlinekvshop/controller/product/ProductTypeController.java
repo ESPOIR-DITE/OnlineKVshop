@@ -23,4 +23,9 @@ public class ProductTypeController {
     public List<ProductType> reads(){
         return productTypeservice.readAll();
     }
+    @GetMapping("readAll")
+    public List<ProductType> readAllOf(@RequestParam("id") String id){
+        return productTypeservice.readAllOf(id);
+    }
+
 }
