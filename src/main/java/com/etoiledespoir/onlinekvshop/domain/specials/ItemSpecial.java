@@ -110,7 +110,7 @@ public class ItemSpecial {
             this.specialId=specialId;
         }
         public Builder buildEndPeriod(String endPeriod){
-            this.endPeriod=this.endPeriod;
+            this.endPeriod=endPeriod;
             return this;
         }
         public Builder builTitle(String title){

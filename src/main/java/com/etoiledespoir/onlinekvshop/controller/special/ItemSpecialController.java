@@ -3,6 +3,7 @@ package com.etoiledespoir.onlinekvshop.controller.special;
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.controller.itemController.item.ItemController;
 import com.etoiledespoir.onlinekvshop.domain.specials.ItemSpecial;
+import com.etoiledespoir.onlinekvshop.factory.domain.special.SpecialFactory;
 import com.etoiledespoir.onlinekvshop.service.special.ItemSpecialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,10 @@ public class ItemSpecialController implements Icontroller<ItemSpecial,String> {
     ItemSpecialService itemSpecialService;
 
     @PostMapping("/create")
-    @Override
+    @Override//(String endPeriod,String title,String itemId,String period,String description,double previousePrice,double actualPrice)
     public ItemSpecial create(@RequestBody ItemSpecial itemSpecial) {
-        return itemSpecialService.creat(itemSpecial);
+        ItemSpecial itemSpecial1= SpecialFactory.getItemSpecial(itemSpecial.getEndPeriod(),itemSpecial.getTitle(),itemSpecial.getItemId(),itemSpecial.getPeriod(),itemSpecial.getDescription(),itemSpecial.getPreviousePrice(),itemSpecial.getActualPrice());
+        return itemSpecialService.creat(itemSpecial1);
     }
 
     @GetMapping("/read")

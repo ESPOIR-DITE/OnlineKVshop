@@ -6,7 +6,7 @@ import com.etoiledespoir.onlinekvshop.util.Igenerator;
 public class ItemspecialTypeFactory {
     public static SpecialType getSpecialType(String specialType,String description){
         return new SpecialType.Builder(Igenerator.getSuffixFromClassName(ItemspecialTypeFactory.class))
-                .buildDescription(specialType)
+                .buildSpecialType(specialType)
                 .buildDescription(description)
                 .build();
     }
