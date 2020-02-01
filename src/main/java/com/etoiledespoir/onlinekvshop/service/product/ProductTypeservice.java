@@ -6,6 +6,7 @@ import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -49,6 +50,7 @@ public class ProductTypeservice implements Iservice<ProductType,String> {
     public List<ProductType> readAll() {
         return productTypeRepo.findAll();
     }
+
     public ProductType readWithTypeId(String typeId){
         for(ProductType productType: readAll()){
             if(productType.getTypeId().equals(typeId)){
@@ -56,5 +58,15 @@ public class ProductTypeservice implements Iservice<ProductType,String> {
             }
         }
         return null;
+    }
+
+    public List<ProductType> readAllOf(String typeId){
+        List<ProductType> productTypeList=new ArrayList<>();
+        for(ProductType productType: readAll()){
+            if(productType.getTypeId().equals(typeId)){
+                productTypeList.add(productType);
+            }
+        }
+        return productTypeList;
     }
 }
