@@ -20,4 +20,8 @@ public class ItemPictureController {
     public List<Item_Pictures> images(@RequestParam("id") String id){
         return item_picturesService.readAllFileOf(id);
     }
+    @GetMapping("/readWithImageId")
+    public Item_Pictures getWithImageId(@RequestParam("id") String id){
+        return item_picturesService.getWithImageId(id);
+    }
 }

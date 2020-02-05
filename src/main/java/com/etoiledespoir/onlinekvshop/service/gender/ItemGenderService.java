@@ -50,4 +50,11 @@ public class ItemGenderService implements Iservice<ItemGender,String> {
     public List<ItemGender> readAll() {
         return itemGenderRep.findAll();
     }
+    public ItemGender readWithItemId(String ItemId){
+        for(ItemGender itemGender:readAll()){
+            if(itemGender.getItemId().equals(ItemId)){
+                return itemGender;
+            }
+        }return null;
+    }
 }

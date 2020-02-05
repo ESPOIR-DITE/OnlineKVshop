@@ -49,4 +49,12 @@ public class ItemBraindService implements Iservice<ItemBraind,String> {
     public List<ItemBraind> readAll() {
         return itemBraindRep.findAll();
     }
+
+    public ItemBraind readWithItemId(String ItemId){
+        for(ItemBraind itemBraind:readAll()){
+            if(itemBraind.getItemId().equals(ItemId)){
+                return itemBraind;
+            }
+        }return null;
+    }
 }

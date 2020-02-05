@@ -6,10 +6,19 @@ import javax.persistence.Id;
 @Entity
 public class ProductSize {
     @Id
+    private String id;
     private String itemId;
     private String sizeId;
 
-    private ProductSize() {
+    private  ProductSize() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getItemId() {
@@ -36,10 +45,15 @@ public class ProductSize {
                 '}';
     }
     public static class Builder{
+        private String id;
         private String itemId;
         private String sizeId;
-        public Builder(String itemId){
+        public Builder(String id){
+            this.id=id;
+        }
+        public Builder buildItemId(String itemId){
             this.itemId=itemId;
+            return this;
         }
         public Builder buildSizeId(String sizeId){
             this.sizeId=sizeId;

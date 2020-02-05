@@ -70,4 +70,26 @@ public class ItemColorService implements Iservice<ItemColor,String> {
         }
         return colorIds;
     }
+    public Boolean DeleteAllOfItem(String itemId){
+        boolean result= false;
+        for(ItemColor itemColor:readAll()){
+            if(itemColor.getItemId().equals(itemId)){
+                ItemColor itemColor1=delete(itemColor.getId());
+                if (itemColor1!=null) {
+                    result = true;
+                }
+            }
+        }return result;
+    }
+    public Boolean CreateAllOf(ArrayList<ItemColor> itemColorArrayList){
+        boolean result= false;
+        for(ItemColor itemColor:itemColorArrayList){
+            if(itemColor!=null){
+                ItemColor itemColor1=creat(itemColor);
+                if (itemColor1!=null) {
+                    result = true;
+                }
+            }
+        }return result;
+    }
 }

@@ -7,6 +7,7 @@ import com.etoiledespoir.onlinekvshop.service.pictures.ImagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Base64;
 import java.util.List;
 @RestController
 @RequestMapping("OKVS/image")
@@ -30,7 +31,8 @@ public class ImageController implements Icontroller<Images,String> {
     @PostMapping("/update")
     @Override
     public Images update(@RequestBody Images images) {
-        return imagesService.Update(images);
+        Images images1= ImagesFactory.updateImages(images.getId(),decoreder(images.getImage()));
+        return imagesService.Update(images1);
     }
 
     @GetMapping("/delete")
@@ -47,5 +49,10 @@ public class ImageController implements Icontroller<Images,String> {
     @GetMapping("/readFor")
     public List<Images> readFor(@RequestParam("id") String id){
         return imagesService.readFiles(id);
+    }
+    public byte[] decoreder(byte[] image) {
+        String encodedString = Base64.getEncoder().encodeToString(image);
+        byte[] byteArrray = encodedString.getBytes();
+        return byteArrray;
     }
 }

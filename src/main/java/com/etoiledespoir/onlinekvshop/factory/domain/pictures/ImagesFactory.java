@@ -7,4 +7,7 @@ public class ImagesFactory {
     public static Images getImages( byte[] image){
         return new Images.Builder(Igenerator.getSuffixFromClassName(ImagesFactory.class)).buildImage(image).build();
     }
+    public static Images updateImages( String id,byte[] image){
+        return new Images.Builder(id).buildImage(image).build();
+    }
 }

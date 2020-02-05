@@ -6,10 +6,19 @@ import javax.persistence.Id;
 @Entity
 public class ItemColor {
     @Id
+    private String id;
     private String itemId;
     private String colorId;
 
     public ItemColor() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getItemId() {
@@ -36,10 +45,15 @@ public class ItemColor {
                 '}';
     }
     public static class Builder{
+        private String id;
         private String itemId;
         private String colorId;
-        public Builder(String itemId){
+        public Builder(String id){
+            this.id=id;
+        }
+        public Builder buildItemId(String itemId){
             this.itemId=itemId;
+            return this;
         }
         public Builder buildColer(String colorId){
             this.colorId=colorId;
@@ -47,6 +61,7 @@ public class ItemColor {
         }
         public ItemColor build(){
             ItemColor itemColor=new ItemColor();
+            itemColor.id=this.id;
             itemColor.colorId=this.colorId;
             itemColor.itemId=this.itemId;
             return itemColor;

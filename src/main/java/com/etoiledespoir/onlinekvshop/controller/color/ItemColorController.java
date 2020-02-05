@@ -1,13 +1,12 @@
 package com.etoiledespoir.onlinekvshop.controller.color;
 
 import com.etoiledespoir.onlinekvshop.domain.color.impl.ItemColor;
+import com.etoiledespoir.onlinekvshop.factory.domain.color.impl.ItemColorFactory;
 import com.etoiledespoir.onlinekvshop.service.color.ItemColorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,5 +25,18 @@ public class ItemColorController {
     @GetMapping("/readsfor")
     public List<ItemColor> readFor(@RequestParam("id") String id){
         return itemColorService.getColorIdList(id);
+    }
+    @GetMapping("/deleteAllFor")
+    public Boolean DeleteAll(@RequestParam("itemId")String itemId){
+        return itemColorService.DeleteAllOfItem(itemId);
+    }
+    @PostMapping("/createAll")
+    public Boolean createAll(@RequestBody ArrayList<ItemColor> itemColorArrayList){
+        ArrayList<ItemColor> itemColorList=new ArrayList<>();
+        for(ItemColor itemColor:itemColorArrayList){
+            ItemColor itemColor1= ItemColorFactory.getItemColer(itemColor.getItemId(),itemColor.getColorId());
+            itemColorList.add(itemColor);
+        }
+        return itemColorService.CreateAllOf(itemColorList);
     }
 }

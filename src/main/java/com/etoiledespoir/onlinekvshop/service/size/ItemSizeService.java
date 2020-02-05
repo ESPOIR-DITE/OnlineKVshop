@@ -61,4 +61,25 @@ public class ItemSizeService implements Iservice<ProductSize,String> {
         }
         return productSizes;
     }
+
+    public Boolean deleteAllOf(String itemId){
+        Boolean result= false;
+        for (ProductSize sizeId:readAll()){
+            if (sizeId.getItemId().equals(itemId)){
+                ProductSize productSize1=delete(sizeId.getId());
+                if (productSize1!=null){
+                    result= true;
+                }
+            }
+        }return result;
+    }
+    public Boolean createAll(ArrayList<ProductSize> productSize){
+        boolean toreturn= true;
+        for (ProductSize ps:productSize){
+            ProductSize result=creat(ps);
+            if (result==null){
+                toreturn=false;
+            }
+        }return toreturn;
+    }
 }

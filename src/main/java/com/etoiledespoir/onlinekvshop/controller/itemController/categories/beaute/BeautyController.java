@@ -262,6 +262,8 @@ public class BeautyController {
     public List<BeautyMakeup> readAll() {
         return beautyService.readAll();
     }
+
+
     public Boolean helpCreateFile(MultipartFile file, String id) throws IOException {
         File filenew = new File(work + id + ".png");
         filenew.createNewFile();
