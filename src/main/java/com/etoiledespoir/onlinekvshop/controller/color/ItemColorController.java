@@ -35,7 +35,7 @@ public class ItemColorController {
         ArrayList<ItemColor> itemColorList=new ArrayList<>();
         for(ItemColor itemColor:itemColorArrayList){
             ItemColor itemColor1= ItemColorFactory.getItemColer(itemColor.getItemId(),itemColor.getColorId());
-            itemColorList.add(itemColor);
+            itemColorList.add(itemColor1);
         }
         return itemColorService.CreateAllOf(itemColorList);
     }

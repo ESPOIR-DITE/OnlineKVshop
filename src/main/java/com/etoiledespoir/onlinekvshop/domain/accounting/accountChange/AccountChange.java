@@ -1,5 +1,7 @@
 package com.etoiledespoir.onlinekvshop.domain.accounting.accountChange;
 
+import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 

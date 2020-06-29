@@ -9,6 +9,8 @@ import com.etoiledespoir.onlinekvshop.service.gender.CustGenderService;
 import com.etoiledespoir.onlinekvshop.service.user.login.impl.LoginService;
 import com.etoiledespoir.onlinekvshop.service.user.userType.customerService.impl.CustomerService;
 
+import com.etoiledespoir.onlinekvshop.util.email.SendEmailSMTP;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,11 +33,11 @@ public class CustomerController implements Icontroller<Customer, String> {
     }
     @PostMapping("/create")
     @Override
-    public Customer create(@RequestBody Customer customer) {
+    public Customer create(@RequestBody Customer customer) throws UnirestException {
         Login login= LoginFactory.getLogin(customer.getEmail(),"customer");
         Login result= loginService.creat(login);
         if(result!=null) {
-           // SendEmailSMTP.sendGrid(customer.getEmail(),001,"http://localhost:4009/customer/register/"+result.getPassword());
+            SendEmailSMTP.sendSimpleMessage(customer.getEmail(),001,result.getPassword(),customer.getName());
             return this.customer.creat(customer);
         }
         return null;
@@ -45,6 +47,12 @@ public class CustomerController implements Icontroller<Customer, String> {
     public Customer read(@RequestParam(value = "id") String id) {
         return this.customer.read(id);
     }
+
+    @GetMapping("/readWIthPassword")
+    public Login readWith(@RequestParam(value = "id") String id) {
+        return this.loginService.readWithPassWord(id);
+    }
+
     @PostMapping("/update")
     @Override
     public Customer update(@RequestBody Customer customer) {

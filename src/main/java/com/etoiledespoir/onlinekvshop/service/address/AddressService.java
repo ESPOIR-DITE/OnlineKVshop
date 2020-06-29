@@ -39,8 +39,9 @@ public class AddressService implements Iservice<Address,String> {
         Address myAddress=read(address.getUserId());
         if(myAddress!=null){
             delete(address.getUserId());
+            return addressRep.save(address);
         }
-        return addressRep.save(address);
+        return null;
     }
 
     @Override

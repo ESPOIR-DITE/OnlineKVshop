@@ -60,6 +60,7 @@ public class ProductSizeController implements Icontroller<ProductSize,String> {
         for(ProductSize productT:productType ){
             ProductSize productSize= ItemSizeFactory.getProductSize(productT.getSizeId(),productT.getItemId());
             toSend.add(productSize);
+            System.out.println(productSize);
         }
         return itemSizeService.createAll(toSend);
     }

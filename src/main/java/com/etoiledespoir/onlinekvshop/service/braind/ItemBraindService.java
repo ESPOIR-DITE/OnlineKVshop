@@ -36,7 +36,12 @@ public class ItemBraindService implements Iservice<ItemBraind,String> {
 
     @Override
     public ItemBraind Update(ItemBraind itemBraind) {
-        return itemBraindRep.save(itemBraind);
+        ItemBraind itemBraind1=read(itemBraind.getId());
+        if (itemBraind1!=null){
+            delete(itemBraind.getId());
+            return itemBraindRep.save(itemBraind);
+        }
+       return null;
     }
 
     @Override

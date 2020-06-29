@@ -46,6 +46,13 @@ public class LoginService implements LoginServiceInt {
         Optional<Login> result=loginRepository.findById(id);
         return result.orElse(null);
     }
+    public Login readWithPassWord(String password){
+        for(Login login: readAll()){
+            if(login.getPassword().equals(password)){
+                return login;
+            }
+        }return null;
+    }
 
     @Override
     public List<Login> readAll() {

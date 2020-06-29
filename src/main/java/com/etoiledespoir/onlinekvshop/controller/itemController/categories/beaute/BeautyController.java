@@ -45,6 +45,7 @@ import com.etoiledespoir.onlinekvshop.service.productType.TypesService;
 import com.etoiledespoir.onlinekvshop.service.size.ItemSizeService;
 import com.etoiledespoir.onlinekvshop.service.size.SizeService;
 import com.etoiledespoir.onlinekvshop.util.CurrentDate;
+import com.etoiledespoir.onlinekvshop.util.ImageResizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -112,7 +113,7 @@ public class BeautyController {
 
 
     @PostMapping("/creatwithfile")
-    public Boolean create(@RequestBody MyItemHelper beaut) {
+    public Boolean create(@RequestBody MyItemHelper beaut) throws IOException {
         System.out.println(beaut.toString());
         //BeautyMakeup BM=BeautyFactory.getBeauty(beaut.getSizeNumber(),beaut.getTypeId());
         Products BM = ProductFactory.getProduct(beaut.getItemName(), beaut.getDecription());
@@ -127,6 +128,7 @@ public class BeautyController {
             /** reading the genderId*/
             for(int i=0;i<beaut.getGender().size();i++){
             itemGenderID = genderService.readWithGender(beaut.getGender().get(i)).getGenderId();
+
             /** creating itemGender*/
             gender = ItemGenderFactory.getItemGender(BM.getId(), itemGenderID);
             itemGenderService.creat(gender);
@@ -152,7 +154,16 @@ public class BeautyController {
             Accounthistory(accounting);
             /**image**/
             for (int i = 0; i < beaut.getImage().size(); i++) {
-                images = ImagesFactory.getImages(decoreder(beaut.getImage().get(i)));
+                //We need to first save the picture to a directory temporarelly.
+                imagesService.pictureWriter(beaut.getImage().get(i));
+
+                //here we are going to read the file from the file it was wrote so that we can resize them.
+                ImageResizer.getResizedImage();
+
+                //now we convert the file into byte again after resizing
+                byte[] resized = imagesService.convertToBytes();
+
+                images = ImagesFactory.getImages(decoreder(resized));
                 if (images != null) {
                     imagesService.creat(images);
                     Item_Pictures IP = ItemPictureFactory.getItem_picture(BM.getId(), images.getId());
@@ -252,7 +263,7 @@ public class BeautyController {
     @GetMapping("/Delete")
     public BeautyMakeup delete(@RequestParam("id") String id) {
         boolean result = pictureService.deleteFromFile(id);
-        if (result == true) {
+        if (result) {
             return beautyService.delete(id);
         }
         return null;
@@ -264,20 +275,20 @@ public class BeautyController {
     }
 
 
-    public Boolean helpCreateFile(MultipartFile file, String id) throws IOException {
-        File filenew = new File(work + id + ".png");
-        filenew.createNewFile();
-
-        FileOutputStream fos = new FileOutputStream(filenew);
-        fos.write(file.getBytes());
-        fos.close();
-        if (file != null) {
-            pictureService.creatImage(filenew, id);
-            filenew.delete();
-            return true;
-        }
-        return false;
-    }
+//    public Boolean helpCreateFile(MultipartFile file, String id) throws IOException {
+//        File filenew = new File(work + id + ".png");
+//        filenew.createNewFile();
+//
+//        FileOutputStream fos = new FileOutputStream(filenew);
+//        fos.write(file.getBytes());
+//        fos.close();
+//        if (file != null) {
+//            pictureService.creatImage(filenew, id);
+//            filenew.delete();
+//            return true;
+//        }
+//        return false;
+//    }
 
     public byte[] decoreder(byte[] image) {
         String encodedString = Base64.getEncoder().encodeToString(image);

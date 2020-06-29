@@ -40,10 +40,12 @@ public class ProductSize {
     @Override
     public String toString() {
         return "ProductSize{" +
-                "itemId='" + itemId + '\'' +
+                "id='" + id + '\'' +
+                ", itemId='" + itemId + '\'' +
                 ", sizeId='" + sizeId + '\'' +
                 '}';
     }
+
     public static class Builder{
         private String id;
         private String itemId;
@@ -61,6 +63,7 @@ public class ProductSize {
         }
         public ProductSize build(){
             ProductSize productSize=new ProductSize();
+            productSize.id=this.id;
             productSize.itemId=this.itemId;
             productSize.sizeId=this.sizeId;
             return productSize;

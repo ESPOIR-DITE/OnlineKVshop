@@ -32,7 +32,9 @@ public class ItemSizeService implements Iservice<ProductSize,String> {
     @Override
     public ProductSize delete(String id) {
         Optional<ProductSize> result=itemSizeRepo.findById(id);
-        itemSizeRepo.deleteById(id);
+        if(read(id).getItemId()!=null){
+            itemSizeRepo.deleteById(id);
+        }
         return result.orElse(null);
     }
 
@@ -52,6 +54,14 @@ public class ItemSizeService implements Iservice<ProductSize,String> {
         return itemSizeRepo.findAll();
     }
 
+    public ProductSize readWithItemId(String itemId){
+        for(ProductSize productSize:readAll()){
+            if(productSize.getItemId().equals(itemId)){
+                return productSize;
+            }
+        }
+        return null;
+    }
     public List<ProductSize> productSizeList(String itemId){
         List<ProductSize> productSizes=new ArrayList<>();
         for(ProductSize productSize:readAll()){
@@ -74,11 +84,14 @@ public class ItemSizeService implements Iservice<ProductSize,String> {
         }return result;
     }
     public Boolean createAll(ArrayList<ProductSize> productSize){
-        boolean toreturn= true;
+        boolean toreturn= false;
         for (ProductSize ps:productSize){
-            ProductSize result=creat(ps);
-            if (result==null){
-                toreturn=false;
+            System.out.println(ps);
+            if(ps!=null){
+                ProductSize result=creat(ps);
+                if (result!=null){
+                    toreturn=true;
+                }
             }
         }return toreturn;
     }

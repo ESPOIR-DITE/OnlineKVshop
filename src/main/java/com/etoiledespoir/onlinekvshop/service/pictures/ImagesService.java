@@ -6,7 +6,12 @@ import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +25,15 @@ public class ImagesService implements Iservice<Images,String> {
     private static ImagesService imagesService;
     @Autowired
     private ImagesRepository ir;
+
+    /***
+     * File location;
+     */
+    private String fileName = Paths.get("").toAbsolutePath().toString()+"output.jpg";
+    private File file_save_path = new File(fileName);
+
+    private String fileName1 = Paths.get("").toAbsolutePath().toString()+"resized.jpg";
+    private File file_read_path = new File(fileName1);
 
     private ImagesService() {
     }
@@ -65,5 +79,46 @@ public class ImagesService implements Iservice<Images,String> {
             }
         }
         return reserve;
+    }
+    /****
+     * This method first converts byte array to a file
+     * and write it in util directory
+     * naming it output.jpg
+     * so that the method that resize picture can read it from that location.
+     * @param bytes
+     * @throws IOException
+     */
+    public void pictureWriter(byte[] bytes) throws IOException {
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+        BufferedImage bImage2 = ImageIO.read(bis);
+        ImageIO.write(bImage2, "jpg", file_save_path);
+        System.out.println("image created");
+    }
+    public byte[] convertToBytes() throws IOException {
+        FileInputStream fis = new FileInputStream(file_read_path);
+
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        byte[] buf = new byte[1024];
+        try {
+            for (int readNum; (readNum = fis.read(buf)) != -1; ) {
+                bos.write(buf, 0, readNum); //no doubt here is 0
+            }
+        } catch (IOException ex) {
+            System.out.println("failed to convert to byte array");
+        }
+        bos.close();
+        fis.close();
+        return bos.toByteArray();
+    }
+
+    public byte[] encodeIntoByteArray(byte[] image) {
+        String encodedString = Base64.getEncoder().encodeToString(image);
+        byte[] byteArrray = encodedString.getBytes();
+        return byteArrray;
+    }
+    public String decodeIntoString(byte[] picture) {
+        byte[] byteArrayPicture = Base64.getDecoder().decode(picture);
+        String stringPicture = Base64.getEncoder().encodeToString(byteArrayPicture);
+        return stringPicture;
     }
 }

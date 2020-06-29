@@ -12,6 +12,8 @@ import com.etoiledespoir.onlinekvshop.domain.generic_class.item_picture.Item_Pic
 import com.etoiledespoir.onlinekvshop.domain.item.impl.allItems.Products;
 import com.etoiledespoir.onlinekvshop.domain.joins.ItemView;
 import com.etoiledespoir.onlinekvshop.domain.pictures.Images;
+import com.etoiledespoir.onlinekvshop.domain.size.ProductSize;
+import com.etoiledespoir.onlinekvshop.domain.size.Size;
 import com.etoiledespoir.onlinekvshop.factory.domain.genericFactory.item_picture.ItemPictureFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.join.ItemViewFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.join.ViewProductFactory;
@@ -70,10 +72,10 @@ public class JoinClass {
         List<ItemView> viewList = new ArrayList<>();
         for (int i = 0; i < productService.readAll().size(); i++) {
             Products product = productService.read(productService.readAll().get(i).getId());
-            System.out.println("product Object: " + product.toString());
+            //System.out.println("product Object: " + product.toString());
             Accounting accounting = accountingServce.read(product.getId());
-            System.out.println("Account Object: " + accounting.toString());
-            System.out.println("product id: " + product.getId());
+            //System.out.println("Account Object: " + accounting.toString());
+           // System.out.println("product id: " + product.getId());
             Item_Pictures imageId = item_picturesService.getItemPicture(product.getId());
             //System.out.println("image id: "+imageId.toString());
             Images images = imagesService.read(imageId.getImageId());
@@ -112,6 +114,7 @@ public class JoinClass {
     @GetMapping("/read")
     public ViewProduct viewItem(@RequestParam("id") String id) {
         ViewProduct viewProduct = null;
+        System.out.println(id);
         Products product = productService.read(id);
 
         ArrayList<Color> colors = new ArrayList<>();
@@ -120,27 +123,41 @@ public class JoinClass {
             //reading the colors
             for (int i = 0; i < itemColorService.getColorIdList(id).size(); i++) {
                 colors.add(colorService.read(itemColorService.getColorIdList(id).get(i).getColorId()));
+                System.out.println(colors+"color");
             }
 
             //reading the gender
-            ItemGender itemGender = itemGenderService.read(id);
+            ItemGender itemGender = itemGenderService.readWithItemId(id);
             Gender gender = genderService.read(itemGender.getGenderId());
+            System.out.println(gender+"gender");
+
+            // reading the size
+            List<ProductSize> productSize=itemSizeService.productSizeList(id);
+            ArrayList<Size> sizeArrayList=new ArrayList<>();
+            if(productSize!=null){
+                for(ProductSize productSize1:productSize){
+                    Size size=sizeService.read(productSize1.getSizeId());
+                    sizeArrayList.add(size);
+                }
+            }
 
             //reading the brand
-            ItemBraind itemBraind = itemBraindService.read(id);
+            ItemBraind itemBraind = itemBraindService.readWithItemId(id);
             Braind braind = braindService.read(itemBraind.getBraindId());
+            System.out.println(braind+"brand");
 
             // reading the Account
             Accounting accounting = accountingServce.read(id);
 
             //reading picture
-            Item_Pictures item_pictures= item_picturesService.getItemPicture(id);
+            //Item_Pictures item_pictures= item_picturesService.getItemPicture(id);
             for(int i=0;i<item_picturesService.readAllFileOf(id).size();i++){
                 images.add(imagesService.read(item_picturesService.readAllFileOf(id).get(i).getImageId()).getImage() );
             }
 
             viewProduct = ViewProductFactory.getViewProduct(product.getId(), product.getName(), braind.getBraindName(), accounting.getPrice(), product.getDescription(), accounting.getQuantity(), colors,images);
 
+            System.out.println(viewProduct);
             return viewProduct;
         }
         return null;

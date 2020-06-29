@@ -32,7 +32,9 @@ public class ItemColorService implements Iservice<ItemColor,String> {
     @Override
     public ItemColor delete(String id) {
         Optional<ItemColor> result=itemColorRep.findById(id);
-        itemColorRep.deleteById(id);
+        if(read(id).getId()!=null){
+            itemColorRep.deleteById(id);
+        }
         return result.orElse(null);
     }
 
