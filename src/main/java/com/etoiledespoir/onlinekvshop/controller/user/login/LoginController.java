@@ -30,7 +30,6 @@ public class LoginController implements Icontroller<Login,String> {
     @PostMapping("/update")
     @Override
     public Login update(@RequestBody Login login) {
-        loginRepository.delete(login.getEmail());
         return loginRepository.Update(login);
     }
 
@@ -54,9 +53,8 @@ public class LoginController implements Icontroller<Login,String> {
     public Login readWithPassword(@RequestParam("id") String pasword){
         return loginRepository.readWithPassword(pasword);
     }
-    @GetMapping("/univelogin")
-    public Login UniversalLogin(@RequestParam("email") String email,@RequestParam("password") String pasword){
-        System.out.println(email);
-        return loginRepository.loging(email,pasword);
+    @PostMapping("/univelogin")
+    public Login UniversalLogin(@RequestBody Login login){
+        return loginRepository.loging(login.getEmail(),login.getPassword());
     }
 }

@@ -8,17 +8,17 @@ public class Login {
     @Id
     private String email;
     private String password;
-    private String userTupe;
+    private String userType;
 
     private Login() {
     }
 
-    public String getUserTupe() {
-        return userTupe;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setUserTupe(String userTupe) {
-        this.userTupe = userTupe;
+    public void setUserType(String userTupe) {
+        this.userType = userTupe;
     }
 
     public String getEmail() {
@@ -42,7 +42,7 @@ public class Login {
         return "Login{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", userTupe='" + userTupe + '\'' +
+                ", userTupe='" + userType + '\'' +
                 '}';
     }
     public static class Builder{
@@ -64,7 +64,7 @@ public class Login {
             Login login=new Login();
             login.email=this.email;
             login.password=this.password;
-            login.userTupe=this.userTupe;
+            login.userType =this.userTupe;
             return login;
         }
     }

@@ -5,6 +5,7 @@ import com.etoiledespoir.onlinekvshop.repository.user.userType.login.LoginReposi
 import com.etoiledespoir.onlinekvshop.service.user.login.LoginServiceInt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.rmi.runtime.Log;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,20 +32,27 @@ public class LoginService implements LoginServiceInt {
 
     @Override
     public Login delete(String id) {
-        Optional<Login> result=loginRepository.findById(id);
-        loginRepository.deleteById(id);
-        return result.orElse(null);
+        Login login = get(id);
+        if(login!=null){
+            loginRepository.delete(login);
+            return login;
+        }
+        return null;
     }
 
     @Override
     public Login Update(Login login) {
-        return loginRepository.save(login);
+        Login login1 = get(login.getEmail());
+        if(login1!=null){
+            delete(login1.getEmail());
+            return creat(login);
+        }
+        return null;
     }
 
     @Override
     public Login read(String id) {
-        Optional<Login> result=loginRepository.findById(id);
-        return result.orElse(null);
+       return get(id);
     }
     public Login readWithPassWord(String password){
         for(Login login: readAll()){
@@ -58,6 +66,7 @@ public class LoginService implements LoginServiceInt {
     public List<Login> readAll() {
         return loginRepository.findAll();
     }
+
     public Login loging(String email,String password){
         List<Login> result=loginRepository.findAll();
         for(Login login: result){
@@ -75,5 +84,9 @@ public class LoginService implements LoginServiceInt {
         }return null;
     }
 
+    public Login get(String id){
+        Optional<Login> result=loginRepository.findById(id);
+        return result.orElse(null);
+    }
 
 }
