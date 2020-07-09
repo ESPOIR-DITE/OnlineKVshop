@@ -2,8 +2,8 @@ package com.etoiledespoir.onlinekvshop.controller.order;
 
 
 import com.etoiledespoir.onlinekvshop.domain.accounting.Accounting;
-import com.etoiledespoir.onlinekvshop.domain.card.Card;
-import com.etoiledespoir.onlinekvshop.domain.generic_class.OrderHelper;
+import com.etoiledespoir.onlinekvshop.domain.order.card.Card;
+import com.etoiledespoir.onlinekvshop.domain.generic.OrderHelper;
 import com.etoiledespoir.onlinekvshop.domain.item.impl.allItems.Products;
 import com.etoiledespoir.onlinekvshop.domain.order.OrderLine;
 import com.etoiledespoir.onlinekvshop.domain.order.OrderStatus;
@@ -11,13 +11,13 @@ import com.etoiledespoir.onlinekvshop.domain.order.Orders;
 import com.etoiledespoir.onlinekvshop.factory.domain.order.OrderFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.order.OrderLineFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.order.OrderStatusFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.orderHelper.OrderHelperFactory;
-import com.etoiledespoir.onlinekvshop.service.card.CardService;
-import com.etoiledespoir.onlinekvshop.service.itemService.accounting.AccountingServce;
-import com.etoiledespoir.onlinekvshop.service.orderService.impl.OrderService;
-import com.etoiledespoir.onlinekvshop.service.orderService.orderStatus.OrderStatusService;
-import com.etoiledespoir.onlinekvshop.service.orderline.impl.OrderLineService;
-import com.etoiledespoir.onlinekvshop.service.product.ProductService;
+import com.etoiledespoir.onlinekvshop.factory.domain.order.orderHelper.OrderHelperFactory;
+import com.etoiledespoir.onlinekvshop.service.item.card.CardService;
+import com.etoiledespoir.onlinekvshop.service.accounting.AccountingServce;
+import com.etoiledespoir.onlinekvshop.service.order.OrderService;
+import com.etoiledespoir.onlinekvshop.service.order.status.OrderStatusService;
+import com.etoiledespoir.onlinekvshop.service.order.orderline.OrderLineService;
+import com.etoiledespoir.onlinekvshop.service.item.product.ProductService;
 import com.etoiledespoir.onlinekvshop.util.CurrentDate;
 
 import org.springframework.beans.factory.annotation.Autowired;

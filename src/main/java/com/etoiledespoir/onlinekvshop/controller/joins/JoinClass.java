@@ -2,33 +2,31 @@ package com.etoiledespoir.onlinekvshop.controller.joins;
 
 import com.etoiledespoir.onlinekvshop.domain.ViewProduct;
 import com.etoiledespoir.onlinekvshop.domain.accounting.Accounting;
-import com.etoiledespoir.onlinekvshop.domain.braind.Braind;
-import com.etoiledespoir.onlinekvshop.domain.braind.impl.ItemBraind;
-import com.etoiledespoir.onlinekvshop.domain.color.Color;
-import com.etoiledespoir.onlinekvshop.domain.color.impl.ItemColor;
-import com.etoiledespoir.onlinekvshop.domain.gender.Gender;
-import com.etoiledespoir.onlinekvshop.domain.gender.bridge.ItemGender;
-import com.etoiledespoir.onlinekvshop.domain.generic_class.item_picture.Item_Pictures;
+import com.etoiledespoir.onlinekvshop.domain.item.braind.Braind;
+import com.etoiledespoir.onlinekvshop.domain.item.braind.impl.ItemBraind;
+import com.etoiledespoir.onlinekvshop.domain.item.color.Color;
+import com.etoiledespoir.onlinekvshop.domain.users.gender.Gender;
+import com.etoiledespoir.onlinekvshop.domain.item.gender.ItemGender;
+import com.etoiledespoir.onlinekvshop.domain.generic.item_picture.itemImage;
 import com.etoiledespoir.onlinekvshop.domain.item.impl.allItems.Products;
 import com.etoiledespoir.onlinekvshop.domain.joins.ItemView;
-import com.etoiledespoir.onlinekvshop.domain.pictures.Images;
-import com.etoiledespoir.onlinekvshop.domain.size.ProductSize;
-import com.etoiledespoir.onlinekvshop.domain.size.Size;
-import com.etoiledespoir.onlinekvshop.factory.domain.genericFactory.item_picture.ItemPictureFactory;
+import com.etoiledespoir.onlinekvshop.domain.item.pictures.Images;
+import com.etoiledespoir.onlinekvshop.domain.item.size.ItemSize;
+import com.etoiledespoir.onlinekvshop.domain.item.size.Size;
 import com.etoiledespoir.onlinekvshop.factory.domain.join.ItemViewFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.join.ViewProductFactory;
-import com.etoiledespoir.onlinekvshop.service.braind.BraindService;
-import com.etoiledespoir.onlinekvshop.service.braind.ItemBraindService;
-import com.etoiledespoir.onlinekvshop.service.color.ColorService;
-import com.etoiledespoir.onlinekvshop.service.color.ItemColorService;
-import com.etoiledespoir.onlinekvshop.service.gender.GenderService;
-import com.etoiledespoir.onlinekvshop.service.gender.ItemGenderService;
-import com.etoiledespoir.onlinekvshop.service.itemService.accounting.AccountingServce;
-import com.etoiledespoir.onlinekvshop.service.pictures.ImagesService;
-import com.etoiledespoir.onlinekvshop.service.pictures.Item_PicturesService;
-import com.etoiledespoir.onlinekvshop.service.product.ProductService;
-import com.etoiledespoir.onlinekvshop.service.size.ItemSizeService;
-import com.etoiledespoir.onlinekvshop.service.size.SizeService;
+import com.etoiledespoir.onlinekvshop.service.item.braind.BraindService;
+import com.etoiledespoir.onlinekvshop.service.item.braind.ItemBraindService;
+import com.etoiledespoir.onlinekvshop.service.item.color.ColorService;
+import com.etoiledespoir.onlinekvshop.service.item.color.ItemColorService;
+import com.etoiledespoir.onlinekvshop.service.user.gender.GenderService;
+import com.etoiledespoir.onlinekvshop.service.user.gender.ItemGenderService;
+import com.etoiledespoir.onlinekvshop.service.accounting.AccountingServce;
+import com.etoiledespoir.onlinekvshop.service.item.pictures.ImagesService;
+import com.etoiledespoir.onlinekvshop.service.item.pictures.ItemImageService;
+import com.etoiledespoir.onlinekvshop.service.item.product.ProductService;
+import com.etoiledespoir.onlinekvshop.service.item.size.ItemSizeService;
+import com.etoiledespoir.onlinekvshop.service.item.size.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +44,7 @@ public class JoinClass {
     @Autowired
     AccountingServce accountingServce;
     @Autowired
-    Item_PicturesService item_picturesService;
+    ItemImageService item_picturesService;
     @Autowired
     ImagesService imagesService;
     @Autowired
@@ -76,7 +74,7 @@ public class JoinClass {
             Accounting accounting = accountingServce.read(product.getId());
             //System.out.println("Account Object: " + accounting.toString());
            // System.out.println("product id: " + product.getId());
-            Item_Pictures imageId = item_picturesService.getItemPicture(product.getId());
+            itemImage imageId = item_picturesService.getItemPicture(product.getId());
             //System.out.println("image id: "+imageId.toString());
             Images images = imagesService.read(imageId.getImageId());
             //System.out.println("image id: "+images.toString());
@@ -132,11 +130,11 @@ public class JoinClass {
             System.out.println(gender+"gender");
 
             // reading the size
-            List<ProductSize> productSize=itemSizeService.productSizeList(id);
+            List<ItemSize> itemSize =itemSizeService.productSizeList(id);
             ArrayList<Size> sizeArrayList=new ArrayList<>();
-            if(productSize!=null){
-                for(ProductSize productSize1:productSize){
-                    Size size=sizeService.read(productSize1.getSizeId());
+            if(itemSize !=null){
+                for(ItemSize itemSize1 : itemSize){
+                    Size size=sizeService.read(itemSize1.getSizeId());
                     sizeArrayList.add(size);
                 }
             }

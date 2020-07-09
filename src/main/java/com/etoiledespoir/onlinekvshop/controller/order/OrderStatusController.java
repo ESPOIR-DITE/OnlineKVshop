@@ -3,7 +3,7 @@ package com.etoiledespoir.onlinekvshop.controller.order;
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.order.OrderStatus;
 import com.etoiledespoir.onlinekvshop.factory.domain.order.OrderStatusFactory;
-import com.etoiledespoir.onlinekvshop.service.orderService.orderStatus.OrderStatusService;
+import com.etoiledespoir.onlinekvshop.service.order.status.OrderStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

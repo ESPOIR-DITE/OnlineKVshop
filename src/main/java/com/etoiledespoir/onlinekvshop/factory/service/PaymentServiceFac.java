@@ -1,9 +1,9 @@
 package com.etoiledespoir.onlinekvshop.factory.service;
 
-import com.etoiledespoir.onlinekvshop.service.paymentService.impl.PayService;
+import com.etoiledespoir.onlinekvshop.service.accounting.PaymentService;
 
 public class PaymentServiceFac {
-    public static PayService getPayService(){
-        return PayService.getPayService();
+    public static PaymentService getPayService(){
+        return PaymentService.getPaymentService();
     }
 }

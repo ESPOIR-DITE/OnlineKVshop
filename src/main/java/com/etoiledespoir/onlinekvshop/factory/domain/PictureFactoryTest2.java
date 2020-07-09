@@ -1,16 +1,12 @@
 package com.etoiledespoir.onlinekvshop.factory.domain;
 
 import com.etoiledespoir.onlinekvshop.domain.Picture;
-import com.etoiledespoir.onlinekvshop.domain.Pictures2;
-import com.etoiledespoir.onlinekvshop.domain.pic.Mypic;
-import com.etoiledespoir.onlinekvshop.domain.pic.picHelper.MypicHelper;
-import com.etoiledespoir.onlinekvshop.factory.domain.pic.MypicFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.MyPicHelperFactory;
-import com.etoiledespoir.onlinekvshop.factory.domain.pic.pictureHelpReader.MypicHelpReadFactory;
+import com.etoiledespoir.onlinekvshop.domain.item.pic.Mypic;
+import com.etoiledespoir.onlinekvshop.domain.item.pic.picHelper.MypicHelper;
+import com.etoiledespoir.onlinekvshop.factory.domain.item.pic.MypicFactory;
+import com.etoiledespoir.onlinekvshop.factory.domain.item.pic.pictureHelpReader.MyPicHelperFactory;
 import com.etoiledespoir.onlinekvshop.factory.service.MypicServiceFactory;
-import com.etoiledespoir.onlinekvshop.repository.picture.pictureImpl.PictureRep;
-import com.etoiledespoir.onlinekvshop.repository.picture2.pictureImpl.pictureImpl.PictureRep2;
-import com.etoiledespoir.onlinekvshop.service.mypic.impl.PictureService;
+import com.etoiledespoir.onlinekvshop.service.item.mypic.impl.PictureService;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -20,10 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 
 public class PictureFactoryTest2 extends JFrame implements ActionListener {
 

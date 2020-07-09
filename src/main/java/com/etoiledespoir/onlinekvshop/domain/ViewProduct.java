@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.domain;
 
-import com.etoiledespoir.onlinekvshop.domain.color.Color;
+import com.etoiledespoir.onlinekvshop.domain.item.color.Color;
 
 import java.util.ArrayList;
 

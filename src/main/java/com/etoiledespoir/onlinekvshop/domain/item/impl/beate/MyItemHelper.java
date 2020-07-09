@@ -1,8 +1,5 @@
 package com.etoiledespoir.onlinekvshop.domain.item.impl.beate;
 
-import com.etoiledespoir.onlinekvshop.domain.color.Color;
-import com.etoiledespoir.onlinekvshop.domain.size.Size;
-
 import java.util.ArrayList;
 
 public class MyItemHelper {

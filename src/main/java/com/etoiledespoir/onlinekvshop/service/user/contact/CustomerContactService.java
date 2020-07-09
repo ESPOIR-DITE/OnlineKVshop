@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.service.user.contact;
 
-import com.etoiledespoir.onlinekvshop.domain.users.contact.CustomerContact;
-import com.etoiledespoir.onlinekvshop.repository.user.contact.CustomerContactRep;
+import com.etoiledespoir.onlinekvshop.domain.users.contact.UserContact;
+import com.etoiledespoir.onlinekvshop.repository.user.contact.UserContactRep;
 import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class CustomerContactService implements Iservice<CustomerContact,String> {
+public class CustomerContactService implements Iservice<UserContact,String> {
     @Autowired
-    private CustomerContactRep customerContactRep;
+    private UserContactRep userContactRep;
     private static CustomerContactService customerContactService;
 
     private CustomerContactService() {
@@ -23,30 +23,30 @@ public class CustomerContactService implements Iservice<CustomerContact,String> 
     }
 
     @Override
-    public CustomerContact creat(CustomerContact customerContact) {
-        return customerContactRep.save(customerContact);
+    public UserContact creat(UserContact userContact) {
+        return userContactRep.save(userContact);
     }
 
     @Override
-    public CustomerContact delete(String id) {
-        Optional<CustomerContact> result=customerContactRep.findById(id);
-        customerContactRep.deleteById(id);
+    public UserContact delete(String id) {
+        Optional<UserContact> result= userContactRep.findById(id);
+        userContactRep.deleteById(id);
         return result.orElse(null);
     }
 
     @Override
-    public CustomerContact Update(CustomerContact customerContact) {
-        return customerContactRep.save(customerContact);
+    public UserContact Update(UserContact userContact) {
+        return userContactRep.save(userContact);
     }
 
     @Override
-    public CustomerContact read(String id) {
-        Optional<CustomerContact> result=customerContactRep.findById(id);
+    public UserContact read(String id) {
+        Optional<UserContact> result= userContactRep.findById(id);
         return result.orElse(null);
     }
 
     @Override
-    public List<CustomerContact> readAll() {
-        return customerContactRep.findAll();
+    public List<UserContact> readAll() {
+        return userContactRep.findAll();
     }
 }

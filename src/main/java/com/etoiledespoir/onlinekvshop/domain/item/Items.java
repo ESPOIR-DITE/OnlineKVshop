@@ -1,43 +1,32 @@
 package com.etoiledespoir.onlinekvshop.domain.item;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Items {
     @Id
-    private String ItemNumber;
+    private String id;
     private String name;
-    private String typeName;
-    @Column(name = "item_description" )
     private String description;
 
     private Items() {
     }
 
-    public String getItemNumber() {
-        return ItemNumber;
+    public String getId() {
+        return id;
     }
 
-    public void setItemNumber(String itemNumber) {
-        ItemNumber = itemNumber;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getNane() {
+    public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getTypeName() {
-        return typeName;
-    }
-
-    public void setQuantity(String type) {
-        this.typeName = type;
     }
 
     public String getDescription() {
@@ -51,27 +40,21 @@ public class Items {
     @Override
     public String toString() {
         return "Items{" +
-                "ItemNumber='" + ItemNumber + '\'' +
+                "ItemNumber='" + id + '\'' +
                 ", price=" + name +
-                ", quantity=" + typeName +
                 ", description='" + description + '\'' +
                 '}';
     }
     public static class Builder{
-        private String ItemNumber;
+        private String id;
         private String name;
-        private String type;
         private String description;
 
-        public Builder(String itemNumber){
-            this.ItemNumber=itemNumber;
+        public Builder(String id){
+            this.id = id;
         }
         public Builder buildName(String name){
             this.name=name;
-            return this;
-        }
-        public Builder buildType(String type){
-            this.type=type;
             return this;
         }
         public Builder Description(String description){
@@ -81,9 +64,8 @@ public class Items {
         public Items build(){
             Items i=new Items();
             i.description=this.description;
-            i.ItemNumber=this.ItemNumber;
+            i.id =this.id;
             i.name=this.name;
-            i.typeName =this.type;
             return i;
         }
 

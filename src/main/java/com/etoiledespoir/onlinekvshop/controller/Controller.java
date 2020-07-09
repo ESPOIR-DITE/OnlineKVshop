@@ -2,9 +2,9 @@ package com.etoiledespoir.onlinekvshop.controller;
 
 import com.etoiledespoir.onlinekvshop.controller.user.userType.admin.AdminController;
 import com.etoiledespoir.onlinekvshop.controller.user.userType.customer.CustomerController;
-import com.etoiledespoir.onlinekvshop.controller.itemController.item.ItemController;
+import com.etoiledespoir.onlinekvshop.controller.item.item.ItemController;
 import com.etoiledespoir.onlinekvshop.controller.order.OrderController;
-import com.etoiledespoir.onlinekvshop.controller.payment.PaymentController;
+import com.etoiledespoir.onlinekvshop.controller.account.payment.PaymentController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

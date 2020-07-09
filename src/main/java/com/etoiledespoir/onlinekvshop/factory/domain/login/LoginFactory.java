@@ -4,10 +4,10 @@ import com.etoiledespoir.onlinekvshop.domain.users.login.Login;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class LoginFactory {
-    public static Login getLogin(String email,String userTupe){
+    public static Login getLogin(String email,String userType){
         return new Login.Builder(email)
                 .buildPassword(Igenerator.getSuffixFromClassName(LoginFactory.class))
-                .buildUserType(userTupe)
+                .buildUserType(userType)
                 .build();
     }
     public static Login updateLogin(String email,String password,String userTupe){
