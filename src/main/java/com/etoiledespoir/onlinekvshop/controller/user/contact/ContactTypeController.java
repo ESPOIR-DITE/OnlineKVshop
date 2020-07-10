@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.user.contact;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.users.contact.ContactType;
+import com.etoiledespoir.onlinekvshop.domain.user.contact.ContactType;
 import com.etoiledespoir.onlinekvshop.factory.domain.contact.ContactTypeFactory;
 import com.etoiledespoir.onlinekvshop.service.user.contact.ContactTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class ContactTypeController implements Icontroller<ContactType,String> {
     @Override
     public ContactType create(@RequestBody ContactType contactType) {
 
-        ContactType contactType1= ContactTypeFactory.getContactType(contactType.getType());
+        ContactType contactType1= ContactTypeFactory.getContactType(contactType.getContact());
         return contactTypeService.creat(contactType1);
     }
 

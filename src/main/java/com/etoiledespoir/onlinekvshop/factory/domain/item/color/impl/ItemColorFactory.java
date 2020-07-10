@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.item.color.impl;
 
-import com.etoiledespoir.onlinekvshop.domain.item.color.impl.ItemColor;
+import com.etoiledespoir.onlinekvshop.domain.item.color.ItemColor;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class ItemColorFactory {

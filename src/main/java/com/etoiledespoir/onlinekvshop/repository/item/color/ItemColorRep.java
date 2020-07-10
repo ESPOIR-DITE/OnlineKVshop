@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.repository.item.color;
 
-import com.etoiledespoir.onlinekvshop.domain.item.color.impl.ItemColor;
+import com.etoiledespoir.onlinekvshop.domain.item.color.ItemColor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

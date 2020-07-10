@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.item.pictures;
 
-import com.etoiledespoir.onlinekvshop.domain.item.pictures.Images;
+import com.etoiledespoir.onlinekvshop.domain.item.image.Images;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class ImagesFactory {

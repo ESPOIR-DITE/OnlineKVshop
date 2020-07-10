@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.login;
 
-import com.etoiledespoir.onlinekvshop.domain.users.login.Login;
+import com.etoiledespoir.onlinekvshop.domain.user.login.Login;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class LoginFactory {

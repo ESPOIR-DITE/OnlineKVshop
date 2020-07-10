@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.order.orderHelper;
 
-import com.etoiledespoir.onlinekvshop.domain.generic.OrderHelper;
+import com.etoiledespoir.onlinekvshop.domain.OrderHelper;
 
 public class OrderHelperFactory {
     public static OrderHelper getOrderHelper(String orderId,String date,String itemName,double quanriry,double price,String orderStat){

@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.controller.item.braind;
 
-import com.etoiledespoir.onlinekvshop.domain.item.braind.impl.ItemBraind;
+import com.etoiledespoir.onlinekvshop.domain.item.braind.ItemBrand;
 import com.etoiledespoir.onlinekvshop.service.item.braind.ItemBraindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,19 +13,19 @@ public class ItemBrandController {
     @Autowired
     ItemBraindService itemBraindService;
     @GetMapping("/read")
-    public ItemBraind read(@RequestParam("id")String id){
+    public ItemBrand read(@RequestParam("id")String id){
         return itemBraindService.read(id);
     }
     @GetMapping("/reads")
-    public List<ItemBraind> reads(){
+    public List<ItemBrand> reads(){
         return itemBraindService.readAll();
     }
     @GetMapping("/readWithItemId")
-    public ItemBraind readWithItemId(@RequestParam("itemId") String itemId){
+    public ItemBrand readWithItemId(@RequestParam("itemId") String itemId){
         return itemBraindService.readWithItemId(itemId);
     }
     @PostMapping("/update")
-    public ItemBraind updateItemBraind(@RequestBody ItemBraind itemBraind){
-        return itemBraindService.Update(itemBraind);
+    public ItemBrand updateItemBraind(@RequestBody ItemBrand itemBrand){
+        return itemBraindService.Update(itemBrand);
     }
 }

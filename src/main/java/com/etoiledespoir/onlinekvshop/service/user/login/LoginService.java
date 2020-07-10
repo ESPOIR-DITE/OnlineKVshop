@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.user.login;
 
-import com.etoiledespoir.onlinekvshop.domain.users.login.Login;
+import com.etoiledespoir.onlinekvshop.domain.user.login.Login;
 import com.etoiledespoir.onlinekvshop.repository.user.login.LoginRepository;
 import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;

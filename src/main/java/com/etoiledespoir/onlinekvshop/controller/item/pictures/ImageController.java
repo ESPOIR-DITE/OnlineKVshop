@@ -1,9 +1,9 @@
 package com.etoiledespoir.onlinekvshop.controller.item.pictures;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.item.pictures.Images;
+import com.etoiledespoir.onlinekvshop.domain.item.image.Images;
 import com.etoiledespoir.onlinekvshop.factory.domain.item.pictures.ImagesFactory;
-import com.etoiledespoir.onlinekvshop.service.item.pictures.ImagesService;
+import com.etoiledespoir.onlinekvshop.service.item.image.ImagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

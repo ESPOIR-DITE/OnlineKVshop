@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.user;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.users.Roles;
+import com.etoiledespoir.onlinekvshop.domain.user.Roles;
 import com.etoiledespoir.onlinekvshop.factory.domain.user.RoleFactory;
 import com.etoiledespoir.onlinekvshop.service.user.login.LoginService;
 import com.etoiledespoir.onlinekvshop.service.user.RoleService;

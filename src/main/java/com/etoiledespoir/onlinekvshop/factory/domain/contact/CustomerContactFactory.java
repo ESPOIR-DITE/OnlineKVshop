@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.contact;
 
-import com.etoiledespoir.onlinekvshop.domain.users.contact.UserContact;
+import com.etoiledespoir.onlinekvshop.domain.user.contact.UserContact;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class CustomerContactFactory {

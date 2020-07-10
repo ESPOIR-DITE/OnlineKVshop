@@ -1,7 +1,5 @@
 package com.etoiledespoir.onlinekvshop.domain.accounting.accountChange;
 
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -15,19 +13,19 @@ public class AccountChange {
     private String id;
     private String itemId;
     private String date;
-    private int intialquantity;
+    private int initialQuantity;
     private int postQuantity;
-    private String descriptioin;
+    private String description;
 
     private AccountChange() {
     }
 
-    public String getDescriptioin() {
-        return descriptioin;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptioin(String descriptioin) {
-        this.descriptioin = descriptioin;
+    public void setDescription(String descriptioin) {
+        this.description = descriptioin;
     }
 
     public String getId() {
@@ -54,12 +52,12 @@ public class AccountChange {
         this.date = date;
     }
 
-    public int getIntialquantity() {
-        return intialquantity;
+    public int getInitialQuantity() {
+        return initialQuantity;
     }
 
-    public void setIntialquantity(int intialquantity) {
-        this.intialquantity = intialquantity;
+    public void setInitialQuantity(int intialquantity) {
+        this.initialQuantity = intialquantity;
     }
 
     public int getPostQuantity() {
@@ -76,9 +74,9 @@ public class AccountChange {
                 "id='" + id + '\'' +
                 ", itemId='" + itemId + '\'' +
                 ", date='" + date + '\'' +
-                ", intialquantity=" + intialquantity +
+                ", intialquantity=" + initialQuantity +
                 ", postQuantity=" + postQuantity +
-                ", descriptioin='" + descriptioin + '\'' +
+                ", descriptioin='" + description + '\'' +
                 '}';
     }
 
@@ -117,8 +115,8 @@ public class AccountChange {
             AccountChange a=new AccountChange();
             a.date=this.date;
             a.id=this.id;
-            a.descriptioin=this.descriptioin;
-            a.intialquantity=this.intialquantity;
+            a.description =this.descriptioin;
+            a.initialQuantity =this.intialquantity;
             a.postQuantity=this.postQuantity;
             a.itemId=this.itemId;
             return a;

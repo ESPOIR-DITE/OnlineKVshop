@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.user;
 
-import com.etoiledespoir.onlinekvshop.domain.users.Roles;
+import com.etoiledespoir.onlinekvshop.domain.user.Roles;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class RoleFactory {

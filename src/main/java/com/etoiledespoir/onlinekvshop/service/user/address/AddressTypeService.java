@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.user.address;
 
-import com.etoiledespoir.onlinekvshop.domain.users.address.AddressType;
+import com.etoiledespoir.onlinekvshop.domain.user.address.AddressType;
 import com.etoiledespoir.onlinekvshop.repository.user.address.AddressTypeRep;
 import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;

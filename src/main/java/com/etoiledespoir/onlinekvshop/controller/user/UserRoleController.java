@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.user;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.users.UserRole;
+import com.etoiledespoir.onlinekvshop.domain.user.UserRole;
 import com.etoiledespoir.onlinekvshop.factory.domain.user.UserRoleFactory;
 import com.etoiledespoir.onlinekvshop.service.user.UserRoleService;
 import com.mashape.unirest.http.exceptions.UnirestException;

@@ -6,7 +6,7 @@ import javax.persistence.Id;
 @Entity
 public class OrderLine {
     @Id
-    private String linecode;
+    private String lineCode;
     private String itemNumber;
     private String orderNumber;
     private double quantity;
@@ -24,12 +24,12 @@ public class OrderLine {
         this.quantity = quantity;
     }
 
-    public String getLinecode() {
-        return linecode;
+    public String getLineCode() {
+        return lineCode;
     }
 
-    public void setLinecode(String linecode) {
-        this.linecode = linecode;
+    public void setLineCode(String linecode) {
+        this.lineCode = linecode;
     }
 
     public String getItemNumber() {
@@ -51,7 +51,7 @@ public class OrderLine {
     @Override
     public String toString() {
         return "OrderLine{" +
-                "linecode='" + linecode + '\'' +
+                "linecode='" + lineCode + '\'' +
                 ", itemNumber='" + itemNumber + '\'' +
                 ", orderNumber='" + orderNumber + '\'' +
                 ", quantity=" + quantity +
@@ -84,7 +84,7 @@ public class OrderLine {
         public OrderLine getOrderLine(){
             OrderLine line=new OrderLine();
             line.itemNumber=this.itemNumber;
-            line.linecode=this.linecode;
+            line.lineCode =this.linecode;
             line.orderNumber =this.OrderNumber;
             line.quantity=this.quantity;
             return line;

@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.user.address;
 
-import com.etoiledespoir.onlinekvshop.domain.users.address.AddressType;
+import com.etoiledespoir.onlinekvshop.domain.user.address.AddressType;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class AddressTypeFact {

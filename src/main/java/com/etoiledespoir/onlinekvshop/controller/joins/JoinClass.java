@@ -2,19 +2,20 @@ package com.etoiledespoir.onlinekvshop.controller.joins;
 
 import com.etoiledespoir.onlinekvshop.domain.ViewProduct;
 import com.etoiledespoir.onlinekvshop.domain.accounting.Accounting;
-import com.etoiledespoir.onlinekvshop.domain.item.braind.Braind;
-import com.etoiledespoir.onlinekvshop.domain.item.braind.impl.ItemBraind;
+import com.etoiledespoir.onlinekvshop.domain.item.Items;
+import com.etoiledespoir.onlinekvshop.domain.item.braind.Brand;
+import com.etoiledespoir.onlinekvshop.domain.item.braind.ItemBrand;
 import com.etoiledespoir.onlinekvshop.domain.item.color.Color;
-import com.etoiledespoir.onlinekvshop.domain.users.gender.Gender;
+import com.etoiledespoir.onlinekvshop.domain.user.gender.Gender;
 import com.etoiledespoir.onlinekvshop.domain.item.gender.ItemGender;
-import com.etoiledespoir.onlinekvshop.domain.generic.item_picture.itemImage;
-import com.etoiledespoir.onlinekvshop.domain.item.impl.allItems.Products;
+import com.etoiledespoir.onlinekvshop.domain.item.image.itemImage;
 import com.etoiledespoir.onlinekvshop.domain.joins.ItemView;
-import com.etoiledespoir.onlinekvshop.domain.item.pictures.Images;
+import com.etoiledespoir.onlinekvshop.domain.item.image.Images;
 import com.etoiledespoir.onlinekvshop.domain.item.size.ItemSize;
 import com.etoiledespoir.onlinekvshop.domain.item.size.Size;
 import com.etoiledespoir.onlinekvshop.factory.domain.join.ItemViewFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.join.ViewProductFactory;
+import com.etoiledespoir.onlinekvshop.service.item.ItemService;
 import com.etoiledespoir.onlinekvshop.service.item.braind.BraindService;
 import com.etoiledespoir.onlinekvshop.service.item.braind.ItemBraindService;
 import com.etoiledespoir.onlinekvshop.service.item.color.ColorService;
@@ -22,9 +23,8 @@ import com.etoiledespoir.onlinekvshop.service.item.color.ItemColorService;
 import com.etoiledespoir.onlinekvshop.service.user.gender.GenderService;
 import com.etoiledespoir.onlinekvshop.service.user.gender.ItemGenderService;
 import com.etoiledespoir.onlinekvshop.service.accounting.AccountingServce;
-import com.etoiledespoir.onlinekvshop.service.item.pictures.ImagesService;
-import com.etoiledespoir.onlinekvshop.service.item.pictures.ItemImageService;
-import com.etoiledespoir.onlinekvshop.service.item.product.ProductService;
+import com.etoiledespoir.onlinekvshop.service.item.image.ImagesService;
+import com.etoiledespoir.onlinekvshop.service.item.image.ItemImageService;
 import com.etoiledespoir.onlinekvshop.service.item.size.ItemSizeService;
 import com.etoiledespoir.onlinekvshop.service.item.size.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ import java.util.List;
 @RequestMapping("/OKVS/join")
 public class JoinClass {
     @Autowired
-    ProductService productService;
+    ItemService itemService;
     @Autowired
     AccountingServce accountingServce;
     @Autowired
@@ -68,17 +68,17 @@ public class JoinClass {
     @GetMapping("/view")
     public List<ItemView> getAllItem() {
         List<ItemView> viewList = new ArrayList<>();
-        for (int i = 0; i < productService.readAll().size(); i++) {
-            Products product = productService.read(productService.readAll().get(i).getId());
+        for (int i = 0; i < itemService.readAll().size(); i++) {
+            Items items = itemService.read(itemService.readAll().get(i).getId());
             //System.out.println("product Object: " + product.toString());
-            Accounting accounting = accountingServce.read(product.getId());
+            Accounting accounting = accountingServce.read(items.getId());
             //System.out.println("Account Object: " + accounting.toString());
            // System.out.println("product id: " + product.getId());
-            itemImage imageId = item_picturesService.getItemPicture(product.getId());
+            itemImage imageId = item_picturesService.getItemPicture(items.getId());
             //System.out.println("image id: "+imageId.toString());
             Images images = imagesService.read(imageId.getImageId());
             //System.out.println("image id: "+images.toString());
-            ItemView itemView = ItemViewFactory.getItemView(accounting.getItemId(), product.getName(), product.getDescription(), images.getImage(), accounting.getPrice());
+            ItemView itemView = ItemViewFactory.getItemView(accounting.getItemId(), items.getName(), items.getDescription(), images.getImage(), accounting.getPrice());
             viewList.add(itemView);
         }
         return viewList;
@@ -86,19 +86,19 @@ public class JoinClass {
 @GetMapping("/readAll")
     public List<ViewProduct> getAllProduct() {
         List<ViewProduct> viewList = new ArrayList<>();
-        for (int i = 0; i < productService.readAll().size(); i++) {
-            Products product = productService.read(productService.readAll().get(i).getId());
-            System.out.println("product Object: " + product.toString());
-            Accounting accounting = accountingServce.read(product.getId());
+        for (int i = 0; i < itemService.readAll().size(); i++) {
+            Items item = itemService.read(itemService.readAll().get(i).getId());
+            System.out.println("product Object: " + item.toString());
+            Accounting accounting = accountingServce.read(item.getId());
             System.out.println("Account Object: " + accounting.toString());
-            System.out.println("product id: " + product.getId());
+            System.out.println("product id: " + item.getId());
 
-            ItemBraind itemBraind=itemBraindService.read(product.getId());
-            Braind braind=braindService.read(itemBraind.getBraindId());
+            ItemBrand itemBrand =itemBraindService.read(item.getId());
+            Brand brand =braindService.read(itemBrand.getBrandId());
             //System.out.println("image id: "+imageId.toString());
 
             //System.out.println("image id: "+images.toString());
-            ViewProduct itemView = ViewProductFactory.getViewProduct(product.getId(),product.getName(),braind.getBraindName(),accounting.getPrice(),product.getDescription(),accounting.getQuantity(),getColors(product.getId()),getImages(product.getId()));
+            ViewProduct itemView = ViewProductFactory.getViewProduct(item.getId(),item.getName(), brand.getBrandName(),accounting.getPrice(),item.getDescription(),accounting.getQuantity(),getColors(item.getId()),getImages(item.getId()));
             viewList.add(itemView);
         }
         return viewList;
@@ -113,11 +113,11 @@ public class JoinClass {
     public ViewProduct viewItem(@RequestParam("id") String id) {
         ViewProduct viewProduct = null;
         System.out.println(id);
-        Products product = productService.read(id);
+        Items items = itemService.read(id);
 
         ArrayList<Color> colors = new ArrayList<>();
         ArrayList<byte[]> images = new ArrayList<>();
-        if (product != null) {
+        if (items != null) {
             //reading the colors
             for (int i = 0; i < itemColorService.getColorIdList(id).size(); i++) {
                 colors.add(colorService.read(itemColorService.getColorIdList(id).get(i).getColorId()));
@@ -140,9 +140,9 @@ public class JoinClass {
             }
 
             //reading the brand
-            ItemBraind itemBraind = itemBraindService.readWithItemId(id);
-            Braind braind = braindService.read(itemBraind.getBraindId());
-            System.out.println(braind+"brand");
+            ItemBrand itemBrand = itemBraindService.readWithItemId(id);
+            Brand brand = braindService.read(itemBrand.getBrandId());
+            System.out.println(brand +"brand");
 
             // reading the Account
             Accounting accounting = accountingServce.read(id);
@@ -153,7 +153,7 @@ public class JoinClass {
                 images.add(imagesService.read(item_picturesService.readAllFileOf(id).get(i).getImageId()).getImage() );
             }
 
-            viewProduct = ViewProductFactory.getViewProduct(product.getId(), product.getName(), braind.getBraindName(), accounting.getPrice(), product.getDescription(), accounting.getQuantity(), colors,images);
+            viewProduct = ViewProductFactory.getViewProduct(items.getId(), items.getName(), brand.getBrandName(), accounting.getPrice(), items.getDescription(), accounting.getQuantity(), colors,images);
 
             System.out.println(viewProduct);
             return viewProduct;

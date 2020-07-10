@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.repository.item.special;
 
-import com.etoiledespoir.onlinekvshop.domain.item.specials.type.SpecialType;
+import com.etoiledespoir.onlinekvshop.domain.item.specials.SpecialType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

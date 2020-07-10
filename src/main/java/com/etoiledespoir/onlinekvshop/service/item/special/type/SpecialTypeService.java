@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.item.special.type;
 
-import com.etoiledespoir.onlinekvshop.domain.item.specials.type.SpecialType;
+import com.etoiledespoir.onlinekvshop.domain.item.specials.SpecialType;
 import com.etoiledespoir.onlinekvshop.repository.item.special.ItemSpecialTypeRepo;
 import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;

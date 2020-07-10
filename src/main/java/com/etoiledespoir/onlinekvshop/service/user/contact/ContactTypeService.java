@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.user.contact;
 
-import com.etoiledespoir.onlinekvshop.domain.users.contact.ContactType;
+import com.etoiledespoir.onlinekvshop.domain.user.contact.ContactType;
 import com.etoiledespoir.onlinekvshop.repository.user.contact.ContactTypeRep;
 import com.etoiledespoir.onlinekvshop.service.Iservice;
 import org.springframework.beans.factory.annotation.Autowired;

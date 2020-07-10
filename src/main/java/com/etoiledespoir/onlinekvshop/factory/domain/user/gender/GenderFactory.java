@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.user.gender;
 
-import com.etoiledespoir.onlinekvshop.domain.users.gender.Gender;
+import com.etoiledespoir.onlinekvshop.domain.user.gender.Gender;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 public class GenderFactory {

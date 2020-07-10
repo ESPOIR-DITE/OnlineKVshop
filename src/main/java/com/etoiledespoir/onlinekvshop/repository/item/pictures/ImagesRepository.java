@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.repository.item.pictures;
 
-import com.etoiledespoir.onlinekvshop.domain.item.pictures.Images;
+import com.etoiledespoir.onlinekvshop.domain.item.image.Images;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

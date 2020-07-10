@@ -2,9 +2,9 @@ package com.etoiledespoir.onlinekvshop.controller.order;
 
 
 import com.etoiledespoir.onlinekvshop.domain.accounting.Accounting;
+import com.etoiledespoir.onlinekvshop.domain.item.Items;
 import com.etoiledespoir.onlinekvshop.domain.order.card.Card;
-import com.etoiledespoir.onlinekvshop.domain.generic.OrderHelper;
-import com.etoiledespoir.onlinekvshop.domain.item.impl.allItems.Products;
+import com.etoiledespoir.onlinekvshop.domain.OrderHelper;
 import com.etoiledespoir.onlinekvshop.domain.order.OrderLine;
 import com.etoiledespoir.onlinekvshop.domain.order.OrderStatus;
 import com.etoiledespoir.onlinekvshop.domain.order.Orders;
@@ -12,12 +12,12 @@ import com.etoiledespoir.onlinekvshop.factory.domain.order.OrderFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.order.OrderLineFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.order.OrderStatusFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.order.orderHelper.OrderHelperFactory;
-import com.etoiledespoir.onlinekvshop.service.item.card.CardService;
+import com.etoiledespoir.onlinekvshop.service.item.ItemService;
+import com.etoiledespoir.onlinekvshop.service.order.card.CardService;
 import com.etoiledespoir.onlinekvshop.service.accounting.AccountingServce;
 import com.etoiledespoir.onlinekvshop.service.order.OrderService;
 import com.etoiledespoir.onlinekvshop.service.order.status.OrderStatusService;
 import com.etoiledespoir.onlinekvshop.service.order.orderline.OrderLineService;
-import com.etoiledespoir.onlinekvshop.service.item.product.ProductService;
 import com.etoiledespoir.onlinekvshop.util.CurrentDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class OrderController {
     @Autowired
     private CardService cardService;
     @Autowired
-    private ProductService productService;
+    private ItemService itemService;
     @Autowired
     private AccountingServce accountingServce;
     @Autowired
@@ -100,12 +100,12 @@ public class OrderController {
         if (orders != null) {
             OrderLine orderLine = orderLineService.readWithOrderNumber(orders.getId());
             if (orderLine != null) {
-                Products product = productService.read(orderLine.getItemNumber());
-                if (product != null) {
-                    Accounting accounting = accountingServce.read(product.getId());
+                Items items = itemService.read(orderLine.getItemNumber());
+                if (items != null) {
+                    Accounting accounting = accountingServce.read(items.getId());
                     if (accounting != null) {
                         OrderStatus orderStatus = orderStatusService.readWithOrderId(orders.getId());
-                        OrderHelper orderHelper = OrderHelperFactory.getOrderHelper(orders.getId(), orders.getDate(), product.getName(), orderLine.getQuantity(), accounting.getPrice(), orderStatus.getStat());
+                        OrderHelper orderHelper = OrderHelperFactory.getOrderHelper(orders.getId(), orders.getDate(), items.getName(), orderLine.getQuantity(), accounting.getPrice(), orderStatus.getStat());
                         if (orderHelper != null) {
                             return orderHelper;
                         }

@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.item.pictures;
 
-import com.etoiledespoir.onlinekvshop.domain.generic.item_picture.itemImage;
-import com.etoiledespoir.onlinekvshop.service.item.pictures.ItemImageService;
+import com.etoiledespoir.onlinekvshop.domain.item.image.itemImage;
+import com.etoiledespoir.onlinekvshop.service.item.image.ItemImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

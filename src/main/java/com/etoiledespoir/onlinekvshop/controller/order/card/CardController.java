@@ -1,27 +1,25 @@
 package com.etoiledespoir.onlinekvshop.controller.order.card;
 
-import com.etoiledespoir.onlinekvshop.controller.order.card.impl.CardControllerInt;
+import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.order.card.Card;
 import com.etoiledespoir.onlinekvshop.factory.domain.order.card.CardFactory;
-import com.etoiledespoir.onlinekvshop.service.item.card.CardService;
+import com.etoiledespoir.onlinekvshop.service.order.card.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
 @RequestMapping("/OKVS/card")
-public class CardController implements CardControllerInt {
+public class CardController implements Icontroller<Card,String> {
     @Autowired
     CardService cardService;
 
     @GetMapping("/readWithCustId")
-    @Override
     public List<Card> readsWithCustId(@RequestParam("id") String custId) {
         return cardService.readWithCustId(custId);
     }
 
     @GetMapping("/readWithItemId")
-    @Override
     public List<Card> readsWithItemId(@RequestParam("id") String itemId) {
         return cardService.readWithItemId(itemId);
     }

@@ -1,7 +1,7 @@
 package com.etoiledespoir.onlinekvshop.controller.user.gender;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
-import com.etoiledespoir.onlinekvshop.domain.users.gender.UserGender;
+import com.etoiledespoir.onlinekvshop.domain.user.gender.UserGender;
 import com.etoiledespoir.onlinekvshop.service.user.gender.CustGenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

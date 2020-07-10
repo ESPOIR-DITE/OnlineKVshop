@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.user;
 
-import com.etoiledespoir.onlinekvshop.domain.users.User;
+import com.etoiledespoir.onlinekvshop.domain.user.User;
 
 
 public class UserFactory {

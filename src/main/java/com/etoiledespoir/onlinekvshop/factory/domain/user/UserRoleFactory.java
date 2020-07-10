@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.factory.domain.user;
 
-import com.etoiledespoir.onlinekvshop.domain.users.UserRole;
+import com.etoiledespoir.onlinekvshop.domain.user.UserRole;
 import com.etoiledespoir.onlinekvshop.util.Igenerator;
 
 import java.util.Date;

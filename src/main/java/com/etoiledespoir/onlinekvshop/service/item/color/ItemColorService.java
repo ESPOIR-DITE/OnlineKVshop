@@ -1,6 +1,6 @@
 package com.etoiledespoir.onlinekvshop.service.item.color;
 
-import com.etoiledespoir.onlinekvshop.domain.item.color.impl.ItemColor;
+import com.etoiledespoir.onlinekvshop.domain.item.color.ItemColor;
 import com.etoiledespoir.onlinekvshop.factory.domain.item.color.impl.ItemColorFactory;
 import com.etoiledespoir.onlinekvshop.repository.item.color.ItemColorRep;
 import com.etoiledespoir.onlinekvshop.service.Iservice;

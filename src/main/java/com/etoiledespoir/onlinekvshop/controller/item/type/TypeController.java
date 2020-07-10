@@ -2,8 +2,8 @@ package com.etoiledespoir.onlinekvshop.controller.item.type;
 
 import com.etoiledespoir.onlinekvshop.controller.Icontroller;
 import com.etoiledespoir.onlinekvshop.domain.item.itemType.TypeOfItem;
-import com.etoiledespoir.onlinekvshop.factory.domain.item.productType.TypeFactory;
-import com.etoiledespoir.onlinekvshop.service.item.productType.TypesService;
+import com.etoiledespoir.onlinekvshop.factory.domain.item.type.TypeFactory;
+import com.etoiledespoir.onlinekvshop.service.item.type.TypesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
