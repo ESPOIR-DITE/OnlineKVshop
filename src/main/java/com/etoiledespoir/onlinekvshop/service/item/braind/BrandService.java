@@ -9,17 +9,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class BraindService implements Iservice<Brand,String> {
+public class BrandService implements Iservice<Brand,String> {
     @Autowired
     private BraindRep braindRep;
-    private static BraindService braindService;
+    private static BrandService brandService;
 
-    private BraindService() {
+    private BrandService() {
     }
-    public static BraindService getBraindService(){
-        if(braindService==null){
-            braindService=new BraindService();
-        }return braindService;
+    public static BrandService getBrandService(){
+        if(brandService ==null){
+            brandService =new BrandService();
+        }return brandService;
     }
 
     @Override

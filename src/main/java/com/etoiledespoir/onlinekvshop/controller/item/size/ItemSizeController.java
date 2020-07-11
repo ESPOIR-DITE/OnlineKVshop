@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("OKVS/productSize")
+@RequestMapping("OKVS/itemSize")
 public class ItemSizeController implements Icontroller<ItemSize,String> {
     @Autowired
     ItemSizeService itemSizeService;

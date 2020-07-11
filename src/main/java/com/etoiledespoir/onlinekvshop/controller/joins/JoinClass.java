@@ -16,7 +16,7 @@ import com.etoiledespoir.onlinekvshop.domain.item.size.Size;
 import com.etoiledespoir.onlinekvshop.factory.domain.join.ItemViewFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.join.ViewProductFactory;
 import com.etoiledespoir.onlinekvshop.service.item.ItemService;
-import com.etoiledespoir.onlinekvshop.service.item.braind.BraindService;
+import com.etoiledespoir.onlinekvshop.service.item.braind.BrandService;
 import com.etoiledespoir.onlinekvshop.service.item.braind.ItemBraindService;
 import com.etoiledespoir.onlinekvshop.service.item.color.ColorService;
 import com.etoiledespoir.onlinekvshop.service.item.color.ItemColorService;
@@ -58,7 +58,7 @@ public class JoinClass {
     @Autowired
     ItemBraindService itemBraindService;
     @Autowired
-    BraindService braindService;
+    BrandService brandService;
     @Autowired
     ColorService colorService;
     @Autowired
@@ -94,7 +94,7 @@ public class JoinClass {
             System.out.println("product id: " + item.getId());
 
             ItemBrand itemBrand =itemBraindService.read(item.getId());
-            Brand brand =braindService.read(itemBrand.getBrandId());
+            Brand brand = brandService.read(itemBrand.getBrandId());
             //System.out.println("image id: "+imageId.toString());
 
             //System.out.println("image id: "+images.toString());
@@ -141,7 +141,7 @@ public class JoinClass {
 
             //reading the brand
             ItemBrand itemBrand = itemBraindService.readWithItemId(id);
-            Brand brand = braindService.read(itemBrand.getBrandId());
+            Brand brand = brandService.read(itemBrand.getBrandId());
             System.out.println(brand +"brand");
 
             // reading the Account

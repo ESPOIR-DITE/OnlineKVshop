@@ -26,7 +26,7 @@ import com.etoiledespoir.onlinekvshop.factory.domain.item.size.ItemSizeFactory;
 import com.etoiledespoir.onlinekvshop.factory.domain.item.type.ItemTypesFactory;
 import com.etoiledespoir.onlinekvshop.service.accounting.AccountChangeService;
 import com.etoiledespoir.onlinekvshop.service.accounting.AccountingServce;
-import com.etoiledespoir.onlinekvshop.service.item.braind.BraindService;
+import com.etoiledespoir.onlinekvshop.service.item.braind.BrandService;
 import com.etoiledespoir.onlinekvshop.service.item.braind.ItemBraindService;
 import com.etoiledespoir.onlinekvshop.service.item.color.ColorService;
 import com.etoiledespoir.onlinekvshop.service.item.color.ItemColorService;
@@ -73,7 +73,7 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
     @Autowired
-    BraindService braindService;
+    BrandService brandService;
     @Autowired
     AccountingServce accountingServce;
     @Autowired
@@ -125,7 +125,7 @@ public class ItemController {
                 }
 
                 /**creating Braind**/
-                braindId = braindService.read(beaut.getBraind()).getBrandId();
+                braindId = brandService.read(beaut.getBraind()).getBrandId();
                 ItemBrand itemBrand = ItemBraindFactory.getItemBraind(braindId, items.getId());
                 itemBraindService.creat(itemBrand);
 
@@ -254,7 +254,7 @@ public class ItemController {
 
     public String getBraind(String itemId) {
         braindId = itemBraindService.read(itemId).getBrandId();
-        String myBraind = braindService.read(braindId).getBrandName();
+        String myBraind = brandService.read(braindId).getBrandName();
         return myBraind;
     }
 

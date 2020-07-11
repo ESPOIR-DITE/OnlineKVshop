@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("OKVS/acounting")
+@RequestMapping("OKVS/accounting")
 public class AccountingController implements Icontroller<Accounting,String> {
     @Autowired
     private AccountingServce accountingServce;
