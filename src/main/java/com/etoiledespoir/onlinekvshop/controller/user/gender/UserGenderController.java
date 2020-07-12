@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/OKVS/customerGender")
-public class CustomerGenderController implements Icontroller<UserGender,String> {
+@RequestMapping("/OKVS/user_gender")
+public class UserGenderController implements Icontroller<UserGender,String> {
     @Autowired
     CustGenderService custGenderService;
 

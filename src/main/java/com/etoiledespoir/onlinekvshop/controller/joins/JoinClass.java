@@ -113,7 +113,10 @@ public class JoinClass {
     public ViewProduct viewItem(@RequestParam("id") String id) {
         ViewProduct viewProduct = null;
         System.out.println(id);
+
+        // reading an item
         Items items = itemService.read(id);
+
 
         ArrayList<Color> colors = new ArrayList<>();
         ArrayList<byte[]> images = new ArrayList<>();

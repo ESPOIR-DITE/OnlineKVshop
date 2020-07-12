@@ -9,17 +9,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class CustomerContactService implements Iservice<UserContact,String> {
+public class UserContactService implements Iservice<UserContact,String> {
     @Autowired
     private UserContactRep userContactRep;
-    private static CustomerContactService customerContactService;
+    private static UserContactService userContactService;
 
-    private CustomerContactService() {
+    private UserContactService() {
     }
-    public static CustomerContactService getCustomerContactService(){
-        if(customerContactService==null){
-            customerContactService=new CustomerContactService();
-        }return customerContactService;
+    public static UserContactService getUserContactService(){
+        if(userContactService ==null){
+            userContactService =new UserContactService();
+        }return userContactService;
     }
 
     @Override
